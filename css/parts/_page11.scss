@@ -1,0 +1,401 @@
+@use 'variables' as *;
+
+.page11 {
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        font-size: 0.6rem; 
+
+        &::placeholder {
+            font-size: 0.5rem !important;
+        }
+    }
+
+    padding: 10mm 20mm !important;
+    font-size: 0.6rem;
+    .right {
+        width: 100%;
+        text-align: end;
+    }
+
+    .dear-wrapper {
+
+        .dearinput-wrapper {
+            display: flex;
+            align-items: end;
+            .input-large {
+                width: 30%;
+                border-bottom: 0.5px solid #000;
+                margin-right: 5px;
+                margin-top: 5px;
+                padding-block: 3px;
+                font-size: 0.8rem;
+                text-align: center;
+                &::placeholder {
+                    font-size: 0.8rem !important; 
+                }
+            }
+        }
+    }
+    .consent {
+        display: flex;
+        justify-content: end;
+        .input-wrapper {
+            width: 10%;
+            display: flex;
+            align-items: end;
+            .input-large {
+                font-size: 0.6rem;
+                &::placeholder {
+                    font-size: 0.6rem !important; 
+                }
+            }
+        }
+    }
+    .title {
+        font-size: 1rem;
+        text-align: center;
+        border-bottom: none;
+        padding-block: 20px;
+    }
+    .zokusei-container {
+        padding-top: 15px;
+    }
+    .zokusei-table1 {
+        font-size: 0.5rem;
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+        
+        th,td {
+            border: 1px solid #000;
+            vertical-align: middle; /* これで上下中央になります */
+            padding: 0;
+            font-weight: 500 !important;
+            .inputkana-wrapper {
+                width: 100%;
+                border-bottom: 0.5px solid #000;
+                display: flex;
+                align-items: center;
+                span {
+                    width: 10%;
+                    padding: 2px;
+                }
+                .input-kana {
+                    width: 90%;
+                    text-align: start;
+                }
+            }
+        }
+        .label-bg {
+            padding: 0 3px;
+        }
+        .input-area {
+            padding: 0 5px;
+            height: 30px;
+        }
+        .address-row {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 5px;
+            .post-wrapper {
+                display: flex;
+                align-items: center;
+                .input-char {
+                    width: 20px !important;
+                    height: 18px !important;
+                    min-height: auto !important;
+                    padding: 0 !important;
+                    text-align: center;
+                    font-size: 0.35rem;
+                    vertical-align: 0;
+                }
+            }
+            .address-wrapper {
+                height: 30px;
+            }
+        }
+        .tel-wrapper {
+            height: 25px;
+            display: flex;
+            align-items: center;
+            .input-tel {
+                text-align: center;
+            }
+        }
+        .date-wrapper {
+            padding-inline: 10px;
+            display: flex;
+            height: 30px;
+            justify-content: space-around;
+            gap: 10px;
+            align-items: center;
+            .date-inner {
+                display: flex;
+                .input-wrapper {
+                    display: flex;
+                    align-items: center;
+                    .input-large {
+                        font-size: 0.6rem;
+                        text-align: center;
+                        vertical-align: middle;
+                        width: 50px !important;
+                    }
+                }
+            }
+        }
+        .select-area {
+            padding: 0 10px;
+            
+            .select-wrapper {
+                width: 100%;
+                position: relative;
+
+                select {
+                    width: 100%;
+                    height: 25px;
+                    border: none;      // 枠線を消す
+                    outline: none;     // クリック時の青い枠を消す
+                    background: transparent;
+                    font-size: 0.6rem;
+                    cursor: pointer;
+                    appearance: none;  // デフォルトの下矢印を一旦消す（任意）
+                }
+            }
+            select {
+                width: 100%;
+                height: 25px;
+                border: none;
+                outline: none;
+                background: transparent;
+                font-size: 0.6rem;
+                cursor: pointer;
+
+                // ブラウザ標準の矢印を消す
+                -webkit-appearance: none; // Safari, Chrome用
+                -moz-appearance: none;    // Firefox用
+                appearance: none;         // 標準設定
+                
+                // IEで矢印を消すための魔法の記述
+                &::-ms-expand {
+                    display: none;
+                }
+
+                // 1. 初期状態（何も選択されていない時）の色
+                color: #999; 
+
+                // 2. 有効な値（option）が選択された時の色
+                &:valid {
+                    color: #000;
+                }
+            }
+
+            // 3. プルダウンを開いた時の中身（option）は常に黒くしたい場合
+            option {
+                color: #000;
+                background-color: #fff;
+            }
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            .input-large {
+                font-size: 0.6rem;
+                text-align: center;
+                vertical-align: middle;
+                width: 50px !important;
+            }
+        }
+    }
+    .zokusei-table2 {
+        .label-input {
+            padding: 0 !important;
+            width: 100%;
+            .kana {
+                flex-shrink: 0;  // テキスト幅を維持
+                width: fit-content;
+                white-space: nowrap;
+            }
+            .input-kana{
+                flex: 1;  // 残りの幅をすべて使う
+                min-width: 0;
+            }
+        }
+        .date-wrapper {
+            padding-inline: 2px !important;
+            display: flex;
+            height: 20px;
+            justify-content: space-around;
+            gap: 3px;
+            align-items: center;
+            .input-wrapper {
+                display: flex;
+                align-items: center;
+                .input-no {
+                        font-size: 0.6rem;
+                        text-align: center;
+                        vertical-align: middle;
+                    width: 35px !important;
+                }
+                .input-no2 {
+                    width: 25px !important;
+                }
+            }
+            
+        }
+        .select-area {
+            padding: 0px;
+            
+            .select-wrapper {
+                width: 100%;
+                position: relative;
+
+                select {
+                    width: 100%;
+                    height: 15px;
+                    border: none;      // 枠線を消す
+                    outline: none;     // クリック時の青い枠を消す
+                    background: transparent;
+                    font-size: 0.5rem;
+                    cursor: pointer;
+                    appearance: none;  // デフォルトの下矢印を一旦消す（任意）
+                }
+            }
+            select {
+                width: 100%;
+                height: 15px;
+                border: none;
+                outline: none;
+                background: transparent;
+                font-size: 0.5rem;
+                cursor: pointer;
+
+                // ブラウザ標準の矢印を消す
+                -webkit-appearance: none; // Safari, Chrome用
+                -moz-appearance: none;    // Firefox用
+                appearance: none;         // 標準設定
+                
+                // IEで矢印を消すための魔法の記述
+                &::-ms-expand {
+                    display: none;
+                }
+
+                // 1. 初期状態（何も選択されていない時）の色
+                color: #999; 
+
+                // 2. 有効な値（option）が選択された時の色
+                &:valid {
+                    color: #000;
+                }
+            }
+
+            // 3. プルダウンを開いた時の中身（option）は常に黒くしたい場合
+            option {
+                color: #000;
+                background-color: #fff;
+            }
+        }
+        .tel-wrapper {
+            height: 20px !important;
+        }
+        .input-mail {
+            padding: 0 5px;
+            height: 20px;
+            width: 250px;
+
+        }
+        .center {
+            text-align: center;
+        }
+        .label-small {
+            padding: 2px 1px;
+            text-align: center;
+            font-size: 0.4rem;
+
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .flex-beside {
+            display: flex;
+            align-items: center;
+        }
+        .right-border {
+            border-right: 1px solid #000;
+            padding: 0 10px;
+            
+        }
+        .flex-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+        .input-no2 {
+            width: 80%;
+        }
+        .padding3 {
+            padding: 3px 0 !important;
+        }
+        .naisen {
+            width: 30px;
+        }
+        .input-tel2 {
+            width: 70px;   // 固定幅にする
+            min-width: 0;  // flexで潰れないように
+            flex-shrink: 0;
+            text-align: center;
+        }
+    }
+    .footer-table {
+        font-size: 0.5rem;
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        border: 0.5px solid #000;
+        margin-top: 20px;
+        
+        td {
+            padding: 5px;
+            font-weight: 500 !important;
+        }
+        .post-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            .input-char {
+                width: 20px !important;
+                height: 18px !important;
+                min-height: auto !important;
+                padding: 0 !important;
+                text-align: center;
+                font-size: 0.35rem;
+                vertical-align: 0;
+            }
+            span {
+                width: 60px !important;
+            }
+        }
+        .input-area {
+            padding: 0 5px;
+            height: 30px;
+        }
+        .tel-wrapper {
+            height: 25px;
+            display: flex;
+            align-items: center;
+            .input-tel {
+                text-align: center;
+            }
+        }
+        .left {
+            justify-content: flex-start !important;
+        }
+
+    }
+
+
+}

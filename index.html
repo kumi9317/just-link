@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>JUST-LINK様　契約書作成システム</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@3.0.2/destyle.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="input-form">
+        <div class="logo">
+            <img src="img/logo.png" alt="">
+        </div>
+        <h2>共通項目　入力フォーム</h2>
+        <div class="input-group">
+            <label>甲</label>
+            <input type="text" id="name_kana_ko" placeholder="フリガナ" oninput="update()">
+            <input type="text" id="name_ko" placeholder="株式会社〇〇" oninput="update()">
+            <div class="form_post">
+                <input type="text" id="post-code1_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="text" id="post-code2_ko" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <input type="text" id="address1_ko" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+            <input type="text" id="address2_ko" placeholder="番地・建物名" oninput="update()">
+        </div>
+        <div class="input-group">
+            <label>乙</label>
+            <input type="text" id="name_kana_otsu" placeholder="フリガナ" oninput="update()">
+            <input type="text" id="name_otsu" placeholder="株式会社〇〇" oninput="update()">
+            <div class="form_post">
+                <input type="text" id="post-code1_otsu" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="text" id="post-code2_otsu" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <input type="text" id="address1_otsu" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+            <input type="text" id="address2_otsu" placeholder="番地・建物名" oninput="update()">
+        </div>
+        <div class="input-group">
+            <label>丙</label>
+            <input type="text" id="name_kana_hei" placeholder="フリガナ" oninput="update()">
+            <input type="text" id="name_hei" placeholder="株式会社〇〇" oninput="update()">
+            <div class="form_post">
+                <input type="text" id="post-code1_hei" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="text" id="post-code2_hei" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <input type="text" id="address1_hei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+            <input type="text" id="address2_hei" placeholder="番地・建物名" oninput="update()">
+        </div>
+        <div class="input-group">
+            <label>丁</label>
+            <input type="text" id="name_kana_tei" placeholder="フリガナ" oninput="update()">
+            <input type="text" id="name_tei" placeholder="株式会社〇〇" oninput="update()">
+            <div class="form_post">
+                <input type="text" id="post-code1_tei" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="text" id="post-code2_tei" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <input type="text" id="address1_tei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+            <input type="text" id="address2_tei" placeholder="番地・建物名" oninput="update()">
+        </div>
+        
+        <div class="credit-type-wrapper">
+            <span class="credit-label">クレジット申込み</span>
+            <label class="radio-label">
+                <input type="radio" name="credit-type" value="corporate">
+                <span>法人用</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="credit-type" value="personal">
+                <span>個人用</span>
+            </label>
+        </div>
+        
+        <button onclick="window.print()">PDFを出力する</button>
+        <p><small>※送信先を「PDFに保存」にしてください</small></p>
+
+    </div>
+
+    <div id="preview">
+        <div class="page page1">
+            <p>画像添付</p>
+        </div>
+
+        <div class="page page2">
+            <p>画像添付</p>
+        </div>
+
+        <div class="page page3">
+           
+            <div class="contract-header">
+                <h1 class="contract-title">商品売買契約書 兼 保守契約書</h1>
+                
+                <p class="notice">※各契約書・同意書の控えはご契約者様のお手元にお控えください。</p>
+                
+                <table class="date-table">
+                    <tr>
+                        <td class="label">契約日</td>
+                        <td class="year">
+                            <div class="input-wrapper">
+                                <input type="number" placeholder="0000"><span>年</span>
+                            </div>
+                        </td>
+                        <td class="month">
+                            <div class="input-wrapper">
+                                <input type="number" placeholder="00"><span>月</span>
+                            </div>
+                        </td>
+                        <td class="day">
+                            <div class="input-wrapper">
+                                <input type="number" placeholder="00"><span>日</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+
+            <table class="client-info-table">
+                <tr>
+                    <td rowspan="6" class="vertical-label">買<br>主<br>（甲）</td>
+                    <td class="label-bg col-kana">フリガナ</td>
+                    <td colspan="3" class="row-kana">
+                        <input type="text" class="sync-kana-ko" placeholder="フリガナ">
+                    </td> 
+                    <td class="label-bg col-kana">フリガナ</td>
+                    <td class="row-kana" colspan="1">
+                        <input type="text" placeholder="フリガナ（役職）">
+                    </td> 
+                    <td class="label-bg col-kana">フリガナ</td>
+                    <td class="row-kana" colspan="1">
+                        <input type="text" placeholder="フリガナ（代表者）">
+                    </td> 
+                </tr>
+                
+                <tr>
+                    <td rowspan="2" class="label-bg yago">会社名<br>・<br>屋号名</td>
+                    <td rowspan="2" colspan="3">
+                        <input type="text" class="sync-name-ko input-large" placeholder="株式会社〇〇〇〇">
+                    </td> 
+                    <td class="label-bg">役職</td>
+                    <td>
+                        <input type="text" placeholder="代表取締役">
+                    </td> 
+                    <td class="label-bg">代表者名</td>
+                    <td>
+                        <input type="text" placeholder="〇〇　〇〇">
+                    </td> 
+                </tr>
+
+                <tr>
+                    <td class="label-bg">ご担当者</td>
+                    <td colspan="3">
+                        <input type="text" placeholder="〇〇　〇〇">
+                    </td> 
+                </tr>
+                
+                <tr>
+                    <td rowspan="3" class="label-bg syozaiti">会社<br>所在地</td>
+                    <td colspan="3" class="zip-code">
+                        〒
+                        <input type="text" class="sync-post1-ko input-char" placeholder="000">
+                        -
+                        <input type="text" class="sync-post2-ko input-char" placeholder="000"> 
+                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0">
+                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
+                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
+                    </td>
+                    <td class="label-bg">TEL</td>
+                    <td colspan="3" class="tel-row">
+                        <input type="text" class="input-tel" placeholder="000"><span>ー</span>
+                        <input type="text" class="input-tel" placeholder="000"><span>ー</span> 
+                        <input type="text" class="input-tel" placeholder="000">
+                        <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3" class="address-labels">
+                        <!-- <div class="pref-city"> -->
+                            <!-- <input type="number" placeholder="大阪"> <span>都道<br>府県</span>
+                            <input type="number" placeholder="大阪"> <span>区市<br>郡</span>
+                            <input type="number" placeholder="〇〇"> -->
+                            <input type="text" class="sync-address1-ko" placeholder="〇〇県〇〇市〇〇">
+                        <!-- </div> -->
+                    </td>
+                    <td class="label-bg">FAX</td>
+                    <td colspan="3" class="tel-row"> 
+                        <input type="number" class="input-tel" placeholder="000"><span>ー</span>
+                        <input type="number" class="input-tel" placeholder="000"><span>ー</span> 
+                        <input type="number" class="input-tel" placeholder="000">
+                        <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3" class="address">
+                        <input type="text" class="sync-address2-ko address-detail" placeholder="（番地・建物名）">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="touki"> <span>登記のみ</span>
+                        </label>
+                    </td>
+                    <td class="contract-notes" colspan="4">
+                        <ul>
+                            <li>・法人の場合は登記印をご捺印下さい。</li>
+                            <li>・法人の場合、ご担当者欄にて契約の一部を実行されるご担当者をご任命いただけます。</li>
+                            <li>・所在地が登記のみの場合はチェックを入れて下さい。</li>
+                        </ul>
+                    </td> 
+                </tr>
+            </table> 
+            
+            <div class="page3main-container">
+                <h1 class="contract-title">売買契約書</h1>
+                <p>乙は、甲に対して、下記導入商品を以下のとおり売渡し、甲はこれを買い受けることに合意した。</p>
+
+                <table class="product-info-table">
+                    <thead>
+                        <tr>
+                            <th class="label-bg" style="width: 25%;" colspan="4">導入商品</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">数量</th>
+                            <th class="label-bg" style="width: 20%;" colspan="2">売買代金(税抜)</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">税率</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">税額</th>
+                            <th class="label-bg" style="width: 25%;" colspan="4">売買代金（支払総額・税込）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="input-row">
+                            <td colspan="4">
+                                <input type="text" placeholder="商品名">
+                            </td>
+                            <td colspan="1">
+                                <input type="number" placeholder="0">
+                            </td>
+                            <td colspan="2">
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1">10%</td>
+                            <td colspan="1">
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="4">
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="14" class="method-selection">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="payment"> <span>下記、現金払いまたは、分割払いによる支払方法を自ら選択しました。</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="method-label">
+                                <label class="checkbox-label">
+                                    <input type="radio" name="payment" value="cash"> <span>現金払いを希望し、下記内容を理解の上、選択します。</span>
+                                </label>
+                            </td>
+                            <td colspan="8" class="method-label">
+                                <label class="checkbox-label">
+                                    <input type="radio" name="payment" value="installment"> <span>分割払いを希望し、下記内容を理解の上、選択します。</span>
+                                </label>
+                            </td>
+                        </tr>
+                        
+                        <tr class="description-row">
+                            <td colspan="5" class="text-left">
+                                <div class="cash">
+                                    <span class="cash-left">現金 :</span>
+                                    <span class="cash-right">甲は、下記支払期日欄記載のとおりまでに、売買代金を下記乙の指定口座へ振込むものとします。</span>
+                                </div>
+                                <p>（振込手数料は甲の負担とします。）</p>
+                                <p class="bank-account">［振込口座］</p>
+                                <textarea class="account-input" placeholder="口座番号/銀行名/支店/名義人名　等"></textarea>
+                            </td>
+                            <td colspan="8" class="text-left small-text">
+                                <div class="cash">
+                                    <span class="cash-left">分割払い :</span>
+                                    <span class="cash-right">甲は、乙または丙と提携している信販会社とクレジット（立替払）契約（以下「分割契約」という。）を別途締結して、上記記載の売買代金を分割で支払う方法を利用することができます。</span>
+                                </div>
+                                <p class="bank-account">●クレジット（立替払）を利用する場合：</p>
+                                <p>Ⓒ加盟店手数料負担方式 （上記記載の条件に変更はございません。）</p>
+                                <p>②顧客手数料負担方式 （支払月額、回数、総額に変更なし。金利手数料を売買代金より値引き、別途締結する分割契約に記載。）</p>
+                            </td>
+                        </tr>
+
+                        <tr class="payment-detail-row">
+                            <td class="label-bg" colspan="1">支払期日</td>
+                            <td colspan="4" class="payment-due">
+                                <div class="date-line">
+                                    <span class="label">第1回</span>
+                                    <span class="date">
+                                        <input type="text" class="input-year" placeholder="0000">年
+                                        <input type="text" class="input-month" placeholder="00">月
+                                        <input type="text" class="input-day" placeholder="00">日
+                                    </span>
+                                    <span class="price">
+                                        （￥<input type="text" class="price-input" placeholder="0">）
+                                    </span>
+                                </div>
+                                <div class="date-line">
+                                    <span class="label">第2回</span>
+                                    <span class="date">
+                                        <input type="text" class="input-year" placeholder="0000">年
+                                        <input type="text" class="input-month" placeholder="00">月
+                                        <input type="text" class="input-day" placeholder="00">日
+                                    </span>
+                                    <span class="price">
+                                        （￥<input type="text" class="price-input" placeholder="0">）
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="label-bg" colspan="1">分割予定額</td>
+                            <td class="" colspan="1">支払月額（税込）</td>
+                            <td class="payment-division" colspan="4">
+                                <div class="date-line">
+                                    <span class="label">（初回</span>
+                                    <span class="date">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="label">円）</span>      
+                                </div>
+                                <div class="date-line">
+                                    <span class="label">２回目以降</span>
+                                    <span class="date">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="label">円</span>
+                                </div>
+                            </td>
+                            <td class="label-bg" colspan="1">支払回数</td>
+                            <td  class="times" colspan="1"><input type="number" class="input-year" placeholder="0">回</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="huzoku1">
+                <p>■導入にあたっての付随事項Ⅰ（製作・納品に関わる事項）</p>
+                <p class="red">※詳細については別紙「ヒアリングフォーム」にご記入いただきます。</p>
+            </div>
+
+            <div class="huzoku2">
+                <p>■導入にあたっての付随事項Ⅱ  （旧物件及び旧保守契約等に関わる処理）</p>
+                <table class="huzoku1-table">
+                    <thead>
+                        <tr>
+                            <th class="label-bg" style="width: 6%;" colspan="1">登録番号</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">
+                                <select class="status-select" required>
+                                    <option value="" hidden disabled selected>選択</option>
+                                    <option value="有">有</option>
+                                    <option value="予定">予定</option>
+                                    <option value="無">無</option>
+                                </select>
+                            </th>
+                            <th class="label-bg" style="width: 26%;" colspan="1">
+                                <input type="text" placeholder="〇〇〇〇〇〇">
+                            </th>
+                            <th class="label-bg" style="width: 6%;" colspan="1">ご確認事項</th>
+                            <th class="label-bg" style="width: 52%;" colspan="1">通知書送付後1周間以内に誤りのある旨のご連絡がない場合、記載内容通りにて確認済みとみなします。※免税事業者は除く</th>
+                        </tr>
+                    </thead>
+                </table>
+                <p>旧物件の処理は、お客様申告に基づいた債権（信用情報機関（JICC,CIC）を利用している信販会社、リース会社などの割賦債権）を前提として処理させていただきます。</p>
+                <p>また当該処理対象商品は、この度ご契約頂きました導入商品と同種商品のみとなります。</p>
+                <table class="huzoku2-table">
+                    <thead>
+                        <tr>
+                            <th class="label-bg" style="width: 3%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 8%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 15%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 5%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 12%;" colspan="3"></th>
+                            <th class="label-bg" style="width: 15%;" colspan="3"></th>
+                            <th class="label-bg" style="width: 15%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 13%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 5%;" colspan="1"></th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">解約予定金額(最大)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row2">
+                            <td class="label-bg vertical-label" rowspan="4" colspan="1">旧<br>物<br>件<br>の<br>処<br>理</td>
+                            <td colspan="1">解約　有無</td>
+                            <td colspan="1">解約商品名</td>
+                            <td colspan="1">数量</td>
+                            <td colspan="3">解約契約種別</td>
+                            <td colspan="3">解約先信販会社等</td>
+                            <td colspan="1">販売会社</td>
+                            <td colspan="1">月額（税込）</td>
+                            <td colspan="1">残回数</td>
+                            <td colspan="1">処理金額（税込）</td>
+                        </tr>
+                        <tr class="row3">
+                            <td colspan="1" rowspan="2" style="text-align: center; vertical-align: middle;">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="checkbox-umu"> <span>あり</span><br>
+                                    <input type="checkbox" > <span>なし</span>
+                                </label>
+                            </td>
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1"><input type="number" placeholder="0"></td>
+                            <td colspan="3">
+                                <select class="status-select" required>
+                                    <option value="" hidden disabled selected>選択</option>
+                                    <option value="有">クレジット</option>
+                                    <option value="予定">ローン</option>
+                                    <option value="無">リース</option>
+                                </select>
+                            </td>
+                            <td colspan="3"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td>
+                            <td colspan="1"><input type="number" placeholder="0"></td>
+                            <td colspan="1" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1"><input type="number" placeholder="0"></td>
+                            <td colspan="3">
+                                <select class="status-select" required>
+                                    <option value="" hidden disabled selected>選択</option>
+                                    <option value="有">クレジット</option>
+                                    <option value="予定">ローン</option>
+                                    <option value="無">リース</option>
+                                </select>
+                            </td>
+                            <td colspan="3"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="1" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td>
+                            <td colspan="1"><input type="number" placeholder="0"></td>
+                            <td colspan="1" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td> 
+                        </tr>
+                        <tr>
+                            <td colspan="13">
+                                <ul class="text-left">
+                                    <li>・上記の旧物件情報は契約者様が旧信販会社等に確認の上ご申告ください。販売店は契約者様からの申告に基づき旧物件の処理を行います。</li>
+                                    <li>・上記申請額は信販会社に確認の上、契約者の責任により申告してください。お客様からの申告がない場合、旧契約処理を行うことが出来ない事をご了承ください。</li>
+                                    <li>・旧契約の処理は原則新契約完了月の翌月末日となります。ただし申請遅延及び信販会社等の手続き処理による変更の場合はその限りではありません。</li>
+                                    <li>・新契約の完了時期により処理金額が変更となる場合は、実際の旧契約処理金額をもって手続き完了とします。（残処理は上記申請額が上限となり、残処理を委託することがあります。）</li>
+                                    <li>・旧契約を再リースでご継続のお客様は、当該再リース契約の解約手続きに関しては、お客様自身で行って下さい。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td class="label-bg vertical-label" rowspan="4" colspan="1">旧<br>保<br>守</td>
+                            <td colspan="1">解約　有無</td>
+                            <td colspan="1">解約保守・サービス名</td>
+                            <td colspan="3">旧保守・サービス会社</td>
+                            <td colspan="2">解約費用（税込）</td>
+                            <td colspan="6">確認事項</td>
+                        </tr>
+                        <tr class="">
+                            <td class="label-bg vertical-label" rowspan="2" colspan="1">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" > <span>あり</span><br>
+                                    <input type="checkbox" > <span>なし</span>
+                                </label>
+                            </td>
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="3"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="2" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td>
+                            <td colspan="6" class="tiny-text" rowspan="2" colspan="1">
+                                ◆旧保守サービス等の規定に沿って、乙若しくは丙により解約処理を致しますが、場合により甲自身での申請、 手続きが必要となる場合があります。<br>
+                                ◆新契約の手続き時期により処理金額が変更となる場合は、実際の旧契約処理金額をもって手続き完了としま す。（左記解約費用を上限と致します。）
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="1"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="3"><input type="text" placeholder="〇〇〇〇〇〇"></td>
+                            <td colspan="2" class="yen">
+                                <div class="price-line">
+                                    <span class="price">
+                                        <input type="text" class="price-input" placeholder="0">
+                                    </span>    
+                                    <span class="price_yen">円</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="">
+                            <td colspan="14" class="text-left tiny-text">
+                                Ⓒ 上記記載の旧保守契約が、丁の関係会社保守の場合は、本売買契約商品の納品完了時に当該旧保守契約は中途解約されます。なお、中途解約違約金は免除となります。<br>
+                                ② Ⓒにより中途解約された場合においては、SD及び消滅したドメイン・データ等は復旧することができません。この場合において、乙は何ら責任を負いません。
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="kaiyaku">
+                <p>●解約及び違約金</p>
+                <p>本契約締結日の翌日から３日目以内において、甲から解約を申し出た場合、乙は無条件にて解約処理を行います。なお、甲は、本契約締結日の翌日から4日目以降に解約を申し出た場合、売買代金（支払総額）に対する下記割合に相当する金額を違約金として乙または丙にお支支払いいただくことにより、本契約を解約することができるものとします。</p>
+                <table class="kaiyaku-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">契約締結日の翌日から３日目以内</th>
+                            <th style="width: 25%;">契約締結の翌日以降４日目から<br>納品関連スケジュール確認連絡前まで（※2）</th>
+                            <th style="width: 20%;">納品関連スケジュール確認連絡日から<br>納品完了前まで</th>
+                            <th style="width: 15%;">納品完了後から検品完了前まで</th>
+                            <th style="width: 15%;">検品完了後</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>無条件解約（※1）</td>
+                            <td>売買代金３０％相当額</td>
+                            <td>売買代金５０％相当額</td>
+                            <td>売買代金７０％相当額</td>
+                            <td>売買代金１００％相当額</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>※1ただし、４日目以降であっても商品制作依頼前であれば応相談。</p>
+                <p>※2「納品関連スケジュールの確認連絡」とは、商品の納品に関する打ち合わせ・納品・操作説明等のスケジュール確認連絡のうち、初回の乙または丙からの甲に対する連絡を指します。</p>
+                   <p> ●その他特記事項</p>
+                    <p>①甲は、販売店Ｂ（丙）がある場合においては、以下の場合に、本売買契約上の売主の地位が販売店Ａ（乙）から販売店Ｂ（丙）に移転し、販売店Ａ（乙）の地位は販売代理店となることを予め承諾する。</p>
+                    <p>・甲が支払い方法につき分割払いを選択し、丙が締結した加盟店契約に基づき、信販会社等において分割契約の審査が完了された場合。この場合は、その分割契約の販売店が売主となる。</p>
+                    <P>②甲は、分割契約の利用を希望した場合において、分割契約の審査承認が出た後は、分割契約が理由の如何を問わず無効、取消し若しくは解約・解除又はその申込みが信販会社の定める審査期限を過ぎたこ とにより失効となっても、商品売買契約は有効であり、その場合、お支払方法が現金一括払いに変更になることを確認します。なお、やむを得ない事情により商品売買契約を解約する場合は、所定の違約金 の支払いが必要となります。</P>
+                    <p>③審査結果が不承認となり、分割契約が成立しなかった場合でも、商品売買契約の成立には影響を及ぼしません。この場合、現金一括払いによる決済または商品売買契約の解約のいずれかを選択することができ、商品売買契約の解約を選択された場合については、違約金は発生しません。</p>
+            </div>
+
+            <div class="rentaihosyo">
+            
+                <table class="rentaihosyo-table">
+                    <thead>
+                        <tr>
+                            <th class="borderress" style="width: 3%"></th>
+                            <th class="borderress" style="width: 6%"></th>
+                            <th class="borderress" style="width: 6%"></th>
+                            <th class="borderress" style="width: 2%"></th>
+                            <th class="borderress" style="width: 6%"></th>
+                            <th class="borderress" style="width: 38%"></th>
+                            <th class="borderress" style="width: 5%"></th>
+                            <th class="borderress" style="width: 32%"></th>
+                        </tr>
+                        <tr class="rentaihosyo-title">
+                            <th colspan="8"> ●連帯保証　　　連帯保証人は、本契約に基づき、若しくは付随して、甲が乙又は丙に対して負担する一切の債務について保証し、甲と連帯して履行の責を負うものとする。</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4" style="width: 5%">連<br>帯<br>保<br>証<br>人</td>
+                            <td rowspan="2" style="width: 10%">自宅住所</td>
+                            <td colspan="3" style="width: 21%" class="zip-code">
+                                〒 
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                <input type="number" maxlength="1" class="input-char" placeholder="0">
+                            </td>
+                            <td style="width: 27%" class="address-labels">
+                                <div class="pref-city">
+                                    <input type="number" placeholder="大阪"> <span>都道<br>府県</span>
+                                    <input type="number" placeholder="大阪"> <span>区市<br>郡</span>
+                                    <input type="number" placeholder="〇〇">
+                                </div>
+                            </td>
+                            <td style="width: 10%">フリガナ</td>
+                            <td style="width: 27%">
+                                <input type="text" placeholder="フリガナ">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="address-cautionary">マンション・アパートの場合は建物の名称も記入してください。</td>
+                            <td colspan="1" class="address">
+                                <input type="text" class="address-detail" placeholder="（番地・建物名）">
+                            </td>
+                            <td rowspan="3">氏名</td>
+                            <td rowspan="3">
+                                <input type="text" placeholder="〇〇〇〇">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>自宅TEL</td>
+                            <td colspan="4" class="tel-row">
+                                <input type="text" class="input-tel" placeholder="000"><span>ー</span>
+                                <input type="text" class="input-tel" placeholder="000"><span>ー</span> 
+                                <input type="text" class="input-tel" placeholder="000">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>甲との関係</td>
+                            <td colspan="4">
+                                <input type="text" placeholder="〇〇〇〇">
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+            <div class="shop-info-container">
+                <table class="shop-info-table">
+                    <tbody>
+                        <tr>
+                            <td class="shop-label" style="width: 12%;">
+                                販売店 A<br>(乙)
+                            </td>
+                            
+                            <td class="company-details" style="width: 38%;">
+                                <div class="zip-code">
+                                    〒
+                                    <input type="text" class="sync-post1-otsu input-char" placeholder="000">
+                                    -
+                                    <input type="text" class="sync-post2-otsu input-char" placeholder="000"> 
+                                </div>
+                                <input type="text" class="sync-address1-otsu address-detail" placeholder="〇〇県〇〇市〇〇">
+                                <input type="text" class="sync-address2-otsu address-detail" placeholder="（番地・建物名）">
+                                <input type="text" class="sync-name-otsu input-large" placeholder="株式会社〇〇〇〇">   
+                            </td>
+                            
+                            <td class="shop-label" style="width: 12%;">
+                                販売店 B<br>(丙)
+                            </td>
+                            
+                            <td class="company-details" style="width: 38%;">
+                                <div class="zip-code">
+                                    〒
+                                    <input type="text" class="sync-post1-hei input-char" placeholder="000">
+                                    -
+                                    <input type="text" class="sync-post2-hei input-char" placeholder="000"> 
+                                </div>
+                                <input type="text" class="sync-address1-hei address-detail" placeholder="〇〇県〇〇市〇〇">
+                                <input type="text" class="sync-address2-hei address-detail" placeholder="（番地・建物名）">
+                                <input type="text" class="sync-name-hei input-large" placeholder="株式会社〇〇〇〇">   
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page page4">
+            <p class="hikae">（お客様控）</p>
+            <div class="page4_container">
+
+                <div class="selection-item">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="maintenance_agree">
+                        <span class="checkmark"></span>
+                        <span class="text">左記、商品売買契約とは別に、保守約款、保守オプション約款、プライバシーポリシーに同意の上、保守契約に申し込む。</span>
+                    </label>
+                </div>
+                <div class="selection-item">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="maintenance_agree">
+                        <span class="checkmark"></span>
+                        <span class="text">保守契約は申し込まない。</span>
+                    </label>
+                </div>
+
+                <div class="page4_header">
+                    <div class="page4_header_title">
+                        <h1>保守契約書</h1>
+                        <p>甲は、売買契約とは別途、任意で保守会社（丁）との間で導入商品の保守契約を、以下のとおり締結する。</p>
+                    </div>
+                    <table class="contract-period">
+                        <tr>
+                            <td class="label">契約期間</td>
+                            <td class="period">
+                                <div class="input-wrapper">
+                                    <input type="number" placeholder="0"><span>ヶ月</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <table class="hosyu-table">
+                    <thead>
+                        <tr>
+                            <th class="label-bg" style="width: 46%;" colspan="6">
+                                <div class="check-flex"> 
+                                    <p>保守・サービス名</p>
+                                    <p>⬜︎に✔️にて申し込み</p>
+                                </div>
+                            </th>
+                            <th class="label-bg" style="width: 15%;" colspan="2">初期費用</th>
+                            <th class="label-bg" style="width: 7%;" colspan="1">税額</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">単価</th>
+                            <th class="label-bg" style="width: 7%;" colspan="1">数量</th>
+                            <th class="label-bg" style="width: 10%;" colspan="1">月額料金</th>
+                            <th class="label-bg" style="width: 7%;" colspan="1">税額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="1" rowspan="3" >保守契約</td>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">コールセンターサポート</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">システム保守</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">管理支援パック</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="6" >サービス</td>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">CMSライセンス契約</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">サイト運用強化パック</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">SEO対策パック</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">システム監視</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">セキュリティ対策</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">管理画面数値レポートパック</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="7" >その他サービス</td>
+                            <td colspan="5" rowspan="1" >
+                                <div class="sonota-wrapper">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="maintenance_agree">
+                                        <span class="checkmark"></span>
+                                        <span class="text">JUST MEO</span>
+                                    </label>
+                                    <div class="sankou">（参考月額）　　￥33,800　×（　　　）個</div>
+                                </div>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <div class="sonota-wrapper">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="maintenance_agree">
+                                        <span class="checkmark"></span>
+                                        <span class="text">サイテーション対策</span>
+                                    </label>
+                                    <div class="sankou">（参考月額）　￥19,800　　×（　　　）個</div>
+                                </div>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <div class="sonota-wrapper">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="maintenance_agree">
+                                        <span class="checkmark"></span>
+                                        <span class="text">AIサポート</span>
+                                    </label>
+                                    <div class="sankou">（参考月額）　　　　　　　　　　￥10,000</div>
+                                </div>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">15秒動画</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">長期契約割引【基本保守契約申込時適用】</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <label class="checkbox-container">
+                                    <input type="checkbox" name="maintenance_agree">
+                                    <span class="checkmark"></span>
+                                    <span class="text">得とく割引</span>
+                                </label>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" rowspan="1" >
+                                <div class="sonota-wrapper">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="maintenance_agree">
+                                        <span class="checkmark"></span>
+                                        <span class="text">その他【</span>
+                                    </label>
+                                    <input type="text" class="sankou-input" placeholder="〇〇〇〇">
+                                    <span>】</span>
+                                </div>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="1" ></td>
+                            <td colspan="5" rowspan="1" class="text-center">各種割引合計</td>
+                            <td colspan="2" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2" ></td>
+                            <td colspan="3" rowspan="2" class="text-center bc-red">割引後　請求額（合計額）</td>
+                            <td colspan="2" rowspan="1" class="text-center bc-red">初期費用/消費税10%</td>
+                            <td colspan="2" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="2" rowspan="1" class="text-center bc-red">月額料金/消費税10%</td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" rowspan="1" class="text-center bc-red">初期費用合計</td>
+                            <td colspan="2" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="2" rowspan="1" class="text-center bc-red">月額料金（税込）</td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="13" class="gaiyou-header">
+                                <p class="title">基本保守契約及びオプション契約・各種割引サービス 概要</p>
+                                <p class="red">※以下に記載がない場合、サービス内容・その他サービス内容等をご確認ください。また、オプション約款や以下に特段の規定がない事項については、保守約款が準用されます。なお、各オプション単体でのご契約はできません。</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"  rowspan="8">保守契約</td>
+                            <td colspan="12"  rowspan="1">コールセンター保守</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"></td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>・コールセンター/メールサポート</li>
+                                    <li>・遠隔操作対応</li>
+                                    <li>・トラブルシューティング</li>
+                                </ul>
+                            </td>
+                            <td colspan="9">
+                                <ul>
+                                    <li>コールセンターにおける電話またはメールでのサポート（平日9：00～18：00）</li>
+                                    <li>遠隔による操作サポート（Team Viewerのインストールが前提</li>
+                                    <li>トラブル発生時の原因を見出し、原因を取り除き正常な状態に戻すための対応</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="12"  rowspan="1">システム保守</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"></td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>・システム維持、アップデート</li>
+                                    <li>・使用端末プラウザ対応</li>
+                                </ul>
+                            </td>
+                            <td colspan="9">
+                                <ul>
+                                    <li>システムを安定的に利用いただくための維持。環境変更等によるアップデート対応　・　システム利用時の各種ブラウザー対応</li>
+                                    <li>※システムに対する対応であり、制作したWEBページヘの対応ではございません</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="12"  rowspan="1">管理支援パック</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"></td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>・ドメイン維持管理（取得業務）</li>
+                                    <li>・基本サーバー維持管理</li>
+                                </ul>
+                            </td>
+                            <td colspan="9">
+                                <ul>
+                                    <li>ドメインの取得・維持・管理</li>
+                                    <li>サーバー管維持・管理</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="12"  rowspan="1">メールアカウント作成及び設定</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1"></td>
+                            <td colspan="2">
+                                <ul>
+                                    <li>①メールサーバーについて</li>
+                                    <li>②メーラーの設定について</li>
+                                </ul>
+                            </td>
+                            <td colspan="9">
+                                <ul>
+                                    <li>・メール設定はPOPのみの設定となります。　・原則、納品時にメーラー設定を行います。</li>
+                                    <li>・IMAPでの設定をご希望の場合はメールサーバーの管理を自己の責任・費用で行うことが出来ます（その際のDNS設定は、サーバー情報提供後に実施となります）</li>
+                                    <li>・納品時に、設定する端末（ＰＣ・スマホ・タブレット）をご用意いただけなかった場合は、ご契約者様側での設定となります。</li>
+                                    <li>　その場合、メーラー設定不備に起因するトラブルに関して販売会社等及び保守会社は責任を負いません。</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">サービス</td>
+                            <td colspan="11">※サービスは満了後は無償となります。　CMSライセンス契約、サイト運用強化パック、SEO対策パック、システム監視、セキュリティ対策、バックアップ、管理画面数値レポートパック</td>
+                            <td colspan="1">✔️にて申込み</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">サービス<br>その他</td>
+                            <td colspan="11">
+                                ※その他サービスの内容は以下に記載がない場合、保守オプション約款集をご確認ください。なお、各オプション単体でのご契約は出来ません。<br>
+                                ※オプション約款や上記に特段の規定がない事項については、保守約款を準用するものとします。　Just MEO  , ｻｲﾃｰｼｮﾝ対策,ﾘｽｸｱﾅﾗｲｽﾞ,AIサポート
+                            </td>
+                            <td colspan="1">✔️にて申込み</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="2">各種割引</td>
+                            <td colspan="5">
+                                長期契約割引<br>
+                                (保守契約締結時の同時申込み)
+                            </td>
+                            <td colspan="6">
+                                <ul>
+                                    <li>・保守契約を契約書上の契約期間継続することを条件にした割引サービス。</li>
+                                    <li>・中途解約時、契約当初に遡って解消されます。</li>
+                                    <li>・契約期間満了後は自動更新なく割引サービスは終了致します。</li>
+                                </ul>
+                            </td>
+                            <td colspan="1">✔️にて申込み</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">得とく割引</td>
+                            <td colspan="6">契約終了後は割引を終了します。</td>
+                            <td colspan="1">✔️にて申込み</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="5">お支払い方法</td>
+                            <td colspan="5">●保守契約満期後の各種割引について</td>
+                            <td colspan="7"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" rowspan="3"></td>
+                            <td colspan="2" class="text-center">割引項目</td>
+                            <td colspan="2" class="text-center">満期後の割引の取扱</td>
+                            <td colspan="2" class="text-center">当初契約期間終了後<br>請求額（合計額）</td>
+                            <td colspan="1" class="text-center">月額料金<br>/消費税10％</td>
+                            <td colspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                            <td colspan="1" class="text-center">月額料金（合計）</td>
+                            <td colspan="1" class="row2" >
+                                <input type="text" class="price-input" placeholder="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">長期契約割引</td>
+                            <td colspan="2" class="text-center">
+                                <p>適用終了</p>
+                                <small>（通常料金で自動更新となります）</small>
+                            </td>
+                            <td colspan="7" rowspan="2" class="text-center">
+                                <p>各約款URL</p>
+                                <a href="https://www.justlink.co.jp/images/business/pdf/jw_yakkan.pdf" class="yakkan-url" target="_blank" rel="noopener noreferrer">https://www.justlink.co.jp/images/business/pdf/jw_yakkan.pdf</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">得とく割引</td>
+                            <td colspan="2" class="text-center">適用終了</td>
+                        </tr>
+                        <tr>
+                            <td colspan="12">
+                                上記に定義のない保守業務・サービスは、実施されません。（但し、別途有料で請け負うことができるサービスもございます。）<br>
+                                特段の定めのない限り、全てのサービスの契約期間は保守契約期間と同じであり、同期間内の中途解約はできません。<br>
+                                但し、已むを得ない事情により中途解約する場合には、裏面保守約款記載の所定の手続の履践、及び、下記の違約金の 支払いが必要となります。<br>
+                                なお、違約金の計算における「基本保守契約」とは、当初お申込時にお申込みされた全ての「保守契約」及び「サービス」をいいます。　・基本保守契約 違約金＝（契約期間×得とく割引後の基本保守契約月額) - 既払金
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" class="text-center">補足（費用）</td>
+                            <td colspan="12">
+                                別途お申込みいただいた集金代行（口座引落）によるお支払いになります。商品の納品月は月額料金が発生しません。<br>
+                                納品月の翌月1日より料金が発生します。保守業務に関する料金は、当該料金に消費税を加算した金額です。<br>
+                                消費税率の変更等が有った場合は別途見直されるものとします。　※初回のご請求は利用月から２ヶ月分をまとめてご請求させて頂きます。以降は１ヶ月分ずつご請求させていただきます。
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="hosoku">
+                                <div class="hosoku-wrapper">
+                                    <p>補足事項</p>
+                                    <textarea type="text" class="hosoku-input" placeholder="〇〇〇〇〇〇〇〇・・・"></textarea>
+                                </div>
+                            </td>
+                            <td colspan="2" class="text-center">保守会社（丁）</td>
+                            <td colspan="4" class="company-details">
+                                <div class="zip-code">
+                                    〒
+                                    <input type="text" class="sync-post1-tei input-char" placeholder="000">
+                                    -
+                                    <input type="text" class="sync-post2-tei input-char" placeholder="000"> 
+                                </div>
+                                <input type="text" class="sync-address1-tei address-detail" placeholder="〇〇県〇〇市〇〇">
+                                <input type="text" class="sync-address2-tei address-detail" placeholder="（番地・建物名）">
+                                <input type="text" class="sync-name-tei input-large" placeholder="株式会社〇〇〇〇">   
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page page5">
+            <h1 class="page5-title">重要事項確認書</h1>
+            <h2 class="head">ご契約者様へ</h2>
+            <p>本重要事項確認書は、ご契約者様において商品売買契約、保守契約及びご導入商品の契約内容・サービス内容における重要な事項を確認していただくものです。</p>
+            <p>以下の記載事項をご確認の上、<span class="red">□にご契約者様にてチェック</span>下さいますようお願い致します。</p>
+
+            <h3 class="item-head">1.　契約確認事項に関して</h3>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">1.売買契約書、保守契約書、審査同意書等（以下、「各種契約書」といいます）への記入押印について</p>
+                        <p>・各種契約書への記入は、ご契約者様及び連帯保証人の直筆に限ります。又、各種契約書への記入内容はご契約者様の申告通りの記入であり、相違ないことを確認しました。</p>
+                        <p>なお、お客様にて同意のお手続き及び信販会社の許可がある場合、後日クレジット契約申込お手続きの際、お客様のお手続き負担の軽減、お手続き時間短縮のため、信販会社との契約書に、予め審査同意書 のお客様情報を販売会社にて転記・入力する場合があります。</p>
+                        <p>※虚偽の記入内容が原因で発生したトラブル等に関して、販売店、販売代理店及び保守会社（以下、「販売店等」といいます）は一切の責任を負いません。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">２．契約期間、金額、支払い総額について</p>
+                        <p>・各種契約書面に記載された、金額・契約期間・支払総額等間違いがないことを確認しました。</p>
+                        <p>・支払総額は、原則として分割手数料の負担方式による変更はございませんが、信販会社の金利計算方法により1円の端数が出る場合がございます。</p>
+                        <p>・販売担当者から、商品代金及び保守料金について、別々に説明を受けました。</p>
+                        <p>※なお、契約期間満了後の取り扱いについては、分割契約は信販会社の規定、保守契約は保守契約会社のそれぞれの規定を遵守します。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">３．商品売買契約の解約について</p>
+                        <p>商品売買契約締結日の翌日から３日目以内に解約のお申し出を頂いた場合は、無条件にて解約を承ります。商品売買契約日の翌日から４日目以降に解約のお申し出を頂いた場合は、「商品売買契約書」に基 づき、以下の違約金をお支払いいただきます。なお、違約金の支払方法については、相談に応じます。</p>
+                        <table class="kaiyaku-table">
+                            <thead>
+                                <th class="label-bg" style="width: 20%;">契約締結日の翌日から３日目以内</th>
+                                <th class="label-bg" style="width: 23%;">契約締結の翌日以降４日目から<br>納品関連スケジュール確認連絡前まで（※2）</th>
+                                <th class="label-bg" style="width: 20%;">納品関連スケジュール確認連絡日から<br>納品完了前まで</th>
+                                <th class="label-bg" style="width: 20%;">納品完了後から検品完了前まで</th>
+                                <th class="label-bg" style="width: 17%;">検品完了後</th>
+                            </thead>
+                            <tbody>
+                                <td class="label-bg">無条件解約（※1）</td>
+                                <td class="label-bg">売買代金３０％相当額</td>
+                                <td class="label-bg">売買代金５０％相当額</td>
+                                <td class="label-bg">売買代金７０％相当額</td>
+                                <td class="label-bg">売買代金１００％相当額</td>
+                            </tbody>
+                        </table>
+                        <p>※1ただし、４日目以降であっても商品制作依頼前であれば応相談。</p>
+                        <p>※2「納品関連スケジュールの確認連絡」とは、商品の納品に関する打ち合わせ・納品・操作説明等のスケジュール確認のうち、初回の販売店A または販売店Bからのご契約者様に対する連絡を指します。</p>
+                        <p>・分割契約（クレジット契約）開始後におきましては、原則として分割契約の中途解約は出来ません。</p>
+                        <p>・やむを得ない事情で分割契約を解約する場合は、ご契約頂く信販会社の規約に従い、残金相当額の解約金または違約金を信販会社に支払うことを確認しました。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">4. 解約方法について</p>
+                        <p>解約をご希望の場合、所定の手続きが必要となります。</p>
+                        <p>※所定の手続きが記載された書面をお渡ししておりますので、解約ご希望時は当該書面をご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red"> ５．クーリングオフの適用除外について</p>
+                        <p class="red">各種契約は、「事業のため」若しくは「事業用として」締結する契約の為、割賦販売法及び特定商取引法に定める「クーリングオフ」等は適用外であり、契約の撤回または解除は出来ないことを確認しました。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red"> ６．本契約以外の条件の禁止</p>
+                        <p class="red">販売店等と本契約以外に約束事（無料でのサポート、お客様の商品の買取、コンサルティング、本契約以外の役務提供及び商品効果の保証等）が無いことを確認しました。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">７．信販契約審査承認後に信販契約不成立となった場合の売買代金一括請求について</p>
+                        <p>分割契約の審査承認後は、分割契約が理由の如何を問わず無効、取消し若しくは解約・解除又はその申込みが信販会社等の定める審査期限を過ぎたことにより失効となっても、商品売買契約は有効であり、その 場合、お支払方法が現金一括払いに変更になることを確認しました。なお、やむを得ない事情により商品売買契約を解約する場合は、所定の違約金の支払いが必要となります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">8. 顧客情報の利用について</p>
+                        <p>商品売買契約及び保守契約に関するご契約者様の情報を、プライバシーポリシーに記載の利用目的の範囲で第三者に提供する場合があることに同意します。なお、別途保守契約をご締結の場合、保守約款12  条に定める目的において、お申込者様のアクセスログ等を取得することがあります。※プライバシーポリシーについては商品売買契約書裏面に掲載しております。ご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">９．旧物件の処理について</p>
+                        <p>旧物件の処理は、ご契約者様申告に基づいた債権（信用情報機関（JICC,CIC）を利用している信販会社、リース会社などの割賦債権）を前提として処理させていただきます。また当該処理対象商品は、この度ご 契約頂きました導入商品と同種商品のみとなります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">10. ご利用環境について</p>
+                        <p>商品売買契約及び保守契約においては、ご契約者様のネット環境及びパソコンが必要となります。万が一、当該契約締結時点においてご準備が無い場合は、お打合せ時までにご準備ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h3 class="item-head">2.　保守契約確認事項に関して</h3>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">１．保守業務内容について</p>
+                        <p>・保守業務はコールセンター・メールサポート・遠隔サポートを基本においております｡サポートは、ご契約者様からのお問い合わせに対し導入商品の使い方のご案内をサポートするものとなります。</p>
+                        <p>・<span class="red">保守契約書に記載されている内容以外のサービス及び役務（定期的な訪問や近隣に立ち寄った際の訪問、電話による定期状況のお伺い、ホームページの更新代行業務、コンサルティング業務等）その他保守契 約書記載外の事項に関してはお受付致しかねます。</span>※別途訪問を希望される場合は有料（2時間につき20,000円（税別）及び交通費）となります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">2. 保守料金及び保守契約期間について</p>
+                        <p>・保守料金、保守契約期間及び支払い方法については保守契約書を確認しました。</p>
+                        <p>・保守契約期間満了月の１ヶ月前に契約更新をしない旨を保守会社に書面で通知しない場合、各種割引サービスは終了の上、保守契約は1年間延長され、以降も同様の取り扱いとなります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red">3. 保守契約の中途解約について</p>
+                        <p class="red">原則、契約期間内の中途解約はできません。やむを得ず解約する場合には、「（契約期間×得とく割引後の基本保守契約月額) 」から既払金を差し引いた金額を支払う必要が有ります。なお、中途解約時には所 定の解約用紙が必要となります。解約は当社受領したものを毎月２０日締めとなり受領月の翌月末日に解約となります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">４．各種アカウントの管理等について</p>
+                        <p>・各種アカウント情報（管理ID、パスワード含む）の貸与、管理、使用、譲渡についての責任はご契約者様が持つものとし、それらの事由の発生により利用者が被った損害について販売店等は一切の責任を負いません。</p>
+                        <p>・FTP情報・サーバー及びドメイン情報・更新ツール管理機能はセキュリティー上はいかなる場合でも開示出来ません。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">５．「ご契約のしおり」に次の内容が記載されていることを確認しましたか？</p>
+                        <p>・「導入商品等に関する重要事項」、「ご契約に関する重要事項」、「契約完了までの流れ（締結から業務完了まで）」、「お問合せ窓口」、「保守オプション契約約款集」等の記載がございます。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h3 class="item-head">3.　営業及び販売方法に関して</h3>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">1. 販売方法について</p>
+                        <p>
+                            販売担当者より、勧誘時に事実でないこと（気に入らなければいつでも解約できる、定期的に訪問してサポートする、近くに立ち寄った際は訪問する、店舗にお客として来店し売上に貢献する等）を言われたり、
+                            不利な情報について質問をしてもわざと答えてもらえなかったりしたこと等はないことをご確認下さい。その他に、強い口調で脅迫的に契約を迫られたり、帰ってほしいと伝えたのにいたずらに立ち退かなかったり、
+                            というような状況はなかったこと、また営業開始時間及び終了時間は、ご契約者様のご希望やご意思によるものであることをご確認下さい。
+                        </p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">2. 効果の保証等</p>
+                        <p class="red">販売にあたり効果を保証するような行為、（例えば「契約すれば必ず費用対効果がでます」、「検索エンジンで上位表示させます。○番以内に必ず表示させます」、「費用対効果が合わなければ料金を返金しま す」、「必ず求人の応募が来ます）等と効果の断定的な判断をしたり、効果を確実に保証するような説明は無く販売方法に異議申し立てはありません。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">３．事前アポイント時の説明について</p>
+                        <p>訪問アポイントの電話時に販売担当の訪問に際して、お客様が選ばれた（当選した）、本件商品を無料でご案内できる、プレゼントを差し上げる等の限定された案内はありませんでした。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red">４．モニター店等について</p>
+                        <p class="red">販売担当者から、お申込者様に対して、モニター店（モデル店）に選ばれた、モニター店（モデル店）であることを理由とした価格の提示、別途モニター料等をお支払するや、契約後いつでも商品を返品できる等、 お申込みの契約がモニター店（モデル店）としての契約、若しくはマーケティング目的としての契約であるという説明はありませんでした。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">５．成功事例・導入事例の開示について</p>
+                        <p>本件契約締結後、販売店等の営業活動およびサポート活動における「導入店舗の成功事例・導入事例」等の営業資料、および保守会社が運営するサイト上に、導入実績店舗として導入店舗名および代表者名 等の情報を掲載したり、第三者に開示することにあらかじめ同意していただきます。</p>
+                    </div>
+                </label>
+            </div>
+
+            <p class="bt-padding">ご契約に関するお問い合わせ・ご意見はこちら ※ トラブル発生時やお問い合わせは必ずこちらにお電話下さい。 </p>
+            <p class="red bt-padding">お客様相談総合窓口：大阪府大阪市北区梅田1-3-1　TEL：0120-474-800	</p>
+            <p class="bt-padding small">※受付は平日午前９時～午後６時までとさせていただきます。</p>
+
+            <div class="shop-info-container">
+                <table class="shop-info-table">
+                    <tbody>
+                        <tr>
+                            <td class="shop-label" style="width: 12%;">
+                                販売店 A<br>(乙)
+                            </td>
+                            
+                            <td class="company-details" style="width: 38%;">
+                                <div class="zip-code">
+                                    〒
+                                    <input type="text" class="sync-post1-otsu input-char" placeholder="000">
+                                    -
+                                    <input type="text" class="sync-post2-otsu input-char" placeholder="000"> 
+                                </div>
+                                <input type="text" class="sync-address1-otsu address-detail" placeholder="〇〇県〇〇市〇〇">
+                                <input type="text" class="sync-address2-otsu address-detail" placeholder="（番地・建物名）">
+                                <input type="text" class="sync-name-otsu input-large" placeholder="株式会社〇〇〇〇">   
+                            </td>
+                            
+                            <td class="shop-label" style="width: 12%;">
+                                販売店 B<br>(丙)
+                            </td>
+                            
+                            <td class="company-details" style="width: 38%;">
+                                <div class="zip-code">
+                                    〒
+                                    <input type="text" class="sync-post1-hei input-char" placeholder="000">
+                                    -
+                                    <input type="text" class="sync-post2-hei input-char" placeholder="000"> 
+                                </div>
+                                <input type="text" class="sync-address1-hei address-detail" placeholder="〇〇県〇〇市〇〇">
+                                <input type="text" class="sync-address2-hei address-detail" placeholder="（番地・建物名）">
+                                <input type="text" class="sync-name-hei input-large" placeholder="株式会社〇〇〇〇">   
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+        <div class="page page6">
+            <h3 class="item-head">4.　導入商品に関して</h3>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red">導入商品の利用について</p>
+                        <p class="red">導入商品は、あくまで、ご契約者様自身が積極的に導入商品を利用をすることにより、営業の一助となるものでございます。したがって、ご契約者様自身が積極的に活用してください。また、導入商品はユー ザービリティを追究した、どなたにも利用できる仕様となっておりますが、使いやすさには個人差があることをご理解下さい。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h3 class="item-head">ホームページ制作における確認事項（売買契約）</h3>
+
+            <h4 class="sub-head">(1)【ホームページの構築について】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">①対策キーワードについて</p>
+                        <p> ・対策キーワードはヒアリングシート記載の優先施工キーワードを基に設定します。</p>
+                        <p>・上記で決定した優先施工キーワードを変更する場合は、別途有料対応となりますので、ご確認の上決めてください。</p>
+                        <p>・ご契約者様によるキーワードの追加に制限はありませんが、追加キーワードは優先施工設定されません。</p>
+                        <p>・優先施工外のキーワードの対策には一定の推奨作業をお勧めします。具体的な作業内容については保守会社のサポートセンターまでお問合せ下さい。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">②ライティングについて</p>
+                        <p> ・ライティングは検索エンジン等の評価を優先し作成いたしますので、ご契約者様の要望にそぐわない可能性があることをご了承ください。</p>
+                        <p>・納品時において、事実相違や不適切表現等以外の変更はお勧めいたしません。大幅な変更は、検索エンジン等の評価に影響が出る可能性があります。</p>
+                        <p>・納品後においては、ご契約者様自身で変更が可能となりますのでライティングのベースを崩さない範囲でのリライト（文章の変更）を推奨いたします。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">③制作パッケージ外の対応</p>
+                        <p> ・制作物にパッケージ外のプログラム等の施工は原則行っておりません。</p>
+                        <p>・別途希望される場合は、見積もり対応となります。施工の可否を含めまして、ご契約者様への確認・了承後施工させていただきます。 なお、本申込後において、施工不可の判断が発生したとしても、本契約の解約理由とはならないことをご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">④サテライトサイトに関しての注意事項</p>
+                        <p>・サテライトサイトを希望される場合、検索エンジンにおけるペナルティ発生の観点から、既存サイトと同一または類似した文章(キーワード)使用を希望された場合でも、作成をお断りする場合があります。</p>
+                        <p>・検索エンジンの検索結果において、メインサイトとの検索順位に影響が出る可能性が御座います。</p>
+                    </div>
+                </label>
+            </div>
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">⑤EC（Eコマース）の対応不可</p>
+                        <p> ・本商品は商品を販売する目的がテーマのホームページ制作には対応しておりません。</p>
+                        <p>・Eコマース（カート機能含む）機能は付与することが出来ません。</p>
+                        <p>・リニューアル元のサイトに機能が存在していても、移管等はできない事をご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">(2)【制作の素材について】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">①素材の提出について</p>
+                        <p>・作成に使用する素材は、弊社所有素材より選出し、制作を行います。</p>
+                        <p>・ご契約者様ご指定のロゴ、パンフレット、写真等の素材や文章をご希望される場合は、打合せ（ディレクション）時にご提出ください。なお、素材や文言につきましては、ご契約者様にて管理画面での入れ替え 操作が可能となっております。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">②ご契約者様提供素材の注意点</p>
+                        <p>ご契約者様提供の文言、写真等の素材が第三者の著作権その他知的財産権若しくは肖像権又は名誉権等の権利を侵害する場合でも当社は一切責任を負うことはできません。提供いただく素材の権利関係 については、ご契約者様の責任でご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">(3)【お打ち合わせについて】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">お打ち合わせに関する注意事項</p>
+                        <p>・打合せ（ディレクション）は原則1回となり、オンライン（遠隔）による打ち合わせとなります。なお、訪問でのお打合せをご希望の場合は、日程確定前にお知らせください。また、打ち合わせの追加を行う場合は有料（2時間につき20,000円（税別）及び交通費）となります。</p>
+                        <p>・パソコン・ネット環境のご準備をお願いします。お打ち合わせ時には、ご自身でパソコン等の端末のご準備が必要です。</p>
+                        <p>・商品プランにより、本項目（情報の入れ込み、修正等のお打ち合わせ及び対応）を納品時に一括で実施させていただく場合があります。この場合、ご契約時に別途配布する資料をご確認ください。</p>
+                        <p>・お打ち合わせ日決定後の変更はできません。それでも尚、お打ち合わせ日変更を要望された場合は、大幅なスケジュール遅延に繋がりますが販売店等はその責任を負えないことをご確認ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">(4)【作成について】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">ホームページ作成の注意事項</p>
+                        <p>・制作は優先施工キーワードのSEO対策を最優先に作成するため、場合により専門性や独自性等ご契約者様の意向が反映されない場合がございます。</p>
+                        <p>・検品前までに修正が必要となった場合は、修正を承ります。また、ご契約者様自身で修正が可能です。</p>
+                        <p>・お打ち合わせにて決定した方針を元に作成に入ります。打合せ完了後の大幅な方針の変更や、大幅な修正もできかねますのでご注意下さい。<br>
+                            （金額は修正内容によりますが、目安として最低10万円～最大で60万円程度となります）。</p>
+                        <p>・ホームページ制作時の表現（文言や素材を含みますがこれらに限られません）は、関係法令・ガイドライン等（以下「法令等」という）に抵触する、
+                            またはそのおそれがある場合、ご契約者様のご希望を再現きかねますのでご留意ください。また、法令等に関して、お気づきの点がございましたら、お申出ください。
+                            法令等に抵触するまたはそのおそれがあることを理由とする修正については、公開前まで無償で対応いたします。</p>
+                        <p>・法令等は、新規制定・改正される場合がございます。ホームページ公開後の法令等の公布・改正への対応は、原則として、ご契約者様ご自身の費用と責任においてお願いいたします。
+                            但し、法令等への対応のための文章の変更等、軽微な変更については、ご契約者様からのご申告をいただくことで、保守契約の一環として無償で対応いたしますので、お申出ください。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">(5)【納品について】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">①納品及び納品後の修正</p>
+                        <p>・①商品の引渡し②ご契約者様のパソコンへの商品利用のための設定③商品の操作説明④内容の修正（一定の範囲内での修正依頼のみ）をもって納品といたします。</p>
+                        <p>・①の商品引渡しについては、納品担当者が商品使用場所（店舗等）へ訪問、商品の郵送、又は指定機器（パソコン、サーバ等）への商品の納入により納品いたします。②～④の納品関連項目については、オ ンライン（遠隔）で実施いたしますが、訪問による実施をご希望の場合は、担当者へご連絡ください。（訪問は原則1回となります。）</p>
+                        <p>・納品時又はお打ち合わせ時にいただいた変更・修正の対応完了後、ホームページの内容をご確認いただいた際に「事実と相違する表現や内容」「ご依頼事項の未対応」「不適切な表現」等がございましたら、 担当者にお申し付けください。この際にいただいた内容のみ、検品時までに対応いたします。</p>
+                        <p>・納品等にかかる書類の取得お手続きは、納品時とは別日に行わせていただくことがあります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">②検品の完了と公開</p>
+                        <p>・納品後はお客様により検品を行って下さい。検品完了は、HPの公開完了と同時となります。</p>
+                        <p>・公開にはドメインの設定が必要になります。ドメインに関する注意事項は、下記【ドメインについて】」をご確認ください。</p>
+                        <p class="red">・ホームページ公開完了日より2か月間で2回まで無償で修正を承ることが可能です（この期間をフォロー期間といいます）。ただし、デザインやレイアウトの変更などの大幅な変更は承ることが出来ません。なお、公開完了日より2ヶ月経過後や3回以上の修正要望については別途お見積もりとなります。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h3 class="item-head"> ホームページ維持管理における確認事項（保守契約）</h3>
+
+            <h4 class="sub-head">(6)【Web更新ツールについて】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">Web更新ツールについて</p>
+                        <p>・ＷＥＢ更新ツールは商品メーカーが独自に開発したプログラムで構成されており、オープンソースではございません。</p>
+                        <p>・他社システムとの連動やカスタマイズ、プラグイン等はお受けすることができません。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">(7)【ドメインについて】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">①既存ドメインを引き継ぐ場合</p>
+                        <p>・現在ご利用のドメインを使用する場合はドメインの移管が必要となります。移管に関わる所定手続きのご協力をお願い致します。</p>
+                        <p>・納品後2週間以内にドメインを移行できない場合、新規ドメインの取得にて対応致します。</p>
+                        <p class="kome">※新規取得した際は、公開したHPに影響を及ぼし一時的に検索エンジン等の評価が落ちる場合がありますが責任は負いかねますのでご了承下さい。</p>
+                        <p class="kome">※新規対応後、当初のドメイン使用ご希望の際は、ご契約者様より販売店等または保守会社へご連絡頂くことで、ご契約者様負担でドメイン移管の手続きを行うことが可能です。</p>
+                    </div>
+                </label>
+            </div>
+ 
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text">②ドメイン変更について</p>
+                        <p>・一度決定したドメインを途中で変更することは原則できません。万一変更を希望される場合には、所定の手続きや処理費用は全てご契約者様のご負担となることをご了承下さい。</p>
+                        <p>・ドメインに関するトラブルや損害が発生した場合、販売店等及び保守会社では一切の責任を負いません。</p>
+                    </div>
+                </label>
+            </div>
+
+            <h4 class="sub-head">（８）【外部環境における影響について】</h4>
+
+            <div class="selection-item">
+                <label class="checkbox-container">
+                    <input type="checkbox" name="maintenance_agree">
+                    <span class="checkmark"></span>
+                    <div class="text-wrapper">
+                        <p class="text red">外部環境によるトラブル、損害について</p>
+                        <p class="red">導入商品のメーカーが支配できない事由※が市場環境により発生する場合が御座います。外部環境によるトラブルや推奨環境下以外でご利用した場合の損害に関しては如何なる場合においても責任は負え ません。なお、各種SNSのご利用についてはそれぞれの仕様、規約等に準じます。</p>
+                        <p>（※サーバー、ドメイン（レジストラ）、SSL（Secure Sockets Layer）、使用パソコンやタブレット端末、携帯端末OSのバージョンの変更、会員使用端末（iOS、Androidその他会員使用端末OS）のバージョンの変 更、外部接続先（各種SNS等、Google、App Store等の仕様変更によるアプリ環境の変更）の仕様変更、海外の検索サイトの仕様・基準の変更及び国家の検閲の実施、第三者による不正行為など。）</p>
+                    </div>
+                </label>
+            </div>
+
+            <table class="confirmation-table">
+                <tr>
+                    <td class="label-bg" style="width: 50%;">
+                        <h5 class="confirmation-title">【重要事項説明担当者欄】</h5>
+                        <p>私は、法令、社内規則に則り、ご契約者様に重要事項につき十分に説明しました。この事実が相違している場合、就業規則による懲戒処分を受けても異議を申し述べません。</p>
+                        <div class="input-wrapper input1">
+                            <span class="label">氏名</span>
+                            <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
+                            <span>自署のこと</span>
+                        </div>  
+                    </td>
+                    <td class="label-bg" style="width: 50%;">
+                        <p>【ご契約者様確認欄】</p>
+                        <p>私は担当者から上記内容の説明を十分に受け、契約に関する重要事項について確認し承諾しましたので、ここに署名捺印します。</p>
+                        <div class="input-wrapper input2">
+                            <span class="label">確認日</span>
+                            <div class="input-wrapper date">
+                                <input type="number" placeholder="0000"><span>年</span>
+                            </div>
+                            <div class="input-wrapper date">
+                                <input type="number" placeholder="00"><span>月</span>
+                            </div>
+                            <div class="input-wrapper date">
+                                <input type="number" placeholder="00"><span>日</span>
+                            </div>
+                        </div>
+                        <div class="input-wrapper input2">
+                            <span class="label">会社名</span>
+                            <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
+                        </div>
+                        <div class="input-wrapper input2">
+                            <span class="label">代表者</span>
+                            <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
+                        </div>  
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page page7">
+            <p>約款①</p>
+        </div>
+
+        <div class="page page8">
+            <p>約款②</p>
+        </div>
+
+        <div class="page page9">
+            <p>約款③</p>
+        </div>
+
+        <div class="page page10">
+            <p>約款④</p>
+        </div>
+
+        <div class="page page11">
+            <p class="right">【記載型（法人型）】</p>
+
+            <div class="dear-wrapper">
+                <p>販売店</p>
+                <div class="dearinput-wrapper">
+                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
+                    <span class="label">御中</span>
+                </div>
+                <div class="dearinput-wrapper">
+                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
+                    <span class="label">御中</span>
+                </div>
+            </div>
+
+            <div class="right consent">
+                <span class="label">契約締結および同意日</span>
+                <div class="input-wrapper date">
+                    <input type="number" class="input-large" placeholder="0000"><span>年</span>
+                </div>
+                <div class="input-wrapper date">
+                    <input type="number" class="input-large" placeholder="00"><span>月</span>
+                </div>
+                <div class="input-wrapper date">
+                    <input type="number" class="input-large" placeholder="00"><span>日</span>
+                </div>
+            </div>
+
+            <h1 class="title">クレジット申込手続委託契約書　兼　同意書</h1>
+
+            <p>申込者（以下「甲」という。）は、株式会社アプラス（以下「会社」という。）に対して、会社が運営・提供するWEBによるクレジット契約の申込みをするにあたり、
+                別紙「個人情報の取扱いに関する同意条項」および「お申込みの内容（約款）」を受領の上、内容について承諾・同意し申込みします。<br>
+                また、上記販売店に対して、販売店の担当者がおよび乙に代わり、販売店の電子情報処理組織（パソコン等）に以下の属性情報を入力し、申込みすることを委任いたします。
+            </p>
+
+            <div class="zokusei-container">
+                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <table class="zokusei-table1">
+                    <thead>
+                        <tr>
+                            <th class="label-bg" style="width: 10%;" colspan="1" rowspan="1">法人名</th>
+                            <th class="" style="width: 90%;" colspan="5" rowspan="1">
+                                <div class="inputkana-wrapper">
+                                    <span>フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="input-area main-input">
+                                    <input type="text" placeholder="株式会社〇〇〇〇">
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="label-bg">役職名</td>
+                            <td class="input-area" colspan="5" rowspan="1">
+                                <input type="text" placeholder="代表取締役">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">代表者名</td>
+                            <td class="" colspan="5" rowspan="1">
+                                <div class="inputkana-wrapper">
+                                    <span>フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="input-area main-input">
+                                    <input type="text" placeholder="〇〇〇〇">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">本社所在地</td>
+                            <td class="" colspan="5" rowspan="1">
+                                <div class="inputkana-wrapper">
+                                    <span>フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="address-row">
+                                    <div class="post-wrapper">
+                                        <span>〒</span> 
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    </div>
+                                    <div class="address-wrapper">
+                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">電話番号</td>
+                            <td class="" colspan="5" rowspan="1">
+                                <div class="tel-wrapper">
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span>
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span> 
+                                    <input type="text" class="input-tel" placeholder="000">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">創業年月日</td>
+                            <td class="" colspan="5" rowspan="1">
+                                <div class="date-wrapper">
+                                    <div class="date-inner">
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="0000"><span>年</span>
+                                        </div>
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="00"><span>月</span>
+                                        </div>
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="00"><span>日</span>
+                                        </div>
+                                    </div>
+                                    <div>法人設立年月日</div>
+                                    <div class="date-inner">
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="0000"><span>年</span>
+                                        </div>
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="00"><span>月</span>
+                                        </div>
+                                        <div class="input-wrapper date">
+                                            <input type="number" class="input-large" placeholder="00"><span>日</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">業種</td>
+                            <td class="select-area" colspan="5" rowspan="1">
+                                <div class="select-wrapper">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択してください</option>
+                                        <option value="1">1.農林水産鉱業</option>
+                                        <option value="2">2.建設業</option>
+                                        <option value="3">3.製造業</option>
+                                        <option value="4">4.流通業</option>
+                                        <option value="5">5.不動産業</option>
+                                        <option value="6">6.サービス業</option>
+                                        <option value="7">7.飲食業</option>
+                                        <option value="8">8.運輸業</option>
+                                        <option value="9">9.金融業</option>
+                                        <option value="10">10.保険業</option>
+                                        <option value="11">11.情報通信</option>
+                                        <option value="12">12.公務員</option>
+                                        <option value="13">13.教育・医療</option>
+                                        <option value="14">14.出版・印刷</option>
+                                        <option value="15">15.電気・ガス</option>
+                                        <option value="99">99.その他</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg" colspan="1" rowspan="1">売上高</td>
+                            <td class="" colspan="1" rowspan="1">
+                                <div class="input-wrapper">
+                                    <input type="number" class="input-large" placeholder="0000">
+                                    <span>万円</span>
+                                </div>
+                            </td>
+                            <td class="label-bg" colspan="1" rowspan="1">従業員数</td>
+                            <td class="" colspan="1" rowspan="1">
+                                <div class="input-wrapper">
+                                    <input type="number" class="input-large" placeholder="0000">
+                                    <span>人</span>
+                                </div>
+                            </td>
+                            <td class="label-bg" colspan="1" rowspan="1">明細書送付先</td>
+                            <td class="select-area" colspan="1" rowspan="1">
+                                <div class="select-wrapper">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択してください</option>
+                                        <option value="1">1.本社所在地と同一</option>
+                                        <option value="2">2.連帯保証人自宅</option>
+                                    </select>
+                                </div>
+
+                            </td>
+                        </tr>   
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="zokusei-container">
+                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <table class="zokusei-table1 zokusei-table2">
+                    <tbody>
+                        <tr>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="11">連帯保証人予定者(甲)</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前（自署）</td>
+                            <td class="label-bg label-input" style="width: 40%;" colspan="4" rowspan="4">
+                                <div class="inputkana-wrapper">
+                                    <span class="kana">フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="input-area main-input">
+                                    <input type="text" placeholder="〇〇〇〇">
+                                </div>
+                            </td>
+                            <td class="label-bg center" style="width: 8%;" colspan="1" rowspan="1">性別</td>
+                            <td class="label-bg center" style="width: 8%;" colspan="2" rowspan="1">生年月日</td>
+                            <td class="" style="width: 35%;" colspan="3" rowspan="1">
+                                <div class="date-wrapper">
+                                    <div class="select-area">
+                                        <div class="select-wrapper">
+                                            <select name="business_type" required>
+                                                <option value="" selected disabled>選択</option>
+                                                <option value="1">昭和</option>
+                                                <option value="2">平成</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="number" class="input-no" placeholder="0000"><span>年</span>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="number" class="input-no2" placeholder="00"><span>月</span>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="number" class="input-no2" placeholder="00"><span>日</span>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <input type="number" class="input-no2" placeholder="00"><span>才</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="select-area" colspan="1" rowspan="2">
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択</option>
+                                        <option value="1">男</option>
+                                        <option value="2">女</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="label-bg center" colspan="2" rowspan="1">自宅電話</td>
+                            <td class="label-bg" colspan="3" rowspan="1">
+                                <div class="tel-wrapper">
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span>
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span> 
+                                    <input type="text" class="input-tel" placeholder="000">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg center" colspan="2" rowspan="1">携帯電話</td>
+                            <td class="label-bg" colspan="3" rowspan="1">
+                                <div class="tel-wrapper">
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span>
+                                    <input type="text" class="input-tel" placeholder="000">
+                                    <span>ー</span> 
+                                    <input type="text" class="input-tel" placeholder="000">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-small" colspan="1" rowspan="1">メールアドレス（任意）</td>
+                            <td class="label-bg" colspan="5" rowspan="1">
+                                <div class="date-wrapper">
+                                    <div class="input-mail">
+                                        <input type="text" placeholder="〇〇〇〇@....">
+                                    </div>
+                                    <div class="select-area">
+                                        <div class="select-wrapper">
+                                            <select name="business_type" required>
+                                                <option value="" selected disabled>選択</option>
+                                                <option value="1">PC</option>
+                                                <option value="2">携帯</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg vertical-text center" colspan="1" rowspan="1">ご住所</td>
+                            <td class="" colspan="10" rowspan="1">
+                                <div class="inputkana-wrapper">
+                                    <span>フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="address-row">
+                                    <div class="post-wrapper">
+                                        <span>〒</span> 
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    </div>
+                                    <div class="address-wrapper">
+                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-small vertical-text" colspan="1" rowspan="2">お住まい</td>
+                            <td class="select-area" colspan="1" rowspan="2">
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択</option>
+                                        <option value="1">①アパート</option>
+                                        <option value="2">②借家</option>
+                                        <option value="3">③社宅・寮</option>
+                                        <option value="4">④賃貸マンション</option>
+                                        <option value="5">⑤公営住宅</option>
+                                        <option value="6">⑥家族所有</option>
+                                        <option value="7">⑦本人所有</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="label-small" colspan="1" rowspan="2">ご本人または配偶者の住居費用負担（家賃・住宅ローン）</td>
+                            <td class="select-area" colspan="1" rowspan="2">
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択</option>
+                                        <option value="1">有</option>
+                                        <option value="2">無</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="label-small" colspan="1" rowspan="2">家計を共にする家族人数（ご本人と別居家族を含む）</td>
+                            <td class="select-area" colspan="1" rowspan="2">
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択</option>
+                                        <option value="1">①１人</option>
+                                        <option value="2">②２人</option>
+                                        <option value="3">③３人</option>
+                                        <option value="4">④４人以上</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="label-small vertical-text right-border" colspan="1" rowspan="2">家族構成</td>
+                            <td class="select-area " colspan="2" rowspan="2"> 
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択</option>
+                                        <option value="1">①配偶者無・子供無</option>
+                                        <option value="2">②配偶者無・子供有</option>
+                                        <option value="3">③配偶者有・子供無</option>
+                                        <option value="4">④配偶者無・子供有</option>
+                                    </select>
+                                </div>    
+                            </td>
+                            <td class="label-small" colspan="1" rowspan="1">居住年数</td>
+                            <td class="label-small" colspan="1" rowspan="1">居住年数</td>
+                        </tr>
+                        <tr>
+                            <td class="label-small" colspan="1" rowspan="1">
+                                <div class="flex-vertical">
+                                    <div class="flex-beside">
+                                        <input type="number" class="input-no2" placeholder="00">
+                                        <span>年</span>
+                                    </div>
+                                    <div class="flex-beside">
+                                        <input type="number" class="input-no2" placeholder="00">
+                                        <span>ヶ月</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="label-small" colspan="1" rowspan="1">
+                                <div class="flex-vertical select-area">
+                                    <div class="select-wrapper center">
+                                        <select name="business_type" required>
+                                            <option value="" selected disabled>選択</option>
+                                            <option value="1">①同居（本人含む）</option>
+                                            <option value="2">②別居</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg center padding3" colspan="2" rowspan="1">申込者との関係</td>
+                            <td class="select-area padding3" colspan="9" rowspan="1">
+                                <div class="select-wrapper center">
+                                    <select name="business_type" required>
+                                        <option value="" selected disabled>選択してください</option>
+                                        <option value="1">①夫婦</option>
+                                        <option value="2">②親子</option>
+                                        <option value="3">③兄弟・姉妹</option>
+                                        <option value="4">④親戚</option>
+                                        <option value="5">⑤上役</option>
+                                        <option value="6">⑥部下</option>
+                                        <option value="7">⑦同僚</option>
+                                        <option value="8">⑧知人</option>
+                                        <option value="9">⑨その他</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-small vertical-text" colspan="1" rowspan="2">お勤め先</td>
+                            <td class="label-bg label-input" colspan="4" rowspan="2">
+                                <div class="inputkana-wrapper">
+                                    <span class="kana">フリガナ</span>
+                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                </div>
+                                <div class="input-area main-input">
+                                    <input type="text" placeholder="〇〇〇〇">
+                                </div>
+                            </td>
+                            <td class="label-small" colspan="4" rowspan="1">雇用形態</td>
+                            <td class="label-small" colspan="2" rowspan="1">勤続年数</td>
+                        </tr>
+                        <tr>
+                            <td class="label-small" colspan="4" rowspan="1">
+                                <div class="flex-vertical select-area">
+                                    <div class="select-wrapper center">
+                                        <select name="business_type" required>
+                                            <option value="" selected disabled>選択</option>
+                                            <option value="1">①主婦</option>
+                                            <option value="2">②会社員</option>
+                                            <option value="3">③公務員</option>
+                                            <option value="4">④自営業</option>
+                                            <option value="5">⑤自由業</option>
+                                            <option value="6">⑥会社役員</option>
+                                            <option value="7">⑦パート・アルバイト</option>
+                                            <option value="8">⑧その他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="label-small" colspan="2" rowspan="1">
+                                <div class="flex-vertical">
+                                    <div class="flex-beside">
+                                        <input type="number" class="input-no2" placeholder="00">
+                                        <span>年</span>
+                                    </div>
+                                    <div class="flex-beside">
+                                        <input type="number" class="input-no2" placeholder="00">
+                                        <span>ヶ月</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label-bg center" colspan="2" rowspan="1">※税込年収</td>
+                            <td class="" colspan="2" rowspan="1">
+                                <div class="input-wrapper">
+                                    <input type="number" class="input-large" placeholder="0000">
+                                    <span>万円</span>
+                                </div>
+                            </td>
+                            <td class="label-bg center" colspan="1" rowspan="1">勤務先電話</td>
+                            <td class="" colspan="6" rowspan="1">
+                                <div class="tel-wrapper">
+                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <span>ー</span>
+                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <span>ー</span> 
+                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <span class="naisen">内線（</span>
+                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <span>）</span>
+                                </div>
+                            </td>
+                        </tr>             
+                    </tbody>
+                </table>
+
+                <table class="footer-table">
+                    <tbody>
+                        <tr>
+                            <td class="right">
+                                <div class="post-wrapper">
+                                    <span>販売契約先番号</span> 
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                    <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                </div>    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="post-wrapper">
+                                    <span>販売店名</span>
+                                    <input type="text" class="input-area" placeholder="〇〇〇〇">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="post-wrapper">
+                                    <span>住所</span>
+                                    <input type="text" class="input-area" placeholder="〇〇県〇〇市・・・">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                <div class="post-wrapper left">
+                                    <span>電話番号</span>
+                                    <div class="tel-wrapper">
+                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <span>ー</span>
+                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <span>ー</span> 
+                                        <input type="text" class="input-tel2" placeholder="000">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>                            
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page page12">
+            <h2>クレジット契約書　兼　同意書（個人用）</h2>
+        </div>
+
+        <div class="page page13">
+            <h2>委任状　兼　契約解約通知書</h2>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

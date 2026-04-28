@@ -1,0 +1,170 @@
+@use 'variables' as *;
+
+/* --- 画面表示用のスタイル --- */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    display: flex;
+    background: #f0f0f0;
+    margin: 0;
+    
+    /* プレビューエリア */
+    #preview {
+        flex-grow: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .page {
+        width: 210mm;
+        height: 296mm; /* A4サイズ */
+        background: white;
+        padding: 10mm;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        box-sizing: border-box;
+    }
+    
+    h1 {
+        text-align: center;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+    }
+    
+    .contract-body {
+        line-height: 1.8;
+        margin-top: 30px;
+    }
+    
+    .fill-text {
+        border-bottom: 1px solid #333;
+        font-weight: bold;
+        padding: 0 10px;
+        color: #d9534f; /* 入力箇所とわかるように赤系に */
+    }
+}
+    
+    /* --- PDF出力（印刷）用の設定 --- */
+@media print {
+    body {
+        background: none;
+        #input-form {
+            display: none; /* 入力フォームを非表示 */
+        }
+    }
+        #preview {
+            padding: 0;
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                page-break-after: always; /* ページごとに改ページ */
+                .fill-text {
+                    color: black; /* 印刷時は文字を黒にする */
+                }
+            }
+        }
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    height: 100%;
+    // min-height: 25px; // 最低限の入力しやすさを確保
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.45rem; // 入力文字を少し見やすく
+    padding: 0 5px;
+    box-sizing: border-box;
+
+    // Chrome, Safari, Edge のスピンボタン（上下矢印）を消す
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    // Firefox のスピンボタンを消す
+    appearance: textfield;
+    -moz-appearance: textfield;
+
+    &::placeholder {
+        color: #bbbbbb;
+        opacity: 1;
+        font-size: 0.35rem;
+    }
+
+    &:focus {
+        background-color: #fff9e6; // 入力中フォーカス
+    }
+}
+
+.checkbox-label {
+    display: inline-block; // 横に並ぶように指定
+    width: 25%;            // チェックボックス側の幅を確保
+    font-size: 0.35rem;
+    text-align: right;     // 右側に寄せる
+    vertical-align: middle;
+    cursor: pointer;
+
+    input[type="checkbox"] {
+        vertical-align: middle; // チェックボックスと文字の高さを合わせる
+        margin: 0;
+    }
+    
+    span {
+        vertical-align: middle;
+    }
+}
+
+.shop-info-container {
+    margin-top: 15px;
+    width: 100%;
+
+    .shop-info-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1.5px solid #000;
+        table-layout: fixed; // 列幅を固定
+
+        td {
+            border: 1px solid #000;
+            padding: 8px 12px;
+            vertical-align: middle;
+            height: 90px; // 画像の高さに合わせる
+        }
+
+        .shop-label {
+            background-color: #fff; // ラベル背景（必要なら#f0f0f0に）
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .company-details {
+            font-size: 0.45rem;
+            .zip-code {
+                display: flex;
+                .input-char {
+                    width: 40px !important;
+                }
+            }
+            .address-detail {
+                height: auto !important;
+                padding-block: 3px;
+            }
+            .input-large {
+                font-size: 0.8rem !important;
+                height: auto !important;
+                padding-block: 4px;
+                    &::placeholder {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+    }
+}

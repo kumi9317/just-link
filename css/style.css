@@ -1,0 +1,1874 @@
+@charset "UTF-8";
+/* --- 画面表示用のスタイル --- */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  display: flex;
+  background: #f0f0f0;
+  margin: 0;
+  /* プレビューエリア */
+}
+body #preview {
+  flex-grow: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .page {
+  width: 210mm;
+  height: 296mm; /* A4サイズ */
+  background: white;
+  padding: 10mm;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+body h1 {
+  text-align: center;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+}
+body .contract-body {
+  line-height: 1.8;
+  margin-top: 30px;
+}
+body .fill-text {
+  border-bottom: 1px solid #333;
+  font-weight: bold;
+  padding: 0 10px;
+  color: #d9534f; /* 入力箇所とわかるように赤系に */
+}
+
+/* --- PDF出力（印刷）用の設定 --- */
+@media print {
+  body {
+    background: none;
+  }
+  body #input-form {
+    display: none; /* 入力フォームを非表示 */
+  }
+  #preview {
+    padding: 0;
+  }
+  #preview .page {
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+    page-break-after: always; /* ページごとに改ページ */
+  }
+  #preview .page .fill-text {
+    color: black; /* 印刷時は文字を黒にする */
+  }
+}
+input[type=text],
+input[type=number],
+textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.45rem;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+input[type=text]::-webkit-outer-spin-button, input[type=text]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button,
+textarea::-webkit-outer-spin-button,
+textarea::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=text],
+input[type=number],
+textarea {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+input[type=text]::placeholder,
+input[type=number]::placeholder,
+textarea::placeholder {
+  color: #bbbbbb;
+  opacity: 1;
+  font-size: 0.35rem;
+}
+input[type=text]:focus,
+input[type=number]:focus,
+textarea:focus {
+  background-color: #fff9e6;
+}
+
+.checkbox-label {
+  display: inline-block;
+  width: 25%;
+  font-size: 0.35rem;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.checkbox-label input[type=checkbox] {
+  vertical-align: middle;
+  margin: 0;
+}
+.checkbox-label span {
+  vertical-align: middle;
+}
+
+.shop-info-container {
+  margin-top: 15px;
+  width: 100%;
+}
+.shop-info-container .shop-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  table-layout: fixed;
+}
+.shop-info-container .shop-info-table td {
+  border: 1px solid #000;
+  padding: 8px 12px;
+  vertical-align: middle;
+  height: 90px;
+}
+.shop-info-container .shop-info-table .shop-label {
+  background-color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.35rem;
+  line-height: 1.4;
+}
+.shop-info-container .shop-info-table .company-details {
+  font-size: 0.45rem;
+}
+.shop-info-container .shop-info-table .company-details .zip-code {
+  display: flex;
+}
+.shop-info-container .shop-info-table .company-details .zip-code .input-char {
+  width: 40px !important;
+}
+.shop-info-container .shop-info-table .company-details .address-detail {
+  height: auto !important;
+  padding-block: 3px;
+}
+.shop-info-container .shop-info-table .company-details .input-large {
+  font-size: 0.8rem !important;
+  height: auto !important;
+  padding-block: 4px;
+}
+.shop-info-container .shop-info-table .company-details .input-large::placeholder {
+  font-size: 0.8rem;
+}
+
+#input-form {
+  width: 350px;
+  padding: 20px;
+  background: #fff;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  border: 1px solid 3px;
+}
+#input-form .logo {
+  width: 80%;
+  object-fit: cover;
+}
+#input-form .logo img {
+  max-width: 100%;
+  height: auto;
+}
+#input-form .input-group {
+  margin-block: 15px;
+}
+#input-form .input-group input[type=text],
+#input-form .input-group input[type=number] {
+  margin-block: 3px;
+  font-size: 1rem;
+}
+#input-form .input-group input[type=text]:focus,
+#input-form .input-group input[type=number]:focus {
+  background-color: #fff9e6;
+}
+#input-form .input-group input[type=text]::placeholder,
+#input-form .input-group input[type=number]::placeholder {
+  font-size: 0.8rem;
+}
+#input-form .input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+#input-form .input-group input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#input-form .input-group .form_post {
+  display: flex;
+  align-items: center;
+}
+#input-form .input-group .form_post .post-code {
+  display: inline-block;
+  width: 20%;
+}
+#input-form .input-group::placeholder {
+  color: #999;
+  opacity: 0.7;
+  font-size: 1rem;
+}
+#input-form .credit-type-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block: 20px;
+}
+#input-form .credit-type-wrapper .credit-label {
+  font-weight: bold;
+}
+#input-form .credit-type-wrapper .radio-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+#input-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  font-weight: bold;
+}
+#input-form button button:hover {
+  background: #0056b3;
+}
+
+.page3 input[type=text],
+.page3 input[type=number],
+.page3 textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.45rem;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+.page3 input[type=text]::-webkit-outer-spin-button, .page3 input[type=text]::-webkit-inner-spin-button,
+.page3 input[type=number]::-webkit-outer-spin-button,
+.page3 input[type=number]::-webkit-inner-spin-button,
+.page3 textarea::-webkit-outer-spin-button,
+.page3 textarea::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.page3 input[type=text],
+.page3 input[type=number],
+.page3 textarea {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.page3 input[type=text]::placeholder,
+.page3 input[type=number]::placeholder,
+.page3 textarea::placeholder {
+  color: #bbbbbb;
+  opacity: 1;
+  font-size: 0.35rem;
+}
+.page3 input[type=text]:focus,
+.page3 input[type=number]:focus,
+.page3 textarea:focus {
+  background-color: #fff9e6;
+}
+.page3 .checkbox-label {
+  display: inline-block;
+  width: 25%;
+  font-size: 0.35rem;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.page3 .checkbox-label input[type=checkbox] {
+  vertical-align: middle;
+  margin: 0;
+}
+.page3 .checkbox-label span {
+  vertical-align: middle;
+}
+.page3 .contract-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0;
+}
+.page3 .contract-header .contract-title {
+  font-size: 0.8rem;
+  border-bottom: 2px solid #000;
+  margin: 5px;
+  padding-bottom: 1px;
+  line-height: 0.8rem;
+  font-weight: 700;
+}
+.page3 .contract-header .notice {
+  text-align: center;
+  font-size: 0.4rem;
+  margin-bottom: 5px;
+}
+.page3 .contract-header .date-table {
+  border-collapse: collapse;
+}
+.page3 .contract-header .date-table td {
+  font-size: 0.5rem;
+  border: 1px solid #000;
+  height: 25px;
+  vertical-align: middle;
+  padding: 0;
+}
+.page3 .contract-header .date-table td.label {
+  width: 60px;
+  background: #f0f0f0;
+  text-align: center;
+}
+.page3 .contract-header .date-table td .input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: auto !important;
+  padding-right: 5px;
+}
+.page3 .contract-header .date-table td .input-wrapper input {
+  width: 100%;
+  height: auto !important;
+  line-height: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: right;
+  font-size: 0.8rem;
+  padding-right: 2px;
+  vertical-align: middle;
+}
+.page3 .contract-header .date-table td .input-wrapper input::placeholder {
+  color: #999;
+  opacity: 0.7;
+}
+.page3 .contract-header .date-table td .input-wrapper input::-webkit-outer-spin-button, .page3 .contract-header .date-table td .input-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.page3 .contract-header .date-table td .input-wrapper input:focus {
+  background-color: #fff9e6;
+}
+.page3 .contract-header .date-table td .input-wrapper input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.page3 .contract-header .date-table td .input-wrapper span {
+  flex-shrink: 0;
+}
+.page3 .contract-header .date-table td.year {
+  width: 70px;
+  border-right: none;
+}
+.page3 .contract-header .date-table td.month {
+  width: 50px;
+  border-right: none;
+  border-left: none;
+}
+.page3 .contract-header .date-table td.day {
+  width: 50px;
+  border-left: none;
+}
+.page3 .client-info-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #000;
+  font-size: 0.4rem;
+}
+.page3 .client-info-table td {
+  font-size: 0.4rem;
+  border: 1px solid #000;
+  height: 10px;
+  vertical-align: middle; /* これで上下中央になります */
+  padding: 0;
+  font-size: 0.4rem;
+}
+.page3 .client-info-table td.row-kana {
+  height: 15px;
+}
+.page3 .client-info-table td.row-kana input[type=text] {
+  min-height: 15px;
+  font-size: 0.35rem;
+}
+.page3 .client-info-table td input[type=text] {
+  width: 100%;
+  height: 100%;
+  min-height: 25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.45rem;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+.page3 .client-info-table td input[type=text]::placeholder {
+  color: #bbbbbb;
+  opacity: 1;
+  font-size: 0.35rem;
+}
+.page3 .client-info-table td input[type=text]:focus {
+  background-color: #fff9e6;
+}
+.page3 .client-info-table td.yago {
+  height: 40px;
+}
+.page3 .client-info-table td .input-char {
+  width: 25px !important;
+  height: 18px !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 0.35rem;
+  vertical-align: 0;
+}
+.page3 .client-info-table td.tel-row {
+  white-space: nowrap;
+  align-items: center;
+  padding: 0 5px;
+  height: 100%;
+}
+.page3 .client-info-table td.tel-row .input-tel {
+  display: inline-block;
+  width: 20% !important;
+  height: 100% !important;
+  min-height: auto;
+  vertical-align: 0;
+}
+.page3 .client-info-table td.tel-row .input-naisen {
+  display: inline-block;
+  width: 40px !important;
+  height: 100% !important;
+  min-height: auto !important;
+  vertical-align: middle;
+}
+.page3 .client-info-table td.tel-row span {
+  vertical-align: middle;
+}
+.page3 .client-info-table td.zip-code {
+  border-bottom: none !important;
+}
+.page3 .client-info-table td .pref-city {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.page3 .client-info-table td .pref-city input {
+  width: 40% !important;
+  min-height: 20px !important;
+}
+.page3 .client-info-table td .pref-city span {
+  font-size: 0.25rem;
+  margin-right: 10px;
+  line-height: 1.1;
+}
+.page3 .client-info-table td.address-labels {
+  border-top: none !important;
+}
+.page3 .client-info-table td.address {
+  white-space: nowrap;
+  align-items: center;
+  vertical-align: middle;
+  padding: 0 5px;
+  height: 100%;
+  border-right: 2px solid #000 !important;
+}
+.page3 .client-info-table td.address .address-detail {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  min-height: auto !important;
+  border: none;
+  vertical-align: middle;
+}
+.page3 .client-info-table td.address .checkbox-label {
+  display: inline-block;
+  width: 25%;
+  font-size: 0.35rem;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.page3 .client-info-table td.address .checkbox-label input[type=checkbox] {
+  vertical-align: middle;
+  margin: 0;
+}
+.page3 .client-info-table td.address .checkbox-label span {
+  vertical-align: middle;
+}
+.page3 .client-info-table td.syozaiti {
+  border-right: 1px solid #000 !important;
+}
+.page3 .client-info-table .label-bg {
+  background: #f0f0f0;
+  text-align: center;
+  width: 40px;
+}
+.page3 .client-info-table .vertical-label {
+  width: 20px;
+  text-align: center;
+  background: #f0f0f0;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.page3 .client-info-table .contract-notes {
+  padding-left: 3px;
+  padding-top: 5px;
+  border-top: 2px solid #000 !important;
+  border-bottom: 2px solid transparent !important;
+  border-right: 2px solid transparent !important;
+}
+.page3 .page3main-container {
+  margin-top: 10px;
+  border: 1px solid #000;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.page3 .page3main-container .contract-title {
+  border-bottom: none;
+  padding-bottom: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.page3 .page3main-container p {
+  font-size: 0.4rem;
+}
+.page3 .page3main-container .product-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  margin-top: 10px;
+  font-size: 0.35rem;
+  table-layout: fixed;
+}
+.page3 .page3main-container .product-info-table th, .page3 .page3main-container .product-info-table td {
+  border: 1px solid #000;
+  padding: 3px;
+  vertical-align: middle;
+  word-break: break-all;
+}
+.page3 .page3main-container .product-info-table th input[type=text], .page3 .page3main-container .product-info-table td input[type=text] {
+  width: 100%;
+  height: 100%;
+  min-height: 25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.45rem;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+.page3 .page3main-container .product-info-table th input[type=text]::placeholder, .page3 .page3main-container .product-info-table td input[type=text]::placeholder {
+  color: #bbbbbb;
+  opacity: 1;
+  font-size: 0.35rem;
+}
+.page3 .page3main-container .product-info-table th input[type=text]:focus, .page3 .page3main-container .product-info-table td input[type=text]:focus {
+  background-color: #fff9e6;
+}
+.page3 .page3main-container .product-info-table th .checkbox-label, .page3 .page3main-container .product-info-table td .checkbox-label {
+  width: fit-content;
+  text-align: center;
+}
+.page3 .page3main-container .product-info-table .label-bg {
+  background: #f0f0f0;
+  text-align: center;
+}
+.page3 .page3main-container .product-info-table .input-row {
+  height: 20px;
+  text-align: center;
+}
+.page3 .page3main-container .product-info-table .method-selection {
+  text-align: center;
+  background: #fff;
+}
+.page3 .page3main-container .product-info-table .method-label {
+  font-weight: bold;
+  padding: 2px 5px;
+}
+.page3 .page3main-container .product-info-table .description-row .text-left {
+  vertical-align: top;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row {
+  height: 30px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row td {
+  vertical-align: middle !important;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .label-bg {
+  white-space: nowrap;
+  padding: 0 5px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .text-left {
+  font-size: 0.3rem;
+  text-align: left;
+  padding-left: 8px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .text-left p {
+  margin: 0;
+  line-height: 1.2;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .text-left .first {
+  padding-bottom: 4px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .times {
+  vertical-align: bottom; /* 下寄せ */
+  text-align: right; /* 右寄せ */
+}
+.page3 .page3main-container .product-info-table .text-left {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 5px 0 5px;
+  line-height: 1.4;
+}
+.page3 .page3main-container .product-info-table .text-left .cash {
+  display: flex; /* 横並びにする */
+  align-items: flex-start; /* 上揃え（文字数が増えても崩れないように） */
+  gap: 8px; /* 「:」と説明文の間の余白 */
+}
+.page3 .page3main-container .product-info-table .text-left .cash .cash-left {
+  width: fit-content; /* 中身（「現金 :」）の幅に合わせる */
+  white-space: nowrap; /* 途中で改行されないように固定 */
+}
+.page3 .page3main-container .product-info-table .text-left .cash .cash-right {
+  flex: 1; /* これがポイント！残りの幅をすべて占有する */
+  line-height: 1.4; /* 行間を整えて読みやすく */
+}
+.page3 .page3main-container .product-info-table .text-left .bank-account {
+  padding-top: 5px;
+}
+.page3 .page3main-container .product-info-table .text-left .account-input {
+  border: solid 0.5px #bbbbbb;
+  width: 98%;
+  margin: 2px;
+  height: 30px;
+}
+.page3 .page3main-container .product-info-table .text-left .description-row {
+  height: 100px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row td {
+  vertical-align: middle !important;
+  padding: 1px 5px !important;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division {
+  font-size: 0.3rem;
+  text-align: center;
+  padding-left: 4px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2px;
+  width: 100%;
+  overflow: hidden;
+  /* 第1回 */
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line.label,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times.label,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line.label,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times.label {
+  flex-shrink: 0;
+  width: 40px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times {
+  /* 年月日 */
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line.date,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times.date,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line.date,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times.date {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times {
+  /* 金額（右寄せ） */
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line.price,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times.price,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line.price,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times.price {
+  margin-left: auto; /* ← これが効く */
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times input {
+  display: inline-block !important;
+  vertical-align: 0;
+  align-items: center;
+  min-height: 12px !important;
+  text-align: right;
+  height: 12px !important;
+  padding: 0 1px !important;
+  background: transparent;
+  width: auto;
+  border: none;
+  min-width: 0; /* ← これ重要 */
+  flex-shrink: 1;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line input:focus,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times input:focus,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line input:focus,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times input:focus {
+  background-color: #fff9e6;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line .input-year,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times .input-year,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line .input-year,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times .input-year {
+  width: 32px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line .input-month,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line .input-day,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times .input-month,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times .input-day,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line .input-month,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line .input-day,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times .input-month,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times .input-day {
+  width: 20px;
+}
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .date-line .price-input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-due .times .price-input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .date-line .price-input,
+.page3 .page3main-container .product-info-table .payment-detail-row .payment-division .times .price-input {
+  width: 60px;
+  text-align: right;
+}
+.page3 .page3main-container .product-info-table .times input {
+  height: 9px !important;
+  width: 15px !important;
+}
+.page3 .huzoku1 {
+  font-size: 0.4rem;
+  border: 1px solid #000;
+  padding: 2px;
+  margin-block: 5px;
+}
+.page3 .huzoku1 .red {
+  color: red;
+}
+.page3 .huzoku2 {
+  font-size: 0.4rem;
+  border: 1px solid #000;
+  padding: 3px;
+  margin-bottom: 5px;
+}
+.page3 .huzoku2 p {
+  font-size: 0.4rem;
+}
+.page3 .huzoku2 .huzoku1-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  margin-block: 2px;
+  font-size: 0.4rem;
+  table-layout: fixed;
+}
+.page3 .huzoku2 .huzoku1-table th, .page3 .huzoku2 .huzoku1-table td {
+  border: 1px solid #000;
+  padding: 3px;
+  vertical-align: middle;
+  word-break: break-all;
+}
+.page3 .huzoku2 .huzoku1-table .label-bg {
+  text-align: center;
+}
+.page3 .huzoku2 .status-select {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  text-align-last: center;
+  font-size: 0.45rem;
+  cursor: pointer;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.page3 .huzoku2 .status-select::-ms-expand {
+  display: none;
+}
+.page3 .huzoku2 .status-select:focus {
+  background-color: #fff9e6;
+}
+.page3 .huzoku2 .status-select:invalid, .page3 .huzoku2 .status-select[value=""],
+.page3 .huzoku2 .status-select option[value=""] {
+  color: #bbbbbb;
+}
+.page3 .huzoku2 .status-select option {
+  color: #333;
+}
+@media print {
+  .page3 .huzoku2 .status-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none !important;
+    background-color: transparent !important;
+  }
+  .page3 .huzoku2 .status-select option[value=""]:checked {
+    color: transparent !important;
+  }
+}
+.page3 .huzoku2 .huzoku2-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid #000;
+  margin-block: 3px;
+  font-size: 0.35rem;
+  table-layout: fixed;
+}
+.page3 .huzoku2 .huzoku2-table th, .page3 .huzoku2 .huzoku2-table td {
+  border: 1px solid #000;
+  padding: 1px;
+  vertical-align: middle;
+  word-break: break-all;
+  text-align: center;
+}
+.page3 .huzoku2 .huzoku2-table .label-bg {
+  background: #f0f0f0;
+  text-align: center;
+}
+.page3 .huzoku2 .huzoku2-table .input-row {
+  height: 20px;
+  text-align: center;
+}
+.page3 .huzoku2 .huzoku2-table .method-selection {
+  text-align: center;
+  background: #fff;
+}
+.page3 .huzoku2 .huzoku2-table .method-label {
+  font-weight: bold;
+  padding: 2px 5px;
+}
+.page3 .huzoku2 .huzoku2-table .vertical-label {
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.2;
+  padding: 1px;
+  background-color: #f0f0f0;
+}
+.page3 .huzoku2 .huzoku2-table .text-left {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px;
+}
+.page3 .huzoku2 .huzoku2-table .notice-list {
+  margin: 0;
+  padding-left: 15px;
+  list-style-type: none;
+}
+.page3 .huzoku2 .huzoku2-table .notice-list li {
+  font-size: 0.3rem;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+.page3 .huzoku2 .huzoku2-table .tiny-text {
+  font-size: 0.3rem;
+  line-height: 1.3;
+}
+.page3 .huzoku2 .huzoku2-table .row2 {
+  text-align: center;
+}
+.page3 .huzoku2 .huzoku2-table .yen {
+  text-align: right;
+}
+.page3 .huzoku2 .huzoku2-table .checkbox-label {
+  display: block;
+  white-space: nowrap;
+  text-align: center;
+}
+.page3 .huzoku2 .huzoku2-table .checkbox-label input[type=checkbox] {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 2px 2px 2px 13px;
+  width: 10px;
+  height: 10px;
+}
+.page3 .huzoku2 .huzoku2-table .checkbox-label span {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.35rem;
+  margin: 2px 2px 2px 0;
+}
+.page3 .huzoku2 .huzoku2-table .price-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 2px;
+  width: 100%;
+  overflow: hidden;
+  /* 金額（右寄せ） */
+}
+.page3 .huzoku2 .huzoku2-table .price-line_yen {
+  margin-left: auto; /* ← これが効く */
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.page3 .huzoku2 .huzoku2-table .price-line input {
+  display: inline-block !important;
+  vertical-align: 0;
+  align-items: center;
+  min-height: 12px !important;
+  text-align: right;
+  height: 12px !important;
+  padding: 0 1px !important;
+  background: transparent;
+  width: auto;
+  border: none;
+  min-width: 0; /* ← これ重要 */
+  flex-shrink: 1;
+}
+.page3 .huzoku2 .huzoku2-table .price-line input:focus {
+  background-color: #fff9e6;
+}
+.page3 .huzoku2 .huzoku2-table .price-line .price-input {
+  width: 50px;
+  text-align: right;
+}
+.page3 .kaiyaku {
+  font-size: 0.4rem;
+  border: 1px solid #000;
+  padding: 3px;
+}
+.page3 .kaiyaku p {
+  font-size: 0.4rem;
+}
+.page3 .kaiyaku .kaiyaku-table {
+  width: 90%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin-block: 5px;
+  margin-inline: auto;
+  font-size: 0.35rem;
+  table-layout: fixed;
+}
+.page3 .kaiyaku .kaiyaku-table th, .page3 .kaiyaku .kaiyaku-table td {
+  border: 1px solid #000;
+  padding: 3px;
+  vertical-align: middle;
+  word-break: break-all;
+  text-align: center;
+}
+.page3 .rentaihosyo {
+  font-size: 0.4rem;
+}
+.page3 .rentaihosyo .rentaihosyo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 5px;
+  margin-inline: auto;
+  font-size: 0.35rem;
+  table-layout: fixed;
+}
+.page3 .rentaihosyo .rentaihosyo-table th, .page3 .rentaihosyo .rentaihosyo-table td {
+  border: 1px solid #000;
+  padding: 3px;
+  vertical-align: middle;
+  word-break: break-all;
+  text-align: center;
+  text-align: start;
+}
+.page3 .rentaihosyo .rentaihosyo-table .borderress {
+  border: 0px solid transparent;
+}
+.page3 .rentaihosyo .rentaihosyo-table .zip-code {
+  border-bottom: none !important;
+  border-right: none !important;
+}
+.page3 .rentaihosyo .rentaihosyo-table .input-char {
+  width: 10px !important;
+  height: 18px !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 0.35rem;
+  vertical-align: 0;
+}
+.page3 .rentaihosyo .rentaihosyo-table .pref-city {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.page3 .rentaihosyo .rentaihosyo-table .pref-city input {
+  width: 40% !important;
+  min-height: 20px !important;
+}
+.page3 .rentaihosyo .rentaihosyo-table .pref-city span {
+  font-size: 0.25rem;
+  margin-right: 10px;
+  line-height: 1.1;
+}
+.page3 .rentaihosyo .rentaihosyo-table .address-labels {
+  border-top: none !important;
+  border-left: none !important;
+}
+.page3 .rentaihosyo .rentaihosyo-table .address-cautionary {
+  border-right: none !important;
+}
+.page3 .rentaihosyo .rentaihosyo-table .rentaihosyo-title th {
+  text-align: left; /* これで th の中身を左寄せにします */
+  padding-left: 10px; /* 必要に応じて少し余白を作ると綺麗です */
+}
+.page3 .rentaihosyo .rentaihosyo-table .address {
+  height: 20px;
+  border-left: none !important;
+}
+.page3 .rentaihosyo .rentaihosyo-table .address .address-detail {
+  width: 100%;
+  height: 100%;
+  min-height: auto !important;
+  border: none;
+  vertical-align: middle;
+  text-align: start;
+}
+.page3 .rentaihosyo .rentaihosyo-table .tel-row {
+  white-space: nowrap;
+  align-items: center;
+  padding: 0 5px;
+  height: 100%;
+}
+.page3 .rentaihosyo .rentaihosyo-table .tel-row .input-tel {
+  display: inline-block;
+  width: 20% !important;
+  height: 100% !important;
+  min-height: auto;
+  vertical-align: 0;
+  text-align: center;
+}
+
+.page4 {
+  font-size: 0.4rem;
+}
+.page4 .checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.page4 .checkbox-container input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.page4 .checkbox-container .checkmark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #ff0000;
+  margin-right: 10px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: #fff;
+}
+.page4 .checkbox-container input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid #ff0000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.page4 .hikae {
+  font-size: 0.4rem;
+  text-align: end;
+}
+.page4_container {
+  border: solid 1px #000;
+  padding: 5px;
+}
+.page4 .selection-item {
+  padding-bottom: 3px;
+}
+.page4 .selection-item .checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.page4 .selection-item .checkbox-container input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.page4 .selection-item .checkbox-container .checkmark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #ff0000;
+  border-radius: 2px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: #fff;
+}
+.page4 .selection-item .checkbox-container input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 4px;
+  height: 8px;
+  border: solid #ff0000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.page4 .selection-item .checkbox-container .text {
+  font-size: 0.6rem !important;
+}
+.page4_header {
+  display: flex;
+  justify-content: space-between;
+}
+.page4_header_title {
+  width: 100%;
+}
+.page4_header_title h1 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding-bottom: 3px;
+  border-bottom: none;
+}
+.page4_header_title p {
+  text-align: center;
+}
+.page4_header .contract-period {
+  border-collapse: collapse;
+}
+.page4_header .contract-period td {
+  font-size: 0.5rem;
+  border: 1.5px solid #000;
+  height: 25px;
+  vertical-align: middle;
+  padding: 0;
+}
+.page4_header .contract-period td.label {
+  width: 50px;
+  text-align: center;
+}
+.page4_header .contract-period td .input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: auto !important;
+  padding-right: 5px;
+}
+.page4_header .contract-period td .input-wrapper input {
+  width: 30px;
+}
+.page4_header .contract-period td .input-wrapper.period {
+  width: 70px;
+  border-right: none;
+}
+.page4 .hosyu-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin-block: 2px;
+  font-size: 0.4rem;
+  table-layout: fixed;
+}
+.page4 .hosyu-table th, .page4 .hosyu-table td {
+  border: 1px solid #000;
+  padding: 4.5px 3.5px;
+  vertical-align: middle;
+  word-break: break-all;
+}
+.page4 .hosyu-table th {
+  background-color: #f0f0f0;
+}
+.page4 .hosyu-table .label-bg {
+  text-align: center;
+}
+.page4 .hosyu-table .check-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-inline: 5px;
+}
+.page4 .hosyu-table .checkmark {
+  width: 10px !important;
+  height: 10px !important;
+  border: 1px solid #ff0000 !important;
+  margin-right: 5px;
+}
+.page4 .hosyu-table input:checked + .checkmark::after {
+  left: 2px;
+  width: 4px;
+  height: 6px;
+  border-width: 0 1px 1px 0;
+}
+.page4 .hosyu-table .row2 {
+  text-align: end;
+}
+.page4 .hosyu-table .sonota-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page4 .hosyu-table .sonota-wrapper .sankou {
+  font-size: 0.3rem;
+  display: flex;
+  align-items: flex-end !important;
+}
+.page4 .hosyu-table .sonota-wrapper .sankou-input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  margin: 0 5px;
+  min-width: 50px;
+  font-size: 0.6rem;
+}
+.page4 .hosyu-table .sonota-wrapper span {
+  flex-shrink: 0;
+}
+.page4 .hosyu-table .text-center {
+  text-align: center !important;
+}
+.page4 .hosyu-table .bc-red {
+  background-color: #fed0d8;
+}
+.page4 .hosyu-table .gaiyou-header {
+  text-align: center;
+}
+.page4 .hosyu-table .gaiyou-header .title {
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.page4 .hosyu-table .gaiyou-header .red {
+  color: red;
+}
+.page4 .hosyu-table .yakkan-url {
+  color: blue;
+  border-bottom: solid 1px blue;
+}
+.page4 .hosyu-table .hosoku-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 63px;
+  padding: 5px;
+}
+.page4 .hosyu-table .hosoku-wrapper p {
+  margin: 0 0 3px 0;
+  line-height: 1;
+}
+.page4 .hosyu-table .hosoku-wrapper .hosoku-input {
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.6rem;
+  text-align: left;
+  vertical-align: top;
+  /* 入力し始めの位置を調整 */
+  padding-top: 5px;
+}
+.page4 .hosyu-table .company-details {
+  font-size: 0.45rem;
+}
+.page4 .hosyu-table .company-details .zip-code {
+  display: flex;
+}
+.page4 .hosyu-table .company-details .zip-code .input-char {
+  width: 40px !important;
+}
+.page4 .hosyu-table .company-details .address-detail {
+  height: auto !important;
+  padding-block: 3px;
+}
+.page4 .hosyu-table .company-details .input-large {
+  font-size: 0.8rem !important;
+  height: auto !important;
+  padding-block: 4px;
+}
+.page4 .hosyu-table .company-details .input-large::placeholder {
+  font-size: 0.8rem;
+}
+
+.page5,
+.page6 {
+  padding: 10mm 15mm !important;
+  font-size: 0.4rem;
+}
+.page5 .page5-title,
+.page6 .page5-title {
+  border-bottom: none;
+  font-size: 0.8rem;
+}
+.page5 .head,
+.page6 .head {
+  display: inline-block;
+  font-size: 0.5rem;
+  border-bottom: 1px solid #000;
+  margin-bottom: 10px;
+}
+.page5 .red,
+.page6 .red {
+  color: red;
+  font-weight: 700;
+}
+.page5 .item-head,
+.page6 .item-head {
+  margin-block: 10px;
+  font-size: 0.5rem;
+}
+.page5 .selection-item,
+.page6 .selection-item {
+  margin-bottom: 10px;
+}
+.page5 .selection-item .checkbox-container,
+.page6 .selection-item .checkbox-container {
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+  position: relative;
+}
+.page5 .selection-item .checkbox-container input[type=checkbox],
+.page6 .selection-item .checkbox-container input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.page5 .selection-item .checkbox-container .checkmark,
+.page6 .selection-item .checkbox-container .checkmark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ff0000;
+  margin-right: 10px;
+  flex-shrink: 0;
+  position: relative;
+  background-color: #fff;
+}
+.page5 .selection-item .checkbox-container input:checked + .checkmark::after,
+.page6 .selection-item .checkbox-container input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #ff0000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.page5 .selection-item .checkbox-container .text,
+.page6 .selection-item .checkbox-container .text {
+  margin-bottom: 3px;
+}
+.page5 .selection-item .kaiyaku-table,
+.page6 .selection-item .kaiyaku-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin-block: 2px;
+  table-layout: fixed;
+}
+.page5 .selection-item .kaiyaku-table th, .page5 .selection-item .kaiyaku-table td,
+.page6 .selection-item .kaiyaku-table th,
+.page6 .selection-item .kaiyaku-table td {
+  border: 1px solid #000;
+  padding: 4.5px 3.5px;
+  vertical-align: middle;
+  word-break: break-all;
+}
+.page5 .selection-item .kaiyaku-table .label-bg,
+.page6 .selection-item .kaiyaku-table .label-bg {
+  text-align: center;
+}
+.page5 .bt-padding,
+.page6 .bt-padding {
+  padding-bottom: 3px;
+}
+.page5 .small,
+.page6 .small {
+  font-size: 0.3rem;
+}
+.page5 .shop-info-container,
+.page6 .shop-info-container {
+  margin-top: 8px !important;
+}
+.page5 .sub-head,
+.page6 .sub-head {
+  margin-bottom: 5px !important;
+}
+.page5 .kome,
+.page6 .kome {
+  padding-left: 5px;
+}
+.page5 .confirmation-table,
+.page6 .confirmation-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+  margin-top: 15px !important;
+  table-layout: fixed;
+}
+.page5 .confirmation-table .confirmation-title,
+.page6 .confirmation-table .confirmation-title {
+  padding-bottom: 3px;
+}
+.page5 .confirmation-table th, .page5 .confirmation-table td,
+.page6 .confirmation-table th,
+.page6 .confirmation-table td {
+  border: 1px solid #000;
+  padding: 3px 5px;
+  vertical-align: top;
+  word-break: break-all;
+}
+.page5 .confirmation-table .label-bg,
+.page6 .confirmation-table .label-bg {
+  text-align: start;
+}
+.page5 .confirmation-table .input-wrapper,
+.page6 .confirmation-table .input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 3px;
+}
+.page5 .confirmation-table .input-wrapper .label,
+.page6 .confirmation-table .input-wrapper .label {
+  border-bottom: 1px solid #000;
+  padding-bottom: 3px;
+}
+.page5 .confirmation-table .input-wrapper .confirmation,
+.page6 .confirmation-table .input-wrapper .confirmation {
+  width: 70% !important;
+  height: 20px !important;
+  padding: 3px 10px !important;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #000;
+}
+.page5 .confirmation-table .input1,
+.page6 .confirmation-table .input1 {
+  margin-top: 40px;
+}
+.page5 .confirmation-table .date,
+.page6 .confirmation-table .date {
+  width: 20% !important;
+  border-bottom: 1px solid #000;
+  text-align: right;
+}
+.page5 .confirmation-table .input2,
+.page6 .confirmation-table .input2 {
+  margin-top: 5px;
+}
+
+.page11 input[type=text],
+.page11 input[type=number],
+.page11 textarea {
+  font-size: 0.6rem;
+}
+.page11 input[type=text]::placeholder,
+.page11 input[type=number]::placeholder,
+.page11 textarea::placeholder {
+  font-size: 0.5rem !important;
+}
+.page11 {
+  padding: 10mm 20mm !important;
+  font-size: 0.6rem;
+}
+.page11 .right {
+  width: 100%;
+  text-align: end;
+}
+.page11 .dear-wrapper .dearinput-wrapper {
+  display: flex;
+  align-items: end;
+}
+.page11 .dear-wrapper .dearinput-wrapper .input-large {
+  width: 30%;
+  border-bottom: 0.5px solid #000;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding-block: 3px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.page11 .dear-wrapper .dearinput-wrapper .input-large::placeholder {
+  font-size: 0.8rem !important;
+}
+.page11 .consent {
+  display: flex;
+  justify-content: end;
+}
+.page11 .consent .input-wrapper {
+  width: 10%;
+  display: flex;
+  align-items: end;
+}
+.page11 .consent .input-wrapper .input-large {
+  font-size: 0.6rem;
+}
+.page11 .consent .input-wrapper .input-large::placeholder {
+  font-size: 0.6rem !important;
+}
+.page11 .title {
+  font-size: 1rem;
+  text-align: center;
+  border-bottom: none;
+  padding-block: 20px;
+}
+.page11 .zokusei-container {
+  padding-top: 15px;
+}
+.page11 .zokusei-table1 {
+  font-size: 0.5rem;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+.page11 .zokusei-table1 th, .page11 .zokusei-table1 td {
+  border: 1px solid #000;
+  vertical-align: middle; /* これで上下中央になります */
+  padding: 0;
+  font-weight: 500 !important;
+}
+.page11 .zokusei-table1 th .inputkana-wrapper, .page11 .zokusei-table1 td .inputkana-wrapper {
+  width: 100%;
+  border-bottom: 0.5px solid #000;
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table1 th .inputkana-wrapper span, .page11 .zokusei-table1 td .inputkana-wrapper span {
+  width: 10%;
+  padding: 2px;
+}
+.page11 .zokusei-table1 th .inputkana-wrapper .input-kana, .page11 .zokusei-table1 td .inputkana-wrapper .input-kana {
+  width: 90%;
+  text-align: start;
+}
+.page11 .zokusei-table1 .label-bg {
+  padding: 0 3px;
+}
+.page11 .zokusei-table1 .input-area {
+  padding: 0 5px;
+  height: 30px;
+}
+.page11 .zokusei-table1 .address-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+}
+.page11 .zokusei-table1 .address-row .post-wrapper {
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table1 .address-row .post-wrapper .input-char {
+  width: 20px !important;
+  height: 18px !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 0.35rem;
+  vertical-align: 0;
+}
+.page11 .zokusei-table1 .address-row .address-wrapper {
+  height: 30px;
+}
+.page11 .zokusei-table1 .tel-wrapper {
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table1 .tel-wrapper .input-tel {
+  text-align: center;
+}
+.page11 .zokusei-table1 .date-wrapper {
+  padding-inline: 10px;
+  display: flex;
+  height: 30px;
+  justify-content: space-around;
+  gap: 10px;
+  align-items: center;
+}
+.page11 .zokusei-table1 .date-wrapper .date-inner {
+  display: flex;
+}
+.page11 .zokusei-table1 .date-wrapper .date-inner .input-wrapper {
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table1 .date-wrapper .date-inner .input-wrapper .input-large {
+  font-size: 0.6rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px !important;
+}
+.page11 .zokusei-table1 .select-area {
+  padding: 0 10px;
+}
+.page11 .zokusei-table1 .select-area .select-wrapper {
+  width: 100%;
+  position: relative;
+}
+.page11 .zokusei-table1 .select-area .select-wrapper select {
+  width: 100%;
+  height: 25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.6rem;
+  cursor: pointer;
+  appearance: none;
+}
+.page11 .zokusei-table1 .select-area select {
+  width: 100%;
+  height: 25px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.6rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.page11 .zokusei-table1 .select-area select::-ms-expand {
+  display: none;
+}
+.page11 .zokusei-table1 .select-area select {
+  color: #999;
+}
+.page11 .zokusei-table1 .select-area select:valid {
+  color: #000;
+}
+.page11 .zokusei-table1 .select-area option {
+  color: #000;
+  background-color: #fff;
+}
+.page11 .zokusei-table1 .input-wrapper {
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table1 .input-wrapper .input-large {
+  font-size: 0.6rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px !important;
+}
+.page11 .zokusei-table2 .label-input {
+  padding: 0 !important;
+  width: 100%;
+}
+.page11 .zokusei-table2 .label-input .kana {
+  flex-shrink: 0;
+  width: fit-content;
+  white-space: nowrap;
+}
+.page11 .zokusei-table2 .label-input .input-kana {
+  flex: 1;
+  min-width: 0;
+}
+.page11 .zokusei-table2 .date-wrapper {
+  padding-inline: 2px !important;
+  display: flex;
+  height: 20px;
+  justify-content: space-around;
+  gap: 3px;
+  align-items: center;
+}
+.page11 .zokusei-table2 .date-wrapper .input-wrapper {
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table2 .date-wrapper .input-wrapper .input-no {
+  font-size: 0.6rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 35px !important;
+}
+.page11 .zokusei-table2 .date-wrapper .input-wrapper .input-no2 {
+  width: 25px !important;
+}
+.page11 .zokusei-table2 .select-area {
+  padding: 0px;
+}
+.page11 .zokusei-table2 .select-area .select-wrapper {
+  width: 100%;
+  position: relative;
+}
+.page11 .zokusei-table2 .select-area .select-wrapper select {
+  width: 100%;
+  height: 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.5rem;
+  cursor: pointer;
+  appearance: none;
+}
+.page11 .zokusei-table2 .select-area select {
+  width: 100%;
+  height: 15px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.5rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.page11 .zokusei-table2 .select-area select::-ms-expand {
+  display: none;
+}
+.page11 .zokusei-table2 .select-area select {
+  color: #999;
+}
+.page11 .zokusei-table2 .select-area select:valid {
+  color: #000;
+}
+.page11 .zokusei-table2 .select-area option {
+  color: #000;
+  background-color: #fff;
+}
+.page11 .zokusei-table2 .tel-wrapper {
+  height: 20px !important;
+}
+.page11 .zokusei-table2 .input-mail {
+  padding: 0 5px;
+  height: 20px;
+  width: 250px;
+}
+.page11 .zokusei-table2 .center {
+  text-align: center;
+}
+.page11 .zokusei-table2 .label-small {
+  padding: 2px 1px;
+  text-align: center;
+  font-size: 0.4rem;
+}
+.page11 .zokusei-table2 .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+.page11 .zokusei-table2 .flex-beside {
+  display: flex;
+  align-items: center;
+}
+.page11 .zokusei-table2 .right-border {
+  border-right: 1px solid #000;
+  padding: 0 10px;
+}
+.page11 .zokusei-table2 .flex-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.page11 .zokusei-table2 .input-no2 {
+  width: 80%;
+}
+.page11 .zokusei-table2 .padding3 {
+  padding: 3px 0 !important;
+}
+.page11 .zokusei-table2 .naisen {
+  width: 30px;
+}
+.page11 .zokusei-table2 .input-tel2 {
+  width: 70px;
+  min-width: 0;
+  flex-shrink: 0;
+  text-align: center;
+}
+.page11 .footer-table {
+  font-size: 0.5rem;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 0.5px solid #000;
+  margin-top: 20px;
+}
+.page11 .footer-table td {
+  padding: 5px;
+  font-weight: 500 !important;
+}
+.page11 .footer-table .post-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.page11 .footer-table .post-wrapper .input-char {
+  width: 20px !important;
+  height: 18px !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 0.35rem;
+  vertical-align: 0;
+}
+.page11 .footer-table .post-wrapper span {
+  width: 60px !important;
+}
+.page11 .footer-table .input-area {
+  padding: 0 5px;
+  height: 30px;
+}
+.page11 .footer-table .tel-wrapper {
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+.page11 .footer-table .tel-wrapper .input-tel {
+  text-align: center;
+}
+.page11 .footer-table .left {
+  justify-content: flex-start !important;
+}/*# sourceMappingURL=style.css.map */

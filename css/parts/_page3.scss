@@ -1,0 +1,935 @@
+@use 'variables' as *;
+
+.page3 {
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        height: 100%;
+        // min-height: 25px; // 最低限の入力しやすさを確保
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 0.45rem; // 入力文字を少し見やすく
+        padding: 0 5px;
+        box-sizing: border-box;
+
+        // Chrome, Safari, Edge のスピンボタン（上下矢印）を消す
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        // Firefox のスピンボタンを消す
+        appearance: textfield;
+        -moz-appearance: textfield;
+
+        &::placeholder {
+            color: #bbbbbb;
+            opacity: 1;
+            font-size: 0.35rem;
+        }
+
+        &:focus {
+            background-color: #fff9e6; // 入力中フォーカス
+        }
+    }
+
+    .checkbox-label {
+        display: inline-block; // 横に並ぶように指定
+        width: 25%;            // チェックボックス側の幅を確保
+        font-size: 0.35rem;
+        text-align: right;     // 右側に寄せる
+        vertical-align: middle;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            vertical-align: middle; // チェックボックスと文字の高さを合わせる
+            margin: 0;
+        }
+        
+        span {
+            vertical-align: middle;
+        }
+    }
+    
+    .contract-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 0;
+
+        .contract-title {
+            font-size: 0.8rem;
+            border-bottom: 2px solid #000;
+            margin: 5px;
+            padding-bottom: 1px;
+            line-height: 0.8rem;
+            font-weight: 700;
+        }
+
+        .notice {
+            text-align: center;
+            font-size: 0.4rem;
+            margin-bottom: 5px;
+        }
+
+        .date-table {
+            border-collapse: collapse;
+
+            td {
+                font-size: 0.5rem;
+                border: 1px solid #000;
+                height: 25px; // 少し高さを出すと入力しやすいです
+                vertical-align: middle;
+                padding: 0; // 余白をリセット
+
+                &.label { width: 60px; background: #f0f0f0; text-align: center; }
+
+                // 入力欄と「年」などを囲うラッパー
+                .input-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end; // 右寄せ
+                    height: auto !important;
+                    padding-right: 5px;
+
+                    input {
+                        width: 100%;
+                        height: auto !important; 
+                        line-height: 1;
+                        border: none;
+                        outline: none;
+                        background: transparent;
+                        text-align: right; // 数字を右寄せ
+                        font-size: 0.8rem;
+                        padding-right: 2px;
+                        vertical-align: middle;
+
+                        &::placeholder {
+                            color: #999;
+                            opacity: 0.7;
+                        }
+                        
+                        // Chrome, Safari, Edge のスピンボタン（上下矢印）を消す
+                        &::-webkit-outer-spin-button,
+                        &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        &:focus {
+                            background-color: #fff9e6; // 入力中フォーカス
+                        }
+                        // Firefox のスピンボタンを消す
+                        appearance: textfield;
+                        -moz-appearance: textfield;
+                    }
+
+                    span {
+                        flex-shrink: 0; // 「年」が潰れないように
+                    }
+                }
+
+                &.year { width: 70px; border-right: none; }
+                &.month { width: 50px; border-right: none; border-left: none; }
+                &.day { width: 50px; border-left: none; }
+            }
+        }
+    } 
+
+    .client-info-table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #000;
+        font-size: 0.4rem;
+
+        td {
+            font-size: 0.4rem;
+            border: 1px solid #000;
+            height: 10px;
+            vertical-align: middle; /* これで上下中央になります */
+            padding: 0;
+            font-size: 0.4rem;
+
+            // 1. フリガナ行専用のクラスを追加
+            &.row-kana {
+                height: 15px; // ここでフリガナ行の高さを狭く指定
+                
+                input[type="text"] {
+                    min-height: 15px; // tdの高さに合わせて最小高さも上書き
+                    font-size: 0.35rem; // 文字も少し小さくするとバランスが良いです
+                }
+            }
+
+            input[type="text"] {
+                width: 100%;
+                height: 100%;
+                min-height: 25px; // 最低限の入力しやすさを確保
+                border: none;
+                outline: none;
+                background: transparent;
+                font-size: 0.45rem; // 入力文字を少し見やすく
+                padding: 0 5px;
+                box-sizing: border-box;
+                // border: solid 1px red;
+
+                &::placeholder {
+                    color: #bbbbbb;
+                    opacity: 1;
+                    font-size: 0.35rem;
+                }
+
+                &:focus {
+                    background-color: #fff9e6; // 入力中フォーカス
+                }
+            }
+
+            &.yago {
+                height: 40px;
+            }
+
+            // --- 郵便番号の1文字マス ---
+            .input-char {
+                width: 25px !important;
+                height: 18px !important;
+                min-height: auto !important;
+                // border: 1px solid #000 !important; // マス目として枠線を復活
+                padding: 0 !important;
+                text-align: center;
+                font-size: 0.35rem;
+                vertical-align: 0;
+            }
+
+            // --- 電話番号の横並び調整 ---
+            &.tel-row {
+                // display: flex;
+                white-space: nowrap;
+                align-items: center;
+                padding: 0 5px;
+                height: 100%;
+                // border: solid 1px red;
+
+                .input-tel {
+                    display: inline-block;
+                    width: 20% !important;
+                    height: 100% !important;
+                    min-height: auto;
+                    vertical-align: 0;
+                }
+                .input-naisen {
+                    display: inline-block;
+                    width: 40px !important;
+                    height: 100% !important;
+                    min-height: auto !important;
+                    vertical-align: middle;
+                }
+                span {
+                    vertical-align: middle;
+                }
+            }
+
+            &.zip-code {
+                border-bottom: none !important;
+            }
+
+            // --- 都道府県・市区町村 ---
+            .pref-city {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                
+                input {
+                    width: 40% !important;
+                    min-height: 20px !important;
+                }
+                span {
+                    font-size: 0.25rem;
+                    margin-right: 10px;
+                    line-height: 1.1;
+                }
+            }
+
+            &.address-labels {
+                border-top: none !important; // 上の線を消すことで、郵便番号欄と繋がって見えます
+            }
+            
+            &.address {
+                white-space: nowrap;
+                align-items: center;
+                vertical-align: middle;
+                padding: 0 5px;
+                height: 100%; 
+                border-right: 2px solid #000 !important;
+                .address-detail {
+                    display: inline-block; // 横に並ぶように指定
+                    width: 70%;            // 建物名入力欄の幅を制限
+                    height: 100%;
+                    min-height: auto !important; // 共通設定を打ち消し
+                    border: none;
+                    vertical-align: middle;
+                }
+                
+                .checkbox-label {
+                    display: inline-block; // 横に並ぶように指定
+                    width: 25%;            // チェックボックス側の幅を確保
+                    font-size: 0.35rem;
+                    text-align: right;     // 右側に寄せる
+                    vertical-align: middle;
+                    cursor: pointer;
+
+                    input[type="checkbox"] {
+                        vertical-align: middle; // チェックボックスと文字の高さを合わせる
+                        margin: 0;
+                    }
+                    
+                    span {
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            &.syozaiti {
+                border-right: 1px solid #000 !important;
+            }
+        }
+
+        .label-bg {
+            background: #f0f0f0;
+            text-align: center;
+            width: 40px;
+        }
+
+        .vertical-label {
+            width: 20px;
+            text-align: center;
+            background: #f0f0f0;
+            font-weight: bold; 
+            vertical-align: middle;  
+        }
+
+        .contract-notes {
+            padding-left: 3px;
+            padding-top: 5px;
+            border-top: 2px solid #000 !important;
+            border-bottom: 2px solid transparent !important; 
+            border-right: 2px solid transparent !important;
+        }  
+    }
+
+    .page3main-container {
+        margin-top: 10px;
+        border: 1px solid #000;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        .contract-title {
+            border-bottom: none;
+            padding-bottom: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        p {
+            font-size: 0.4rem;
+        }
+        .product-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            margin-top: 10px;
+            font-size: 0.35rem; // 文字数が多いので少し小さめ
+            table-layout: fixed;
+
+            th, td {
+                border: 1px solid #000;
+                padding: 3px;
+                vertical-align: middle;
+                word-break: break-all;
+
+                input[type="text"] {
+                    width: 100%;
+                    height: 100%;
+                    min-height: 25px; // 最低限の入力しやすさを確保
+                    border: none;
+                    outline: none;
+                    background: transparent;
+                    font-size: 0.45rem; // 入力文字を少し見やすく
+                    padding: 0 5px;
+                    box-sizing: border-box;
+                    // border: solid 1px red;
+
+                    &::placeholder {
+                        color: #bbbbbb;
+                        opacity: 1;
+                        font-size: 0.35rem;
+                    }
+
+                    &:focus {
+                        background-color: #fff9e6; // 入力中フォーカス
+                    }
+                }
+
+                .checkbox-label{
+                    width: fit-content;
+                    text-align: center; 
+                }
+            }
+
+            .label-bg {
+                background: #f0f0f0;
+                text-align: center;
+            }
+
+            .input-row {
+                height: 20px; // 入力欄を少し広めに
+                text-align: center;
+            }
+
+            .method-selection {
+                text-align: center;
+                background: #fff;
+            }
+
+            .method-label {
+                font-weight: bold;
+                padding: 2px 5px;
+            }
+
+            // 説明文エリアなど、上揃えにしたい行だけ個別に指定
+            .description-row {
+                .text-left {
+                    vertical-align: top; 
+                }
+            }
+
+            // ★最下行の指定：ネストを外に出して整理
+            .payment-detail-row {
+                height: 30px;
+
+                td {
+                    vertical-align: middle !important; // 強制的に上下中央
+                }
+
+                .label-bg {
+                    white-space: nowrap;
+                    padding: 0 5px;
+                }
+
+                .text-left {
+                    font-size: 0.3rem;
+                    text-align: left;
+                    padding-left: 8px;
+                    
+                    // pタグの余白などでズレて見えるのを防ぐ
+                    p {
+                        margin: 0;
+                        line-height: 1.2;
+                    }
+                    .first {
+                        padding-bottom: 4px; // 10pxだと広すぎて下に寄って見えるため調整
+                    }
+                }
+
+                .times {
+                    vertical-align: bottom; /* 下寄せ */
+                    text-align: right;      /* 右寄せ */
+                }
+            }
+
+            .text-left {
+                text-align: left;
+                vertical-align: top;
+                padding: 5px 5px 0 5px;
+                line-height: 1.4;
+                .cash {
+                    display: flex;       /* 横並びにする */
+                    align-items: flex-start; /* 上揃え（文字数が増えても崩れないように） */
+                    gap: 8px;           /* 「:」と説明文の間の余白 */
+
+                    .cash-left {
+                        width: fit-content; /* 中身（「現金 :」）の幅に合わせる */
+                        white-space: nowrap; /* 途中で改行されないように固定 */
+                    }
+
+                    .cash-right {
+                        flex: 1;            /* これがポイント！残りの幅をすべて占有する */
+                        line-height: 1.4;    /* 行間を整えて読みやすく */
+                    }
+                }
+                .bank-account {
+                    padding-top: 5px;
+                }
+                .account-input {
+                    border: solid 0.5px #bbbbbb;
+                    width: 98%;
+                    margin: 2px;
+                    height: 30px;
+                }
+
+                .description-row {
+                    height: 100px; // 説明文エリアの高さ
+                }
+            }    
+
+            .payment-detail-row {
+
+                td {
+                    vertical-align: middle !important;
+                    padding: 1px 5px !important;
+                }
+
+                .payment-due,
+                .payment-division {
+                    font-size: 0.3rem;
+                    text-align: center;
+                    padding-left: 4px;
+
+                    .date-line,
+                    .times {
+                        display: flex;
+                        align-items: center;   // ← 縦中央
+                        justify-content: center;
+                        height: 100%;          // ← 親に合わせる（重要）
+                        gap: 2px;
+                        width: 100%;
+                        overflow: hidden; 
+
+                        /* 第1回 */
+                        &.label {
+                            flex-shrink: 0;
+                            width: 40px;
+                        }
+
+                        /* 年月日 */
+                        &.date {
+                            display: flex;
+                            gap: 2px;
+                            flex-shrink: 1;
+                            min-width: 0;
+                        }
+
+                        /* 金額（右寄せ） */
+                        &.price {
+                            margin-left: auto; /* ← これが効く */
+                            display: flex;
+                            align-items: center;
+                            gap: 2px;
+                            flex-shrink: 0;
+                        }
+                        
+                        input {
+                            display: inline-block !important; // 100%を上書き
+                            vertical-align: 0;
+                            align-items: center;
+                            min-height: 12px !important;
+                            text-align: right;  
+                            
+                            height: 12px !important; // 小さめに調整
+                            padding: 0 1px !important;
+                            background: transparent;
+                            width: auto; // 一旦リセット
+                            border: none;
+
+                            min-width: 0;   /* ← これ重要 */
+                            flex-shrink: 1; 
+                            &:focus {
+                                background-color: #fff9e6; // 入力中フォーカス
+                            }
+                        }
+                        .input-year {
+                            width: 32px;
+                        }
+
+                        .input-month,
+                        .input-day {
+                            width: 20px;
+                        }
+
+                        .price-input { 
+                            width: 60px; 
+                            text-align: right; 
+                        }
+                    }
+                }
+            }
+
+            // 支払回数のセルも同様に
+            .times {
+                input {
+                    height: 9px !important;
+                    width: 15px !important;
+                }
+            }
+            
+
+        }
+    }
+
+    .huzoku1 {
+        font-size: 0.4rem;
+        border: 1px solid #000;
+        padding: 2px;
+        margin-block: 5px;
+        .red {
+            color: red;
+        }
+    }
+    .huzoku2 {
+        font-size: 0.4rem;
+        border: 1px solid #000;
+        padding: 3px;
+        margin-bottom: 5px;
+        p {
+            font-size: 0.4rem;
+        }
+        .huzoku1-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            margin-block: 2px;
+            font-size: 0.4rem; // 文字数が多いので少し小さめ
+            table-layout: fixed;
+
+            th, td {
+                border: 1px solid #000;
+                padding: 3px;
+                vertical-align: middle;
+                word-break: break-all;
+            }
+
+            .label-bg {
+                text-align: center;
+            }
+
+            
+        }
+
+        .status-select {
+            width: 100%;
+            height: 100%;
+            border: none;             // 枠線を消す
+            outline: none;            // クリック時の青枠を消す
+            background: transparent;  // 背景を透過
+            text-align: center;       // 文字を中央に
+            text-align-last: center;  // 選択後の文字も中央に（重要！）
+            font-size: 0.45rem;
+            cursor: pointer;
+            color: #333;
+
+            // ▼ 矢印マークを消す（これで見栄えがinputと同じになります）
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            // IEなどで矢印を消す用
+            &::-ms-expand {
+                display: none;
+            }
+
+            &:focus {
+                background-color: #fff9e6; // 他のinputと同じフォーカス色
+            }
+
+            // 1. 初期状態（value=""が選ばれている時）だけ色を薄くする
+            &:invalid,
+            &[value=""],
+            option[value=""] {
+                color: #bbbbbb; 
+            }
+
+            // 2. 選択肢（中身）の文字色は濃く戻す
+            option {
+                color: #333;
+            }
+        }
+
+        // 3. PDF出力（印刷）時の微調整
+        @media print {
+            .status-select {
+                appearance: none;
+                -webkit-appearance: none;
+                border: none !important;
+                // 印刷時に背景色（フォーカス色）が出ないように
+                background-color: transparent !important;
+                option[value=""]:checked {
+                    color: transparent !important; // 文字を透明にして消す
+                }
+            }
+
+        }
+        .huzoku2-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            margin-block: 3px;
+            font-size: 0.35rem; // 文字数が多いので少し小さめ
+            table-layout: fixed;
+
+            th, td {
+                border: 1px solid #000;
+                padding: 1px;
+                vertical-align: middle;
+                word-break: break-all;
+                text-align: center;
+            }
+
+            .label-bg {
+                background: #f0f0f0;
+                text-align: center;
+            }
+
+            .input-row {
+                height: 20px; // 入力欄を少し広めに
+                text-align: center;
+            }
+
+            .method-selection {
+                text-align: center;
+                background: #fff;
+            }
+
+            .method-label {
+                font-weight: bold;
+                padding: 2px 5px;
+            }
+
+            .vertical-label {
+                font-weight: bold;
+                text-align: center;
+                vertical-align: middle;
+                line-height: 1.2;
+                padding: 1px;
+                background-color: #f0f0f0;
+            }
+
+            .text-left {
+                text-align: left;
+                vertical-align: top;
+                padding: 5px;
+            }
+
+            .notice-list {
+                margin: 0;
+                padding-left: 15px;
+                list-style-type: none;
+                li {
+                    font-size: 0.3rem;
+                    text-indent: -1em;
+                    padding-left: 1em;
+                }
+            }
+
+            .tiny-text {
+                font-size: 0.3rem;
+                line-height: 1.3;
+            }
+
+            .row2 {
+                text-align: center;
+            }
+
+            .yen {
+                text-align: right;
+            }
+            .checkbox-label {
+                display: block; // 親のtd内で幅を確保
+                white-space: nowrap; // 改行を防ぐ
+                text-align: center;
+
+                input[type="checkbox"] {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin: 2px 2px 2px 13px; // チェックボックスの周りの余白調整
+                    width: 10px;  // サイズを少し小さく
+                    height: 10px;
+                }
+
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                    font-size: 0.35rem;
+                    margin: 2px 2px 2px 0; 
+                }
+            }
+
+            .price-line {
+                display: flex;
+                align-items: center;   // ← 縦中央
+                justify-content: center;
+                height: 100%;          // ← 親に合わせる（重要）
+                gap: 2px;
+                width: 100%;
+                overflow: hidden; 
+
+                /* 金額（右寄せ） */
+                &_yen {
+                    margin-left: auto; /* ← これが効く */
+                    display: flex;
+                    align-items: center;
+                    gap: 2px;
+                    flex-shrink: 0;
+                }
+                
+                input {
+                    display: inline-block !important; // 100%を上書き
+                    vertical-align: 0;
+                    align-items: center;
+                    min-height: 12px !important;
+                    text-align: right;  
+                    
+                    height: 12px !important; // 小さめに調整
+                    padding: 0 1px !important;
+                    background: transparent;
+                    width: auto; // 一旦リセット
+                    border: none;
+
+                    min-width: 0;   /* ← これ重要 */
+                    flex-shrink: 1; 
+                    &:focus {
+                        background-color: #fff9e6; // 入力中フォーカス
+                    }
+                }
+
+                .price-input { 
+                    width: 50px; 
+                    text-align: right; 
+                }
+            }
+        }
+    }
+
+    .kaiyaku {
+        font-size: 0.4rem;
+        border: 1px solid #000;
+        padding: 3px;
+        p {
+            font-size: 0.4rem;
+        }
+        .kaiyaku-table {
+            width: 90%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            margin-block: 5px;
+            margin-inline: auto;
+            font-size: 0.35rem; // 文字数が多いので少し小さめ
+            table-layout: fixed;
+
+            th, td {
+                border: 1px solid #000;
+                padding: 3px;
+                vertical-align: middle;
+                word-break: break-all;
+                text-align: center;
+            }
+        }
+    }
+
+    .rentaihosyo {
+        font-size: 0.4rem;
+        .rentaihosyo-table {
+            width: 100%;
+            border-collapse: collapse;
+            // border: 1px solid #000;
+            margin-bottom: 5px;
+            margin-inline: auto;
+            font-size: 0.35rem; // 文字数が多いので少し小さめ
+            table-layout: fixed;
+
+            th, td {
+                border: 1px solid #000;
+                padding: 3px;
+                vertical-align: middle;
+                word-break: break-all;
+                text-align: center;
+                text-align: start;
+            }
+
+            .borderress {
+                border: 0px solid transparent;
+            }
+
+            .zip-code {
+                border-bottom: none !important;
+                border-right: none !important;
+            }
+
+            // --- 郵便番号の1文字マス ---
+            .input-char {
+                width: 10px !important;
+                height: 18px !important;
+                min-height: auto !important;
+                // border: 1px solid #000 !important; // マス目として枠線を復活
+                padding: 0 !important;
+                text-align: center;
+                font-size: 0.35rem;
+                vertical-align: 0;
+            }
+
+            // --- 都道府県・市区町村 ---
+            .pref-city {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                
+                input {
+                    width: 40% !important;
+                    min-height: 20px !important;
+                }
+                span {
+                    font-size: 0.25rem;
+                    margin-right: 10px;
+                    line-height: 1.1;
+                }
+            }
+
+            .address-labels {
+                border-top: none !important; // 上の線を消すことで、郵便番号欄と繋がって見えます
+                border-left: none !important; // 上の線を消すことで、郵便番号欄と繋がって見えます
+            }
+
+            .address-cautionary {
+                border-right: none !important;
+            }
+
+            .rentaihosyo-title {
+                th {
+                    text-align: left;    /* これで th の中身を左寄せにします */
+                    padding-left: 10px;  /* 必要に応じて少し余白を作ると綺麗です */
+                }
+            }
+
+            .address {
+                height: 20px;
+                border-left: none !important;
+                .address-detail {
+                    width: 100%;            // 建物名入力欄の幅を制限
+                    height: 100%;
+                    min-height: auto !important; // 共通設定を打ち消し
+                    border: none;
+                    vertical-align: middle;
+                    text-align: start;
+                }
+            }
+
+            .tel-row {
+                white-space: nowrap;
+                align-items: center;
+                padding: 0 5px;
+                height: 100%;
+
+                .input-tel {
+                    display: inline-block;
+                    width: 20% !important;
+                    height: 100% !important;
+                    min-height: auto;
+                    vertical-align: 0;
+                    text-align: center;
+                }
+            }
+           
+        }        
+    }
+
+}

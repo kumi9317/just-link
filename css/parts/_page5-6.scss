@@ -1,0 +1,149 @@
+@use 'variables' as *;
+
+.page5,
+.page6 {
+    padding: 10mm 15mm !important;
+    font-size: 0.4rem;
+
+    .page5-title {
+        border-bottom: none;
+        font-size: 0.8rem;
+    }
+    .head {
+        display: inline-block;
+        font-size: 0.5rem;
+        border-bottom: 1px solid #000;
+        margin-bottom: 10px;
+    }
+    .red {
+        color: red;
+        font-weight: 700;
+    }
+    .item-head {
+        margin-block: 10px;
+        font-size: 0.5rem;
+    }
+    .selection-item {
+        margin-bottom: 10px;
+        .checkbox-container {
+            display: flex;
+            align-items: start; 
+            cursor: pointer;
+            position: relative;
+            // 1. 本物のチェックボックスは隠す（でも機能は残す）
+            input[type="checkbox"] {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+            }
+    
+            // 2. デザイン用の枠（赤色）
+            .checkmark {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                border: 1px solid #ff0000; // ここを赤にする！
+                margin-right: 10px;
+                flex-shrink: 0;
+                position: relative;
+                background-color: #fff;
+            }
+    
+            // 3. チェックが入った時の「レ点」を作る
+            input:checked + .checkmark::after {
+                content: "";
+                position: absolute;
+                left: 4px;
+                top: 2px;
+                width: 4px;
+                height: 8px;
+                border: solid #ff0000; // レ点も赤にする
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+    
+            .text {
+                margin-bottom: 3px;
+            }
+        }
+        .kaiyaku-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            margin-block: 2px;
+            table-layout: fixed;
+            th, td {
+                border: 1px solid #000;
+                padding: 4.5px 3.5px;
+                vertical-align: middle;
+                word-break: break-all;
+            }
+            .label-bg {
+                text-align: center;
+            }
+        }
+    }
+    .bt-padding {
+        padding-bottom: 3px;
+    }
+    .small {
+        font-size: 0.3rem;
+    }
+    .shop-info-container {
+        margin-top: 8px !important;
+    }
+    .sub-head {
+        margin-bottom: 5px !important;
+    }
+    .kome {
+        padding-left: 5px;
+    }
+    .confirmation-table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #000;
+        margin-top: 15px !important;
+        table-layout: fixed;
+        .confirmation-title {
+            padding-bottom: 3px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 3px 5px;
+            vertical-align: top;
+            word-break: break-all;
+        }
+        .label-bg {
+            text-align: start;
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 3px;
+            .label {
+                border-bottom: 1px solid #000;
+                padding-bottom: 3px;
+            }
+            .confirmation {
+                width: 70% !important;
+                height: 20px !important;
+                padding: 3px 10px !important;
+                font-size: 0.8rem;
+                border-bottom: 1px solid #000;
+            }
+        }
+        .input1 {
+            margin-top: 40px;
+        }
+        .date {
+            width: 20% !important;
+            border-bottom: 1px solid #000;
+            text-align: right;
+        }
+        .input2 {
+            margin-top: 5px;
+        }
+    }
+}
