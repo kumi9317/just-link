@@ -148,3 +148,12 @@ function updatePageVisibility() {
 }
 
 $('input[name="payment"], input[name="credit-type"]').on('change', updatePageVisibility);
+
+/*====================================================
+  page12 本人確認　有無による詳細内容の表示・非表示
+====================================================*/
+$('select[name="business_type"]').on('change', function() {
+    const val = $(this).val();
+    $('.yes-container').toggle(val === '1'); // 有
+    $('.no-container').toggle(val === '2');  // 無
+});

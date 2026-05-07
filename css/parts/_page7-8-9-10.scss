@@ -1,0 +1,63 @@
+@use 'variables' as *;
+
+.page7,
+.page8,
+.page9,
+.page10 {
+    font-size: 0.35rem;
+    line-height: 1.4;
+
+    h2 {
+        width: 100%;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        padding-block: 2px;
+        font-size: 0.6rem;
+    }
+    .text-right {
+        text-align: right;
+        border-left: 1px solid #000;
+    }
+    .text-left {
+        text-align: left;
+        border-right: 1px solid #000;
+    }
+    .padding-top {
+        padding-top: 5px;
+    }
+
+    .yakkan-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        h4 {
+            font-weight: 700;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-center {
+            text-align: center;
+        }
+        span {
+            font-weight: 700;
+        }
+        .padding-top2 {
+            padding-top: 10px;
+        }
+        .yakkan-left {
+            width: 48%;
+        }
+        .yakkan-right {
+            width: 48%;
+        }
+        .yakkan-left2 {
+            width: 49%;
+            font-size: 0.325rem;
+        }
+        .yakkan-right2 {
+            width: 49%;
+            font-size: 0.325rem;
+        }
+    }
+}

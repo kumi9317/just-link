@@ -1,0 +1,171 @@
+@use 'variables' as *;
+
+.page13 {
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        font-size: 0.6rem; 
+
+        &:focus {
+            background-color: #fff9e6; // 入力中フォーカス
+        }
+
+    }
+
+    .page13-container {
+        border: 1px solid #000;
+        font-size: 0.6rem;
+        .page13-title {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .page13-inner {
+            padding: 20px;
+            .page13-item {
+                h2 {
+                    padding-block: 10px;
+                }
+                
+                .zyuninnsya-container {
+                    padding: 10px;
+                    display: flex;
+                    justify-content: center;
+                    .zyuninnsya-inner {
+                        width: 60%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        padding-left: 20px;
+                        p {
+                            padding-bottom: 15px;
+                        }
+                    }
+            
+                    .zyuninnsya-row {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 40px;
+                        padding-block: 10px;
+                    }
+            
+                    .zyuninnsya-label {
+                        width: 60px;
+                        text-align: justify; // 両端揃えで「住所」「会社名」「代表者名」の幅を統一
+                        text-align-last: justify;
+                        flex-shrink: 0;
+                    }
+            
+                    .company-name {
+                        font-size: 1.5rem;
+                    }
+                }
+                .maru-list {
+                    list-style-type: none;
+                    padding: 0;
+                    width: 58%;
+                    margin: 10px auto;
+    
+                    li {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 10px;
+                        padding: 10px 0;
+    
+                        .num {
+                            flex-shrink: 0;
+                        }
+                    }
+                }
+                .kengen-container {
+                    width: 85%;
+                    margin-inline: auto;
+                    padding-block: 10px;
+    
+                    .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+        
+                        td {
+                            border: 1px solid #000;
+                            padding: 5px;
+                            vertical-align: middle;
+                        }
+                        .label {
+                            width: 15%;
+                            text-align: center;
+                            white-space: nowrap;
+                        }
+                        .label-input {
+                            width: 35%;
+                            input {
+                                width: 100%;
+                                border: none;
+                                outline: none;
+                                
+                            }
+                        }
+                        .value {
+                            width: 35%;
+                        }
+                        .tel-wrapper {
+                            display: flex;
+                            align-items: center;
+                            .input-tel {
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+                .item3-p {
+                    padding-left: 30px;
+                    padding-bottom: 20px;
+                    span {
+                        border-bottom: 1px solid #000;
+                    }
+                }
+            }
+            .ko-container {
+                border: 1px solid #000;
+                padding: 5px;
+                width: 90%;
+                margin-inline: auto;
+                .flex-right {
+                    display: flex;
+                    justify-content: flex-end;
+                    .date-wrapper {
+                        display: flex;
+                        border-bottom: 1px solid #000;
+                        .input-wrapper {
+                            display: flex;
+                            
+                            .input-no {
+                                width: 50px;
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+                .input-wrapper2 {
+                    display: flex;
+                    padding: 20px 30px;
+                    align-items: flex-end;
+                    span {
+                        width: 20%;
+                        text-align: right;
+                        padding-right: 10px;
+                    }
+                    .input-area {
+                        border-bottom: 1px solid #000;
+                        width: 70%;
+                        font-size: 1rem !important;
+                    }
+                }
+                
+            }
+        }
+    }
+}
