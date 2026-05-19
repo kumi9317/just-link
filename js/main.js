@@ -162,15 +162,18 @@ $('select[name="business_type"]').on('change', function() {
   保守・サービステーブル　自動計算ロジック（10%税・掛け算）
 ====================================================*/
 $(function() {
-    // テーブル内の入力欄（初期費用、単価、数量）の値が変わったら計算を実行
-    $(document).on('input', '.init-cost, .unit-price, .quantity', function() {
+    // ★ 'input change' に変更し、カンマが付いたタイミングでも再計算されるように修正
+    $(document).on('input change', '.init-cost, .unit-price, .quantity', function() {
         // 入力された要素から見て、同じ行（tr）を取得する
         var $row = $(this).closest('tr');
 
-        // カンマを除去して純粋な数値に変換する便利な関数
+        // カンマを除去し、全角数字を半角に変換してから数値にする関数
         function getNum($el) {
             if (!$el.length) return 0;
-            var val = $el.val().replace(/,/g, '');
+            var val = $el.val().replace(/,/g, '')
+                .replace(/[環境-９]/g, function(s) { // ←全角数字を半角に変換する魔法の処理
+                    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+                });
             return parseFloat(val) || 0;
         }
 
