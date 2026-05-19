@@ -157,3 +157,53 @@ $('select[name="business_type"]').on('change', function() {
     $('.yes-container').toggle(val === '1'); // 有
     $('.no-container').toggle(val === '2');  // 無
 });
+
+/*====================================================
+  保守・サービステーブル　自動計算ロジック（10%税・掛け算）
+====================================================*/
+$(function() {
+    // テーブル内の入力欄（初期費用、単価、数量）の値が変わったら計算を実行
+    $(document).on('input', '.init-cost, .unit-price, .quantity', function() {
+        // 入力された要素から見て、同じ行（tr）を取得する
+        var $row = $(this).closest('tr');
+
+        // カンマを除去して純粋な数値に変換する便利な関数
+        function getNum($el) {
+            if (!$el.length) return 0;
+            var val = $el.val().replace(/,/g, '');
+            return parseFloat(val) || 0;
+        }
+
+        // 1. 各入力欄の値を取得
+        var initCost = getNum($row.find('.init-cost'));
+        var unitPrice = getNum($row.find('.unit-price'));
+        var quantity  = getNum($row.find('.quantity'));
+
+        // 2. 初期費用 → 税額（10%）の計算
+        var $initTaxInput = $row.find('.init-tax');
+        if (initCost > 0) {
+            var initTax = Math.floor(initCost * 0.1);
+            // カンマ区切りの文字列にしてセットする
+            $initTaxInput.val(initTax.toLocaleString());
+        } else {
+            $initTaxInput.val('');
+        }
+
+        // 3. 単価 × 数量 → 月額料金、およびその税額（10%）の計算
+        var $monthCostInput = $row.find('.month-cost');
+        var $monthTaxInput = $row.find('.month-tax');
+
+        if (unitPrice > 0 && quantity > 0) {
+            var monthCost = unitPrice * quantity;
+            var monthTax = Math.floor(monthCost * 0.1);
+
+            // カンマ区切りの文字列にしてセットする
+            $monthCostInput.val(monthCost.toLocaleString());
+            $monthTaxInput.val(monthTax.toLocaleString());
+        } else {
+            // 入力が不完全なら空にする
+            $monthCostInput.val('');
+            $monthTaxInput.val('');
+        }
+    });
+});
