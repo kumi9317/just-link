@@ -22,6 +22,7 @@ body .page {
   margin-bottom: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  page-break-after: always; /* この要素が終わったら必ず次のページへ */
 }
 body h1 {
   text-align: center;
@@ -40,24 +41,37 @@ body .fill-text {
 }
 
 /* --- PDF出力（印刷）用の設定 --- */
+/* --- PDF出力（印刷）用の設定 --- */
 @media print {
   body {
+    display: block !important;
     background: none;
+    margin: 0;
+    padding: 0;
+    width: 210mm;
   }
   body #input-form {
-    display: none; /* 入力フォームを非表示 */
+    display: none !important; /* 入力フォームを完全に非表示 */
   }
   #preview {
-    padding: 0;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 210mm !important;
   }
-  #preview .page {
-    box-shadow: none;
-    margin: 0;
-    width: 100%;
-    page-break-after: always; /* ページごとに改ページ */
+  .page {
+    width: 210mm !important;
+    height: 297mm !important; /* A4の縦幅ぴったりに固定 */
+    margin: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always !important; /* ページの終わりで必ず改ページ */
+    box-sizing: border-box !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact; /* 背景色や線を印刷に強制反映 */
+    print-color-adjust: exact;
   }
-  #preview .page .fill-text {
-    color: black; /* 印刷時は文字を黒にする */
+  .page .fill-text {
+    color: black !important; /* 印刷時は文字を黒にする */
   }
 }
 input[type=text],
@@ -1372,7 +1386,7 @@ textarea:focus {
 
 .page5,
 .page6 {
-  padding: 10mm 15mm !important;
+  padding: 5mm 15mm !important;
   font-size: 0.4rem;
 }
 .page5 .page5-title,
@@ -2294,6 +2308,9 @@ textarea:focus {
   padding: 0px 5px !important;
 }
 
+.page13 {
+  page-break-after: avoid !important;
+}
 .page13 input[type=text],
 .page13 input[type=number],
 .page13 textarea {
@@ -2446,4 +2463,9 @@ textarea:focus {
   border-bottom: 1px solid #000;
   width: 70%;
   font-size: 1rem !important;
+}
+
+@page {
+  size: A4;
+  margin: 0;
 }/*# sourceMappingURL=style.css.map */

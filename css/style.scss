@@ -7,3 +7,8 @@
 @use 'parts/page7-8-9-10';
 @use 'parts/page11-12';
 @use 'parts/page13';
+
+@page {
+    size: A4;
+    margin: 0;
+}

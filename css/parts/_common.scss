@@ -24,6 +24,7 @@ body {
         margin-bottom: 20px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
         box-sizing: border-box;
+        page-break-after: always;   /* この要素が終わったら必ず次のページへ */
     }
     
     h1 {
@@ -46,26 +47,67 @@ body {
 }
     
     /* --- PDF出力（印刷）用の設定 --- */
+/* --- PDF出力（印刷）用の設定 --- */
 @media print {
+    // 1. bodyのflexを解除して、普通のブロック配置に戻す（超重要！）
     body {
+        display: block !important; 
         background: none;
+        margin: 0;
+        padding: 0;
+        width: 210mm; // A4の横幅に固定
+        
         #input-form {
-            display: none; /* 入力フォームを非表示 */
+            display: none !important; /* 入力フォームを完全に非表示 */
         }
     }
-        #preview {
-            padding: 0;
-            .page {
-                box-shadow: none;
-                margin: 0;
-                width: 100%;
-                page-break-after: always; /* ページごとに改ページ */
-                .fill-text {
-                    color: black; /* 印刷時は文字を黒にする */
-                }
-            }
+
+    // 2. プレビューエリアの余白をゼロにして、左詰めにリセット
+    #preview {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 210mm !important;
+    }
+    
+    // 3. 各ページ要素をA4ぴったりに強制固定する
+    .page {
+        width: 210mm !important;
+        height: 297mm !important; /* A4の縦幅ぴったりに固定 */
+        margin: 0 !important;
+        // padding: 10mm !important; /* 内側の余白をキープ */
+        box-shadow: none !important;
+        page-break-after: always !important; /* ページの終わりで必ず改ページ */
+        box-sizing: border-box !important;
+        background: white !important;
+        -webkit-print-color-adjust: exact; /* 背景色や線を印刷に強制反映 */
+        print-color-adjust: exact;
+
+        .fill-text {
+            color: black !important; /* 印刷時は文字を黒にする */
         }
+    }
 }
+// @media print {
+//     body {
+//         background: none;
+//         #input-form {
+//             display: none;
+//         }
+//     }
+//         #preview {
+//             padding: 0;
+//             .page {
+//                 box-shadow: none;
+//                 margin: 0;
+//                 width: 100%;
+//                 page-break-after: always; 
+//                 .fill-text {
+//                     color: black; 
+//                 }
+//             }
+//         }
+// }
 
 input[type="text"],
 input[type="number"],

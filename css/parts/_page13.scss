@@ -1,6 +1,8 @@
 @use 'variables' as *;
 
 .page13 {
+    page-break-after: avoid !important;
+
     input[type="text"],
     input[type="number"],
     textarea {
