@@ -6,6 +6,10 @@
 
 function update() {
     // 1. 各入力欄の値を取得
+    var dateYear  = $('#date_year').val()  || "";
+    var dateMonth = $('#date_month').val() || "";
+    var dateDay   = $('#date_day').val()   || "";
+
     var kanaKo = $('#name_kana_ko').val() || "";
     var nameKo = $('#name_ko').val() || "";
     var post1Ko = $('#post-code1_ko').val() || "";
@@ -35,7 +39,11 @@ function update() {
     var addr2tei = $('#address2_tei').val() || "";
     
     // 2. クラス指定された箇所すべてに反映
-    // input要素（val）と、spanなどのテキスト要素（text）両方に送っておくと確実です
+    // input要素（val）と、spanなどのテキスト要素（text）両方に送っておくと確実
+    $('.sync-date-year').val(dateYear).text(dateYear);
+    $('.sync-date-month').val(dateMonth).text(dateMonth);
+    $('.sync-date-day').val(dateDay).text(dateDay);
+
     $('.sync-kana-ko').val(kanaKo);
     $('.sync-name-ko').val(nameKo);
     $('.sync-post1-ko').val(post1Ko).text(post1Ko);

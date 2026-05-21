@@ -16,6 +16,17 @@
         </div>
         <h2>共通項目　入力フォーム</h2>
         <div class="input-group">
+            <label>契約日</label>
+            <div class="date-input-wrapper">
+                <input type="number" id="date_year" placeholder="2026" oninput="update()">
+                <span>年</span>
+                <input type="number" id="date_month" placeholder="1" oninput="update()">
+                <span>月</span>
+                <input type="number" id="date_day" placeholder="1" oninput="update()">
+                <span>日</span>
+            </div>
+        </div>
+        <div class="input-group">
             <label>甲</label>
             <input type="text" id="name_kana_ko" placeholder="フリガナ" oninput="update()">
             <input type="text" id="name_ko" placeholder="株式会社〇〇" oninput="update()">
@@ -108,17 +119,17 @@
                         <td class="label">契約日</td>
                         <td class="year">
                             <div class="input-wrapper">
-                                <input type="number" placeholder="0000"><span>年</span>
+                                <input type="number" placeholder="0000" class="sync-date-year"><span>年</span>
                             </div>
                         </td>
                         <td class="month">
                             <div class="input-wrapper">
-                                <input type="number" placeholder="00"><span>月</span>
+                                <input type="number" placeholder="00" class="sync-date-month"><span>月</span>
                             </div>
                         </td>
                         <td class="day">
                             <div class="input-wrapper">
-                                <input type="number" placeholder="00"><span>日</span>
+                                <input type="number" placeholder="00" class="sync-date-day"><span>日</span>
                             </div>
                         </td>
                     </tr>
@@ -1997,13 +2008,13 @@
                         <div class="input-wrapper input2">
                             <span class="label">確認日</span>
                             <div class="input-wrapper date">
-                                <input type="number" placeholder="0000"><span>年</span>
+                                <input type="number" placeholder="0000" class="sync-date-year"><span>年</span>
                             </div>
                             <div class="input-wrapper date">
-                                <input type="number" placeholder="00"><span>月</span>
+                                <input type="number" placeholder="00" class="sync-date-month"><span>月</span>
                             </div>
                             <div class="input-wrapper date">
-                                <input type="number" placeholder="00"><span>日</span>
+                                <input type="number" placeholder="00" class="sync-date-day"><span>日</span>
                             </div>
                         </div>
                         <div class="input-wrapper input2">
@@ -2589,13 +2600,13 @@
             <div class="right consent">
                 <span class="label">契約締結および同意日</span>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="0000"><span>年</span>
+                    <input type="number" class="input-large sync-date-year" placeholder="0000"><span>年</span>
                 </div>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="00"><span>月</span>
+                    <input type="number" class="input-large sync-date-month" placeholder="00"><span>月</span>
                 </div>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="00"><span>日</span>
+                    <input type="number" class="input-large sync-date-day" placeholder="00"><span>日</span>
                 </div>
             </div>
 
@@ -3122,13 +3133,13 @@
             <div class="right consent">
                 <span class="label">契約締結および同意日</span>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="0000"><span>年</span>
+                    <input type="number" class="input-large sync-date-year" placeholder="0000"><span>年</span>
                 </div>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="00"><span>月</span>
+                    <input type="number" class="input-large sync-date-month" placeholder="00"><span>月</span>
                 </div>
                 <div class="input-wrapper date">
-                    <input type="number" class="input-large" placeholder="00"><span>日</span>
+                    <input type="number" class="input-large sync-date-day" placeholder="00"><span>日</span>
                 </div>
             </div>
 
@@ -4027,13 +4038,13 @@
                         <div class="flex-right">
                             <div class="date-wrapper">
                                 <div class="input-wrapper">
-                                    <input type="number" class="input-no" placeholder="0000"><span>年</span>
+                                    <input type="number" class="input-no sync-date-year" placeholder="0000"><span>年</span>
                                 </div>
                                 <div class="input-wrapper">
-                                    <input type="number" class="input-no" placeholder="00"><span>月</span>
+                                    <input type="number" class="input-no sync-date-month" placeholder="00"><span>月</span>
                                 </div>
                                 <div class="input-wrapper">
-                                    <input type="number" class="input-no" placeholder="00"><span>日</span>
+                                    <input type="number" class="input-no sync-date-day" placeholder="00"><span>日</span>
                                 </div>
                             </div>
                         </div>

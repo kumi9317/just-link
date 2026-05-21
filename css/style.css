@@ -59,6 +59,9 @@ body .fill-text {
     margin: 0 !important;
     width: 210mm !important;
   }
+  .page7, .page8, .page9, .page10 {
+    display: block !important;
+  }
   .page {
     width: 210mm !important;
     height: 297mm !important; /* A4の縦幅ぴったりに固定 */
@@ -233,6 +236,21 @@ textarea:focus {
   color: #999;
   opacity: 0.7;
   font-size: 1rem;
+}
+#input-form .input-group .date-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+#input-form .input-group .date-input-wrapper input {
+  width: auto !important;
+  text-align: center;
+}
+#input-form .input-group .date-input-wrapper input#date_year {
+  width: 60px !important;
+}
+#input-form .input-group .date-input-wrapper input#date_month, #input-form .input-group .date-input-wrapper input#date_day {
+  width: 40px !important;
 }
 #input-form .credit-type-wrapper {
   display: flex;
@@ -1559,6 +1577,7 @@ textarea:focus {
 .page8,
 .page9,
 .page10 {
+  display: none;
   font-size: 0.35rem;
   line-height: 1.4;
 }

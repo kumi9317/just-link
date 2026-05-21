@@ -63,6 +63,20 @@
             opacity: 0.7;
             font-size: 1rem;
         }
+
+        .date-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            input {
+                width: auto !important;
+                text-align: center;
+
+                &#date_year { width: 60px !important; }
+                &#date_month, &#date_day { width: 40px !important; }
+            }
+        }
     }
 
     .credit-type-wrapper {
