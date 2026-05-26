@@ -22,6 +22,8 @@
 
     .input-group {
         margin-block: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
 
         input[type="text"],
         input[type="number"] {
@@ -33,6 +35,17 @@
             &::placeholder {
                 font-size: 0.8rem;
             }
+        }
+
+        h3 {
+            display: block;
+            padding-bottom: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .padding-b {
+            padding-bottom: 10px;
         }
 
         label {
@@ -86,6 +99,24 @@
         margin-block: 20px;
 
         .credit-label {
+            font-weight: bold;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+    }
+
+    .inin-type-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-block: 20px;
+
+        .inin-label {
             font-weight: bold;
         }
 

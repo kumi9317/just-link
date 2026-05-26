@@ -187,6 +187,42 @@
                 }
             }
 
+            .name-wrapper {
+                display: flex;
+                align-items: center;    /* ★これで中身（textarea）を絶対に上下中央にする */
+                justify-content: center;
+                height: 40px;           /* 親（セル）の高さは40pxに固定 */
+                width: 100%;
+                padding: 2px 0;         /* 上下の線に文字がギリギリ触れないように少しだけ余白を持たせる */
+                box-sizing: border-box;
+                
+                .texarea-large {
+                    display: block;
+                    width: 100%;
+                    height: auto;        /* ★高さを固定せず、文字数に合わせて自動で変わるようにする */
+                    max-height: 36px;    /* 40pxのセルからはみ出さないための限界の高さ */
+                    line-height: 1.2;    /* ★2行になったときに文字が重ならないよう、標準的な行高にする */
+                    resize: none;
+                    word-break: break-all;
+                    overflow: hidden;
+                    border: none;
+                    outline: none;
+                    background: transparent;
+                    font-size: 0.75rem;  /* ★2行のとき枠に綺麗に収まるよう、フォントサイズを少しだけ微調整（0.875→0.75） */
+                    padding: 0 5px;
+                    margin: 0;
+                    box-sizing: border-box;
+                    
+                    &::placeholder {
+                        color: #bbbbbb;
+                        font-size: 0.35rem;
+                    }
+                    &:focus {
+                        background-color: #fff9e6;
+                    }
+                }
+            }
+
             &.yago {
                 height: 40px;
             }
@@ -194,7 +230,7 @@
             // --- 郵便番号の1文字マス ---
             .input-char {
                 width: 25px !important;
-                height: 18px !important;
+                height: 25px !important;
                 min-height: auto !important;
                 // border: 1px solid #000 !important; // マス目として枠線を復活
                 padding: 0 !important;
@@ -560,6 +596,7 @@
                 input {
                     height: 9px !important;
                     width: 15px !important;
+                    padding: 0 1px !important;
                 }
             }
             

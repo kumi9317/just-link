@@ -2,7 +2,7 @@
   甲・乙・丙・丁　共通入力項目の反映
 ====================================================*/
 // HTMLの oninput="update()" から直接呼び出せるように、
-// $(function() { ... }) の外に書くのがコツです！
+// $(function() { ... }) の外に書く！
 
 function update() {
     // 1. 各入力欄の値を取得
@@ -14,8 +14,19 @@ function update() {
     var nameKo = $('#name_ko').val() || "";
     var post1Ko = $('#post-code1_ko').val() || "";
     var post2Ko = $('#post-code2_ko').val() || "";
+    var addrkanaKo = $('#address_kana_ko').val() || "";
     var addr1Ko = $('#address1_ko').val() || "";
     var addr2Ko = $('#address2_ko').val() || "";
+    var tel1Ko = $('#tel-code1_ko').val() || "";
+    var tel2Ko = $('#tel-code2_ko').val() || "";
+    var tel3Ko = $('#tel-code3_ko').val() || "";
+    var fax1Ko = $('#fax-code1_ko').val() || "";
+    var fax2Ko = $('#fax-code2_ko').val() || "";
+    var fax3Ko = $('#fax-code3_ko').val() || "";
+    var positionKanaKo = $('#position_kana_ko').val() || "";
+    var positionKo = $('#position_ko').val() || "";
+    var repnameKanaKo = $('#repname_kana_ko').val() || "";
+    var repnameKo = $('#repname_ko').val() || "";
 
     var kanaOtsu = $('#name_kana_otsu').val() || "";
     var nameOtsu = $('#name_otsu').val() || "";
@@ -23,6 +34,9 @@ function update() {
     var post2Otsu = $('#post-code2_otsu').val() || "";
     var addr1Otsu = $('#address1_otsu').val() || "";
     var addr2Otsu = $('#address2_otsu').val() || "";
+    var tel1Otsu = $('#tel-code1_otsu').val() || "";
+    var tel2Otsu = $('#tel-code2_otsu').val() || "";
+    var tel3Otsu = $('#tel-code3_otsu').val() || "";
 
     var kanahei = $('#name_kana_hei').val() || "";
     var namehei = $('#name_hei').val() || "";
@@ -30,13 +44,6 @@ function update() {
     var post2hei = $('#post-code2_hei').val() || "";
     var addr1hei = $('#address1_hei').val() || "";
     var addr2hei = $('#address2_hei').val() || "";
-
-    var kanatei = $('#name_kana_tei').val() || "";
-    var nametei = $('#name_tei').val() || "";
-    var post1tei = $('#post-code1_tei').val() || "";
-    var post2tei = $('#post-code2_tei').val() || "";
-    var addr1tei = $('#address1_tei').val() || "";
-    var addr2tei = $('#address2_tei').val() || "";
     
     // 2. クラス指定された箇所すべてに反映
     // input要素（val）と、spanなどのテキスト要素（text）両方に送っておくと確実
@@ -48,8 +55,19 @@ function update() {
     $('.sync-name-ko').val(nameKo);
     $('.sync-post1-ko').val(post1Ko).text(post1Ko);
     $('.sync-post2-ko').val(post2Ko).text(post2Ko);
+    $('.sync-address-kana-ko').val(addrkanaKo).text(addrkanaKo);
     $('.sync-address1-ko').val(addr1Ko).text(addr1Ko);
     $('.sync-address2-ko').val(addr2Ko).text(addr2Ko);
+    $('.sync-tel1-ko').val(tel1Ko).text(tel1Ko);
+    $('.sync-tel2-ko').val(tel2Ko).text(tel2Ko);
+    $('.sync-tel3-ko').val(tel3Ko).text(tel3Ko);
+    $('.sync-fax1-ko').val(fax1Ko).text(fax1Ko);
+    $('.sync-fax2-ko').val(fax2Ko).text(fax2Ko);
+    $('.sync-fax3-ko').val(fax3Ko).text(fax3Ko);
+    $('.sync-position-kana-ko').val(positionKanaKo).text(positionKanaKo);
+    $('.sync-position-ko').val(positionKo).text(positionKo);
+    $('.sync-repname-kana-ko').val(repnameKanaKo).text(repnameKanaKo);
+    $('.sync-repname-ko').val(repnameKo).text(repnameKo);
     
     $('.sync-kana-otsu').val(kanaOtsu);
     $('.sync-name-otsu').val(nameOtsu);
@@ -57,6 +75,9 @@ function update() {
     $('.sync-post2-otsu').val(post2Otsu).text(post2Otsu);
     $('.sync-address1-otsu').val(addr1Otsu).text(addr1Otsu);
     $('.sync-address2-otsu').val(addr2Otsu).text(addr2Otsu);
+    $('.sync-tel1-otsu').val(tel1Otsu).text(tel1Otsu);
+    $('.sync-tel2-otsu').val(tel2Otsu).text(tel2Otsu);
+    $('.sync-tel3-otsu').val(tel3Otsu).text(tel3Otsu);
 
     $('.sync-kana-hei').val(kanahei);
     $('.sync-name-hei').val(namehei);
@@ -65,19 +86,13 @@ function update() {
     $('.sync-address1-hei').val(addr1hei).text(addr1hei);
     $('.sync-address2-hei').val(addr2hei).text(addr2hei);
 
-    $('.sync-kana-tei').val(kanatei);
-    $('.sync-name-tei').val(nametei);
-    $('.sync-post1-tei').val(post1tei).text(post1tei);
-    $('.sync-post2-tei').val(post2tei).text(post2tei);
-    $('.sync-address1-tei').val(addr1tei).text(addr1tei);
-    $('.sync-address2-tei').val(addr2tei).text(addr2tei);
-
     // 3. 1ページ目の「（ここに会社名が入ります）」などのテキスト部分用
     // spanやpタグは .val() ではなく .text() を使います
     $('#out_company').text(nameKo + " 御中");
 
     // 住所1と住所2をスペースで繋いで反映
-    $('.sync-address-full-ko').text(addr1Ko + " " + addr2Ko);
+    $('.sync-address-full-ko').val(addr1Ko + " " + addr2Ko);
+    $('.sync-address-full-otsu').val(addr1Otsu + " " + addr2Otsu);
 }
 
 // ページ読み込み完了時に一度実行（初期値がある場合のため）
@@ -158,6 +173,25 @@ function updatePageVisibility() {
 $('input[name="payment"], input[name="credit-type"]').on('change', updatePageVisibility);
 
 /*====================================================
+  「委任状」表示非表示
+====================================================*/
+function updateIninVisibility() {
+    const isYes = $('input[name="inin-type"][value="yes"]').is(':checked');
+    const isNo = $('input[name="inin-type"][value="no"]').is(':checked');
+
+    if (isNo) {
+        $('.page13').hide();
+        $('body').addClass('inin-no'); 
+        return;
+    }
+
+    $('.page13').toggle(isYes);
+    $('body').removeClass('inin-no');
+}
+
+$('input[name="inin-type"]').on('change', updateIninVisibility);
+
+/*====================================================
   page12 本人確認　有無による詳細内容の表示・非表示
 ====================================================*/
 $('select[name="business_type"]').on('change', function() {
@@ -171,7 +205,7 @@ $('select[name="business_type"]').on('change', function() {
 ====================================================*/
 $(function() {
     // ★ 'input change' に変更し、カンマが付いたタイミングでも再計算されるように修正
-    $(document).on('input change', '.init-cost, .unit-price, .quantity', function() {
+    $(document).on('input change', '.init-cost, .init-cost2, .init-cost3, .unit-price, .quantity', function() {
         // 入力された要素から見て、同じ行（tr）を取得する
         var $row = $(this).closest('tr');
 
@@ -179,7 +213,7 @@ $(function() {
         function getNum($el) {
             if (!$el.length) return 0;
             var val = $el.val().replace(/,/g, '')
-                .replace(/[環境-９]/g, function(s) { // ←全角数字を半角に変換する魔法の処理
+                .replace(/[０-９]/g, function(s) { // ←全角数字を半角に変換する魔法の処理
                     return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
                 });
             return parseFloat(val) || 0;
@@ -200,6 +234,24 @@ $(function() {
             $initTaxInput.val('');
         }
 
+        // init-cost2 → init-tax2 ← 追加
+        var initCost2 = getNum($row.find('.init-cost2'));
+        var $initTax2Input = $row.find('.init-tax2');
+        if (initCost2 > 0) {
+            $initTax2Input.val(Math.floor(initCost2 * 0.1).toLocaleString());
+        } else {
+            $initTax2Input.val('');
+        }
+
+        // init-cost3 → init-tax3 ← 追加
+        var initCost3 = getNum($row.find('.init-cost3'));
+        var $initTax3Input = $row.find('.init-tax3');
+        if (initCost3 > 0) {
+            $initTax3Input.val(Math.floor(initCost3 * 0.1).toLocaleString());
+        } else {
+            $initTax3Input.val('');
+        }
+
         // 3. 単価 × 数量 → 月額料金、およびその税額（10%）の計算
         var $monthCostInput = $row.find('.month-cost');
         var $monthTaxInput = $row.find('.month-tax');
@@ -217,4 +269,85 @@ $(function() {
             $monthTaxInput.val('');
         }
     });
+});
+
+/*====================================================
+  合計計算：緑枠合計 - 青枠 = 赤枠
+====================================================*/
+function calcTotal() {
+    function getNum($el) {
+        if (!$el.length) return 0;
+        var val = $el.val().replace(/,/g, '')
+            .replace(/[０-９]/g, function(s) {
+                return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+            });
+        return parseFloat(val) || 0;
+    }
+
+    // 緑枠：discount-row と result-row を除く全行のinit-cost合計
+    var totalInitCost = 0;
+    var totalInitTax = 0;
+    var totalMonthCost = 0;
+    var totalMonthTax = 0;
+    $('.hosyu-table tbody tr').not('.discount-row').not('.result-row-1').not('.result-row-2').each(function() {
+        totalInitCost += getNum($(this).find('.init-cost'));
+        totalInitTax += getNum($(this).find('.init-tax')); 
+        totalMonthCost += getNum($(this).find('.month-cost'));
+        totalMonthTax += getNum($(this).find('.month-tax')); 
+    });
+
+    // 青枠：各種割引合計行のinit-cost2
+    var discountCost = getNum($('.discount-row').find('.init-cost2'));
+    var discountTax = getNum($('.discount-row').find('.init-tax2'));
+    var discountMonthCost = getNum($('.discount-row').find('.init-cost3'));
+    var discountMonthTax = getNum($('.discount-row').find('.init-tax3'));
+
+    // 初期費用の計算
+    var resultCost = totalInitCost - discountCost;
+    var resultTax = totalInitTax - discountTax;
+
+    // 月額料金の計算 追加
+    var resultMonthCost = totalMonthCost - discountMonthCost;
+    var resultMonthTax = totalMonthTax - discountMonthTax;
+
+    // result-row-1 に出力
+    $('.result-row-1').find('.price-input').eq(0).val(resultCost > 0 ? resultCost.toLocaleString() : '');
+    $('.result-row-1').find('.price-input').eq(1).val(resultTax > 0 ? resultTax.toLocaleString() : '');
+    $('.result-row-1').find('.price-input').eq(2).val(resultMonthCost > 0 ? resultMonthCost.toLocaleString() : '');
+    $('.result-row-1').find('.price-input').eq(3).val(resultMonthTax > 0 ? resultMonthTax.toLocaleString() : '');
+
+    // result-row-2 に出力
+    var resultTotal = resultCost + resultTax;
+    var resultMonthTotal = resultMonthCost + resultMonthTax;
+    $('.result-row-2').find('.price-input').eq(0).val(resultTotal > 0 ? resultTotal.toLocaleString() : '');
+    $('.result-row-2').find('.price-input').eq(1).val(resultMonthTotal > 0 ? resultMonthTotal.toLocaleString() : '');
+}
+
+// 既存のイベントの末尾にcalcTotal()を追加
+$(document).on('input change', '.init-cost, .init-cost2, .init-cost3, .unit-price, .quantity', function() {
+    // ...既存コードそのまま...
+
+    calcTotal(); // ← 末尾に追加
+});
+
+/*====================================================
+  印刷前に未選択のselectを非表示にして、印刷後に戻す
+====================================================*/
+$(window).on('beforeprint', function() {
+    $('select').each(function() {
+        if ($(this).val() === '' || $(this).val() === null) {
+            $(this).css('visibility', 'hidden');
+        }
+    });
+});
+
+$(window).on('afterprint', function() {
+    $('select').css('visibility', 'visible');
+});
+
+/*====================================================
+  page3:支払回数 → page4：契約期間  に反映
+====================================================*/
+$('#payment-times').on('input', function() {
+    $('#payment-times-sync').val($(this).val());
 });

@@ -18,6 +18,11 @@
     .right {
         width: 100%;
         text-align: end;
+        padding-bottom: 30px;
+    }
+
+    .beginning {
+        padding-block: 10px;
     }
 
     .select-area {
@@ -263,6 +268,11 @@
                 width: 50px !important;
             }
         }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            text-align: center;
+        }
     }
     .zokusei-table2 {
         .label-input {
@@ -408,6 +418,9 @@
             min-width: 0;  // flexで潰れないように
             flex-shrink: 0;
             text-align: center;
+        }
+        .fontsmall {
+            font-size: 0.3rem;
         }
     }
     .footer-table {

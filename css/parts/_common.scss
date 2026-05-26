@@ -46,7 +46,6 @@ body {
     }
 }
     
-    /* --- PDF出力（印刷）用の設定 --- */
 /* --- PDF出力（印刷）用の設定 --- */
 @media print {
     // 1. bodyのflexを解除して、普通のブロック配置に戻す（超重要！）
@@ -90,6 +89,29 @@ body {
         .fill-text {
             color: black !important; /* 印刷時は文字を黒にする */
         }
+    }
+
+    // プレースホルダーを非表示
+    input::placeholder,
+    textarea::placeholder {
+        color: transparent !important;
+    }
+
+    // 委任状「無」の時はpage13を完全に非表示
+    body.inin-no .page13 {
+        display: none !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+        overflow: hidden !important;
+    }
+
+    body.inin-no .page10,
+    body.inin-no .page11,
+    body.inin-no .page12 {
+        page-break-after: avoid !important;
     }
 }
 // @media print {

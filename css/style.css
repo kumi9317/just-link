@@ -41,7 +41,6 @@ body .fill-text {
 }
 
 /* --- PDF出力（印刷）用の設定 --- */
-/* --- PDF出力（印刷）用の設定 --- */
 @media print {
   body {
     display: block !important;
@@ -75,6 +74,24 @@ body .fill-text {
   }
   .page .fill-text {
     color: black !important; /* 印刷時は文字を黒にする */
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: transparent !important;
+  }
+  body.inin-no .page13 {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    overflow: hidden !important;
+  }
+  body.inin-no .page10,
+  body.inin-no .page11,
+  body.inin-no .page12 {
+    page-break-after: avoid !important;
   }
 }
 input[type=text],
@@ -198,6 +215,8 @@ textarea:focus {
 }
 #input-form .input-group {
   margin-block: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 }
 #input-form .input-group input[type=text],
 #input-form .input-group input[type=number] {
@@ -211,6 +230,15 @@ textarea:focus {
 #input-form .input-group input[type=text]::placeholder,
 #input-form .input-group input[type=number]::placeholder {
   font-size: 0.8rem;
+}
+#input-form .input-group h3 {
+  display: block;
+  padding-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+#input-form .input-group .padding-b {
+  padding-bottom: 10px;
 }
 #input-form .input-group label {
   display: block;
@@ -267,6 +295,21 @@ textarea:focus {
   gap: 4px;
   cursor: pointer;
 }
+#input-form .inin-type-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block: 20px;
+}
+#input-form .inin-type-wrapper .inin-label {
+  font-weight: bold;
+}
+#input-form .inin-type-wrapper .radio-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
 #input-form button {
   background: #007bff;
   color: white;
@@ -294,15 +337,10 @@ textarea:focus {
   font-size: 1rem;
   color: #fff;
 }
-.page1 .text-right,
-.page2 .text-right {
-  text-align: right;
-  padding-right: 10px;
-}
-.page1 .text-left,
-.page2 .text-left {
-  text-align: left;
-  padding-left: 10px;
+.page1 .text-center,
+.page2 .text-center {
+  text-align: center;
+  margin-bottom: 10px;
 }
 .page1 .img-container,
 .page2 .img-container {
@@ -311,6 +349,10 @@ textarea:focus {
 .page1 .img-container img,
 .page2 .img-container img {
   width: 100%;
+}
+
+.page2 {
+  padding-top: 15mm !important;
 }
 
 .page3 input[type=text],
@@ -491,12 +533,45 @@ textarea:focus {
 .page3 .client-info-table td input[type=text]:focus {
   background-color: #fff9e6;
 }
+.page3 .client-info-table td .name-wrapper {
+  display: flex;
+  align-items: center; /* ★これで中身（textarea）を絶対に上下中央にする */
+  justify-content: center;
+  height: 40px; /* 親（セル）の高さは40pxに固定 */
+  width: 100%;
+  padding: 2px 0; /* 上下の線に文字がギリギリ触れないように少しだけ余白を持たせる */
+  box-sizing: border-box;
+}
+.page3 .client-info-table td .name-wrapper .texarea-large {
+  display: block;
+  width: 100%;
+  height: auto; /* ★高さを固定せず、文字数に合わせて自動で変わるようにする */
+  max-height: 36px; /* 40pxのセルからはみ出さないための限界の高さ */
+  line-height: 1.2; /* ★2行になったときに文字が重ならないよう、標準的な行高にする */
+  resize: none;
+  word-break: break-all;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.75rem; /* ★2行のとき枠に綺麗に収まるよう、フォントサイズを少しだけ微調整（0.875→0.75） */
+  padding: 0 5px;
+  margin: 0;
+  box-sizing: border-box;
+}
+.page3 .client-info-table td .name-wrapper .texarea-large::placeholder {
+  color: #bbbbbb;
+  font-size: 0.35rem;
+}
+.page3 .client-info-table td .name-wrapper .texarea-large:focus {
+  background-color: #fff9e6;
+}
 .page3 .client-info-table td.yago {
   height: 40px;
 }
 .page3 .client-info-table td .input-char {
   width: 25px !important;
-  height: 18px !important;
+  height: 25px !important;
   min-height: auto !important;
   padding: 0 !important;
   text-align: center;
@@ -838,6 +913,7 @@ textarea:focus {
 .page3 .page3main-container .product-info-table .times input {
   height: 9px !important;
   width: 15px !important;
+  padding: 0 1px !important;
 }
 .page3 .huzoku1 {
   font-size: 0.4rem;
@@ -1181,10 +1257,6 @@ textarea:focus {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
-.page4 .hikae {
-  font-size: 0.4rem;
-  text-align: end;
-}
 .page4_container {
   border: solid 1px #000;
   padding: 5px;
@@ -1383,23 +1455,14 @@ textarea:focus {
 .page4 .hosyu-table .company-details {
   font-size: 0.45rem;
 }
-.page4 .hosyu-table .company-details .zip-code {
-  display: flex;
+.page4 .hosyu-table .company-details p {
+  padding-bottom: 5px;
 }
-.page4 .hosyu-table .company-details .zip-code .input-char {
-  width: 40px !important;
+.page4 .hosyu-table .company-details .red {
+  color: red;
 }
-.page4 .hosyu-table .company-details .address-detail {
-  height: auto !important;
-  padding-block: 3px;
-}
-.page4 .hosyu-table .company-details .input-large {
-  font-size: 0.8rem !important;
-  height: auto !important;
-  padding-block: 4px;
-}
-.page4 .hosyu-table .company-details .input-large::placeholder {
-  font-size: 0.8rem;
+.page4 .gray {
+  background: #f0f0f0;
 }
 
 .page5,
@@ -1701,6 +1764,11 @@ textarea:focus {
 .page12 .right {
   width: 100%;
   text-align: end;
+  padding-bottom: 30px;
+}
+.page11 .beginning,
+.page12 .beginning {
+  padding-block: 10px;
 }
 .page11 .select-area,
 .page12 .select-area {
@@ -1969,6 +2037,12 @@ textarea:focus {
   vertical-align: middle;
   width: 50px !important;
 }
+.page11 .zokusei-table1 .vertical-text,
+.page12 .zokusei-table1 .vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-align: center;
+}
 .page11 .zokusei-table2 .label-input,
 .page12 .zokusei-table2 .label-input {
   padding: 0 !important;
@@ -2126,6 +2200,10 @@ textarea:focus {
   min-width: 0;
   flex-shrink: 0;
   text-align: center;
+}
+.page11 .zokusei-table2 .fontsmall,
+.page12 .zokusei-table2 .fontsmall {
+  font-size: 0.3rem;
 }
 .page11 .footer-table,
 .page12 .footer-table {
@@ -2391,7 +2469,7 @@ textarea:focus {
 .page13 .page13-container .page13-inner .page13-item .maru-list {
   list-style-type: none;
   padding: 0;
-  width: 58%;
+  width: 60%;
   margin: 10px auto;
 }
 .page13 .page13-container .page13-inner .page13-item .maru-list li {

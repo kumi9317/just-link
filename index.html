@@ -27,53 +27,98 @@
             </div>
         </div>
         <div class="input-group">
-            <label>甲</label>
-            <input type="text" id="name_kana_ko" placeholder="フリガナ" oninput="update()">
-            <input type="text" id="name_ko" placeholder="株式会社〇〇" oninput="update()">
-            <div class="form_post">
-                <input type="text" id="post-code1_ko" class="post-code" placeholder="000" oninput="update()">
-                <div>ー</div>
-                <input type="text" id="post-code2_ko" class="post-code" placeholder="000" oninput="update()">
+            <h3>甲</h3>
+            <div class="padding-b">
+                <label>会社名</label>
+                <input type="text" id="name_kana_ko" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_ko" placeholder="株式会社〇〇" oninput="update()">
             </div>
-            <input type="text" id="address1_ko" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-            <input type="text" id="address2_ko" placeholder="番地・建物名" oninput="update()">
+            <div class="form_post padding-b">
+                <label>〒</label>
+                <input type="number" id="post-code1_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="post-code2_ko" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <div class="padding-b">
+                <label>住所</label>
+                <input type="text" id="address_kana_ko" placeholder="フリガナ（住所）" oninput="update()">
+                <input type="text" id="address1_ko" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+                <input type="text" id="address2_ko" placeholder="番地・建物名" oninput="update()">
+            </div>
+            <div class="form_post padding-b">
+                <label>TEL</label>
+                <input type="number" id="tel-code1_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code2_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code3_ko" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <div class="form_post padding-b">
+                <label>FAX</label>
+                <input type="number" id="fax-code1_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="fax-code2_ko" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="fax-code3_ko" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <div class="padding-b">
+                <label>役職名</label>
+                <input type="text" id="position_kana_ko" placeholder="フリガナ（役職）" oninput="update()">
+                <input type="text" id="position_ko" placeholder="（例）代表取締役" oninput="update()">
+            </div>
+            <div class="padding-b">
+                <label>代表者名</label>
+                <input type="text" id="repname_kana_ko" placeholder="フリガナ（代表者）" oninput="update()">
+                <input type="text" id="repname_ko" placeholder="〇〇 〇〇" oninput="update()">
+            </div>
         </div>
         <div class="input-group">
-            <label>乙</label>
-            <input type="text" id="name_kana_otsu" placeholder="フリガナ" oninput="update()">
-            <input type="text" id="name_otsu" placeholder="株式会社〇〇" oninput="update()">
-            <div class="form_post">
-                <input type="text" id="post-code1_otsu" class="post-code" placeholder="000" oninput="update()">
-                <div>ー</div>
-                <input type="text" id="post-code2_otsu" class="post-code" placeholder="000" oninput="update()">
+            <h3>乙</h3>
+            <div class="padding-b">
+                <label>会社名</label>
+                <input type="text" id="name_kana_otsu" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_otsu" placeholder="株式会社〇〇" oninput="update()">
             </div>
-            <input type="text" id="address1_otsu" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-            <input type="text" id="address2_otsu" placeholder="番地・建物名" oninput="update()">
+            <div class="form_post padding-b">
+                <label>〒</label>
+                <input type="number" id="post-code1_otsu" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="post-code2_otsu" class="post-code" placeholder="000" oninput="update()">
+            </div>
+            <div class="padding-b">
+                <label>住所</label>
+                <input type="text" id="address1_otsu" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+                <input type="text" id="address2_otsu" placeholder="番地・建物名" oninput="update()">
+            </div>
+            <div class="form_post padding-b">
+                <label>TEL</label>
+                <input type="number" id="tel-code1_otsu" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code2_otsu" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code3_otsu" class="post-code" placeholder="000" oninput="update()">
+            </div>
         </div>
         <div class="input-group">
-            <label>丙</label>
-            <input type="text" id="name_kana_hei" placeholder="フリガナ" oninput="update()">
-            <input type="text" id="name_hei" placeholder="株式会社〇〇" oninput="update()">
-            <div class="form_post">
-                <input type="text" id="post-code1_hei" class="post-code" placeholder="000" oninput="update()">
-                <div>ー</div>
-                <input type="text" id="post-code2_hei" class="post-code" placeholder="000" oninput="update()">
+            <h3>丙</h3>
+            <div class="padding-b">
+                <label>会社名</label>
+                <input type="text" id="name_kana_hei" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_hei" placeholder="株式会社〇〇" oninput="update()">
             </div>
-            <input type="text" id="address1_hei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-            <input type="text" id="address2_hei" placeholder="番地・建物名" oninput="update()">
-        </div>
-        <div class="input-group">
-            <label>丁</label>
-            <input type="text" id="name_kana_tei" placeholder="フリガナ" oninput="update()">
-            <input type="text" id="name_tei" placeholder="株式会社〇〇" oninput="update()">
-            <div class="form_post">
-                <input type="text" id="post-code1_tei" class="post-code" placeholder="000" oninput="update()">
+            <div class="form_post padding-b">
+                <label>〒</label>
+                <input type="number" id="post-code1_hei" class="post-code" placeholder="000" oninput="update()">
                 <div>ー</div>
-                <input type="text" id="post-code2_tei" class="post-code" placeholder="000" oninput="update()">
+                <input type="number" id="post-code2_hei" class="post-code" placeholder="000" oninput="update()">
             </div>
-            <input type="text" id="address1_tei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-            <input type="text" id="address2_tei" placeholder="番地・建物名" oninput="update()">
+            <div class="padding-b">
+                <label>住所</label>
+                <input type="text" id="address1_hei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+                <input type="text" id="address2_hei" placeholder="番地・建物名" oninput="update()">
+            </div>
         </div>
+        
         
         <div class="credit-type-wrapper">
             <span class="credit-label">クレジット申込み</span>
@@ -86,6 +131,18 @@
                 <span>個人用</span>
             </label>
         </div>
+
+        <div class="inin-type-wrapper">
+            <span class="inin-label">委任状</span>
+            <label class="radio-label">
+                <input type="radio" name="inin-type" value="yes">
+                <span>有</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="inin-type" value="no">
+                <span>無</span>
+            </label>
+        </div>
         
         <button onclick="window.print()">PDFを出力する</button>
         <p><small>※送信先を「PDFに保存」にしてください</small></p>
@@ -94,14 +151,13 @@
 
     <div id="preview">
         <div class="page page1">
-            <h2 class="text-right">ウェブ制作</h2>
+            <h2 class="text-center">ウェブ制作契約のしおり</h2>
             <div class="img-container">
                 <img src="img/page1.png" alt="">
             </div>
         </div>
 
         <div class="page page2">
-            <h2 class="text-left">契約のしおり</h2>
             <div class="img-container">
                 <img src="img/page2.png" alt="">
             </div>
@@ -146,26 +202,28 @@
                     </td> 
                     <td class="label-bg col-kana">フリガナ</td>
                     <td class="row-kana" colspan="1">
-                        <input type="text" placeholder="フリガナ（役職）">
+                        <input type="text" class="sync-position-kana-ko" placeholder="フリガナ（役職）">
                     </td> 
                     <td class="label-bg col-kana">フリガナ</td>
                     <td class="row-kana" colspan="1">
-                        <input type="text" placeholder="フリガナ（代表者）">
+                        <input type="text" class="sync-repname-kana-ko" placeholder="フリガナ（代表者）">
                     </td> 
                 </tr>
                 
                 <tr>
                     <td rowspan="2" class="label-bg yago">会社名<br>・<br>屋号名</td>
                     <td rowspan="2" colspan="3">
-                        <input type="text" class="sync-name-ko input-large" placeholder="株式会社〇〇〇〇">
+                        <div class="name-wrapper">
+                            <textarea type="text" class="sync-name-ko texarea-large" placeholder="株式会社〇〇〇〇"></textarea>
+                        </div>
                     </td> 
                     <td class="label-bg">役職</td>
                     <td>
-                        <input type="text" placeholder="代表取締役">
+                        <input type="text" class="sync-position-ko" placeholder="代表取締役">
                     </td> 
                     <td class="label-bg">代表者名</td>
                     <td>
-                        <input type="text" placeholder="〇〇　〇〇">
+                        <input type="text" class="sync-repname-ko" placeholder="〇〇　〇〇">
                     </td> 
                 </tr>
 
@@ -183,37 +241,25 @@
                         <input type="text" class="sync-post1-ko input-char" placeholder="000">
                         -
                         <input type="text" class="sync-post2-ko input-char" placeholder="000"> 
-                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0">
-                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
                     </td>
                     <td class="label-bg">TEL</td>
                     <td colspan="3" class="tel-row">
-                        <input type="text" class="input-tel" placeholder="000"><span>ー</span>
-                        <input type="text" class="input-tel" placeholder="000"><span>ー</span> 
-                        <input type="text" class="input-tel" placeholder="000">
+                        <input type="text" class="input-tel sync-tel1-ko" placeholder="000"><span>ー</span>
+                        <input type="text" class="input-tel sync-tel2-ko" placeholder="000"><span>ー</span> 
+                        <input type="text" class="input-tel sync-tel3-ko" placeholder="000">
                         <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
                     </td>
                 </tr>
                 
                 <tr>
                     <td colspan="3" class="address-labels">
-                        <!-- <div class="pref-city"> -->
-                            <!-- <input type="number" placeholder="大阪"> <span>都道<br>府県</span>
-                            <input type="number" placeholder="大阪"> <span>区市<br>郡</span>
-                            <input type="number" placeholder="〇〇"> -->
-                            <input type="text" class="sync-address1-ko" placeholder="〇〇県〇〇市〇〇">
-                        <!-- </div> -->
+                         <input type="text" class="sync-address1-ko" placeholder="〇〇県〇〇市〇〇">
                     </td>
                     <td class="label-bg">FAX</td>
                     <td colspan="3" class="tel-row"> 
-                        <input type="number" class="input-tel" placeholder="000"><span>ー</span>
-                        <input type="number" class="input-tel" placeholder="000"><span>ー</span> 
-                        <input type="number" class="input-tel" placeholder="000">
+                        <input type="number" class="input-tel sync-fax1-ko" placeholder="000"><span>ー</span>
+                        <input type="number" class="input-tel sync-fax2-ko" placeholder="000"><span>ー</span> 
+                        <input type="number" class="input-tel sync-fax3-ko" placeholder="000">
                         <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
                     </td>
                 </tr>
@@ -355,7 +401,7 @@
                                 </div>
                             </td>
                             <td class="label-bg" colspan="1">支払回数</td>
-                            <td  class="times" colspan="1"><input type="number" class="input-year" placeholder="0">回</td>
+                            <td  class="times" colspan="1"><input type="number" id="payment-times" class="input-year" placeholder="0">回</td>
                         </tr>
                     </tbody>
                 </table>
@@ -698,14 +744,13 @@
         </div>
 
         <div class="page page4">
-            <p class="hikae">（お客様控）</p>
             <div class="page4_container">
 
                 <div class="selection-item">
                     <label class="checkbox-container">
                         <input type="checkbox" name="maintenance_agree">
                         <span class="checkmark"></span>
-                        <span class="text">左記、商品売買契約とは別に、保守約款、保守オプション約款、プライバシーポリシーに同意の上、保守契約に申し込む。</span>
+                        <span class="text">商品売買契約とは別に、保守約款、保守オプション約款、プライバシーポリシーに同意の上、保守契約に申し込む。</span>
                     </label>
                 </div>
                 <div class="selection-item">
@@ -726,7 +771,7 @@
                             <td class="label">契約期間</td>
                             <td class="period">
                                 <div class="input-wrapper">
-                                    <input type="number" placeholder="0"><span>ヶ月</span>
+                                    <input type="number" id="payment-times-sync" placeholder="0"><span>ヶ月</span>
                                 </div>
                             </td>
                         </tr>
@@ -1199,29 +1244,29 @@
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="discount-row">
                             <td colspan="1" rowspan="1" ></td>
                             <td colspan="5" rowspan="1" class="text-center">各種割引合計</td>
                             <td colspan="2" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
+                                <input type="text" class="price-input init-cost2" placeholder="0">
                             </td>
                             <td colspan="1" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
+                                <input type="text" class="price-input init-tax2" placeholder="0">
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 gray" >
+                                <!-- <input type="text" class="price-input" placeholder="0"> -->
+                            </td>
+                            <td colspan="1" rowspan="1" class="row2 gray" >
+                                <!-- <input type="text" class="price-input" placeholder="0"> -->
                             </td>
                             <td colspan="1" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
+                                <input type="text" class="price-input init-cost3" placeholder="0">
                             </td>
                             <td colspan="1" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
-                            </td>
-                            <td colspan="1" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
-                            </td>
-                            <td colspan="1" rowspan="1" class="row2" >
-                                <input type="text" class="price-input" placeholder="0">
+                                <input type="text" class="price-input init-tax3" placeholder="0">
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="result-row-1">
                             <td colspan="1" rowspan="2" ></td>
                             <td colspan="3" rowspan="2" class="text-center bc-red">割引後　請求額（合計額）</td>
                             <td colspan="2" rowspan="1" class="text-center bc-red">初期費用/消費税10%</td>
@@ -1239,19 +1284,13 @@
                                 <input type="text" class="price-input" placeholder="0">
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="2" rowspan="1" class="text-center bc-red">初期費用合計</td>
-                            <td colspan="2" rowspan="1" class="row2 bc-red" >
-                                <input type="text" class="price-input" placeholder="0">
-                            </td>
-                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                        <tr class="result-row-2">
+                            <td colspan="2" rowspan="1" class="text-center bc-red">初期費用合計(税込)</td>
+                            <td colspan="3" rowspan="1" class="row2 bc-red" >
                                 <input type="text" class="price-input" placeholder="0">
                             </td>
                             <td colspan="2" rowspan="1" class="text-center bc-red">月額料金（税込）</td>
-                            <td colspan="1" rowspan="1" class="row2 bc-red" >
-                                <input type="text" class="price-input" placeholder="0">
-                            </td>
-                            <td colspan="1" rowspan="1" class="row2 bc-red" >
+                            <td colspan="2" rowspan="1" class="row2 bc-red" >
                                 <input type="text" class="price-input" placeholder="0">
                             </td>
                         </tr>
@@ -1433,15 +1472,10 @@
                             </td>
                             <td colspan="2" class="text-center">保守会社（丁）</td>
                             <td colspan="4" class="company-details">
-                                <div class="zip-code">
-                                    〒
-                                    <input type="text" class="sync-post1-tei input-char" placeholder="000">
-                                    -
-                                    <input type="text" class="sync-post2-tei input-char" placeholder="000"> 
-                                </div>
-                                <input type="text" class="sync-address1-tei address-detail" placeholder="〇〇県〇〇市〇〇">
-                                <input type="text" class="sync-address2-tei address-detail" placeholder="（番地・建物名）">
-                                <input type="text" class="sync-name-tei input-large" placeholder="株式会社〇〇〇〇">   
+                                <p>〒 530-0001  大阪府大阪市北区梅田1-3-1</p>
+                                <p>株式会社ジャストリンク  【登録番号】T3120001128180</p>
+                                <p>TEL：06-6348-5888</p>
+                                <p class="red">サポートダイヤル：050-1790-0536 (平日 9時〜18時)</p>
                             </td>
                         </tr>
                     </tbody>
@@ -1999,7 +2033,6 @@
                         <div class="input-wrapper input1">
                             <span class="label">氏名</span>
                             <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
-                            <span>自署のこと</span>
                         </div>  
                     </td>
                     <td class="label-bg" style="width: 50%;">
@@ -2019,11 +2052,11 @@
                         </div>
                         <div class="input-wrapper input2">
                             <span class="label">会社名</span>
-                            <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
+                            <input type="text" class="input-large confirmation sync-name-ko" placeholder="〇〇〇〇"> 
                         </div>
                         <div class="input-wrapper input2">
                             <span class="label">代表者</span>
-                            <input type="text" class="input-large confirmation" placeholder="〇〇〇〇"> 
+                            <input type="text" class="input-large confirmation sync-repname-ko" placeholder="〇〇〇〇"> 
                         </div>  
                     </td>
                 </tr>
@@ -2585,7 +2618,7 @@
         <div class="page page11">
             <p class="right">【記載型（法人用）】</p>
 
-            <div class="dear-wrapper">
+            <!-- <div class="dear-wrapper">
                 <p>販売店</p>
                 <div class="dearinput-wrapper">
                     <input type="text" class="input-large" placeholder="〇〇〇〇"> 
@@ -2595,10 +2628,10 @@
                     <input type="text" class="input-large" placeholder="〇〇〇〇"> 
                     <span class="label">御中</span>
                 </div>
-            </div>
+            </div> -->
 
             <div class="right consent">
-                <span class="label">契約締結および同意日</span>
+                <span class="label">申込日</span>
                 <div class="input-wrapper date">
                     <input type="number" class="input-large sync-date-year" placeholder="0000"><span>年</span>
                 </div>
@@ -2612,33 +2645,33 @@
 
             <h1 class="title">クレジット申込手続委託契約書　兼　同意書</h1>
 
-            <p>申込者（以下「甲」という。）は、株式会社アプラス（以下「会社」という。）に対して、会社が運営・提供するWEBによるクレジット契約の申込みをするにあたり、
-                別紙「個人情報の取扱いに関する同意条項」および「お申込みの内容（約款）」を受領の上、内容について承諾・同意し申込みします。<br>
-                また、上記販売店に対して、販売店の担当者がおよび乙に代わり、販売店の電子情報処理組織（パソコン等）に以下の属性情報を入力し、申込みすることを委任いたします。
+            <p class="beginning">
+                本書は、申込者による事前審査申込みの意思確認を目的とするものであり、申込者は、販売店担当者が申込者に代わって、販売店の電子情報処理組織（パソコン等）へ必要な属性情報を入力し、事前審査の申込み手続きを行うことを承諾するものとします。<br>
+                あわせて、弊社提携会社各社に対する審査申込みについても同意したものとみなします。<br>
+                なお、本手続きの時点では、契約会社および契約条件は確定しておりません。
             </p>
 
             <div class="zokusei-container">
-                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <p>【属性情報】</p>
                 <table class="zokusei-table1">
-                    <thead>
+                    <tbody>
                         <tr>
-                            <th class="label-bg" style="width: 10%;" colspan="1" rowspan="1">法人名</th>
-                            <th class="" style="width: 90%;" colspan="5" rowspan="1">
+                            <td class="label-bg vertical-text" style="width: 4%;" colspan="1" rowspan="9">申込者</td>
+                            <td class="label-bg" style="width: 8%;" colspan="1" rowspan="1">法人名</td>
+                            <td class="" style="width: 88%;" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="株式会社〇〇〇〇">
+                                    <input type="text" class="sync-name-ko" placeholder="株式会社〇〇〇〇">
                                 </div>
-                            </th>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td class="label-bg">役職名</td>
                             <td class="input-area" colspan="5" rowspan="1">
-                                <input type="text" placeholder="代表取締役">
+                                <input type="text" class="position-ko sync-position-ko" placeholder="代表取締役">
                             </td>
                         </tr>
                         <tr>
@@ -2646,10 +2679,10 @@
                             <td class="" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-repname-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-repname-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                         </tr>
@@ -2658,21 +2691,21 @@
                             <td class="" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
+                                        <input type="number" maxlength="1" class="input-char sync-post1-ko" placeholder="000"> ー
+                                        <input type="number" maxlength="1" class="input-char sync-post2-ko" placeholder="000">
+                                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
                                     </div>
                                     <div class="address-wrapper">
-                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                        <input type="text" class="sync-address-full-ko" placeholder="〇〇県〇〇市・・・">
                                     </div>
                                 </div>
                             </td>
@@ -2777,19 +2810,19 @@
             </div>
 
             <div class="zokusei-container">
-                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <p>【属性情報】</p>
                 <table class="zokusei-table1 zokusei-table2">
                     <tbody>
                         <tr>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="11">連帯保証人予定者(甲)</td>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前（自署）</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="11">連帯保証人予定者</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前</td>
                             <td class="label-bg label-input" style="width: 40%;" colspan="4" rowspan="4">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-repname-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-repname-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                             <td class="label-bg center" style="width: 8%;" colspan="1" rowspan="1">性別</td>
@@ -2998,10 +3031,10 @@
                             <td class="label-bg label-input" colspan="4" rowspan="2">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana fontsmall sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-address-full-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                             <td class="label-small" colspan="4" rowspan="1">雇用形態</td>
@@ -3049,11 +3082,11 @@
                             <td class="label-bg center" colspan="1" rowspan="1">勤務先電話</td>
                             <td class="" colspan="6" rowspan="1">
                                 <div class="tel-wrapper">
-                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <input type="text" class="input-tel2 sync-tel1-ko" placeholder="000">
                                     <span>ー</span>
-                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <input type="text" class="input-tel2 sync-tel2-ko" placeholder="000">
                                     <span>ー</span> 
-                                    <input type="text" class="input-tel2" placeholder="000">
+                                    <input type="text" class="input-tel2 sync-tel3-ko" placeholder="000">
                                     <span class="naisen">内線（</span>
                                     <input type="text" class="input-tel2" placeholder="000">
                                     <span>）</span>
@@ -3084,7 +3117,7 @@
                             <td>
                                 <div class="post-wrapper">
                                     <span>販売店名</span>
-                                    <input type="text" class="input-area" placeholder="〇〇〇〇">
+                                    <input type="text" class="input-area sync-name-otsu" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                         </tr>
@@ -3092,7 +3125,7 @@
                             <td>
                                 <div class="post-wrapper">
                                     <span>住所</span>
-                                    <input type="text" class="input-area" placeholder="〇〇県〇〇市・・・">
+                                    <input type="text" class="input-area sync-address-full-otsu" placeholder="〇〇県〇〇市・・・">
                                 </div>
                             </td>
                         </tr>
@@ -3101,11 +3134,11 @@
                                 <div class="post-wrapper left">
                                     <span>電話番号</span>
                                     <div class="tel-wrapper">
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel1-otsu" placeholder="000">
                                         <span>ー</span>
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel2-otsu" placeholder="000">
                                         <span>ー</span> 
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel3-otsu" placeholder="000">
                                     </div>
                                 </div>
                             </td>
@@ -3118,7 +3151,7 @@
         <div class="page page12">
             <p class="right">【記載型（個人用）】</p>
 
-            <div class="dear-wrapper">
+            <!-- <div class="dear-wrapper">
                 <p>販売店</p>
                 <div class="dearinput-wrapper">
                     <input type="text" class="input-large" placeholder="〇〇〇〇"> 
@@ -3128,10 +3161,10 @@
                     <input type="text" class="input-large" placeholder="〇〇〇〇"> 
                     <span class="label">御中</span>
                 </div>
-            </div>
+            </div> -->
 
             <div class="right consent">
-                <span class="label">契約締結および同意日</span>
+                <span class="label">申込日</span>
                 <div class="input-wrapper date">
                     <input type="number" class="input-large sync-date-year" placeholder="0000"><span>年</span>
                 </div>
@@ -3145,26 +3178,26 @@
 
             <h1 class="title">クレジット申込手続委託契約書　兼　同意書</h1>
 
-            <p>申込者（以下「甲」という。）および連帯保証人予定者（以下「乙」という。）は、株式会社アプラス（以下「会社」という。）に対して、会社が運営・提供するWEBによるクレジット契約の申込みをするにあたり、
-                別紙「個人情報の取扱いに関する同意条項」および「お申込みの内容（約款）」を受領の上、内容について承諾・同意し申込みします。<br>
-                また、上記販売店に対して、販売店の担当者が甲および乙に代わり、販売店の電子情報処理組織（パソコン等）に以下の属性情報を入力し、申込みすることを委任いたします。<br>
-                なお、乙より申告された年収は甲の年収と合算する場合があります。
+            <p class="beginning">
+                本書は、申込者による事前審査申込みの意思確認を目的とするものであり、申込者は、販売店担当者が申込者に代わって、販売店の電子情報処理組織（パソコン等）へ必要な属性情報を入力し、事前審査の申込み手続きを行うことを承諾するものとします。<br>
+                あわせて、弊社提携会社各社に対する審査申込みについても同意したものとみなします。<br>
+                なお、本手続きの時点では、契約会社および契約条件は確定しておりません。
             </p>
 
             <div class="zokusei-container">
-                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <p>【属性情報】</p>
                 <table class="zokusei-table1 zokusei-table2">
                     <tbody>
                         <tr>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="8">申告者(甲)</td>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前（自署）</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="8">申込者</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前</td>
                             <td class="label-bg label-input" style="width: 40%;" colspan="4" rowspan="4">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-name-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                             <td class="label-bg center" style="width: 8%;" colspan="1" rowspan="1">性別</td>
@@ -3377,20 +3410,20 @@
                             <td class="label-bg label-input" style="width: 40%;" colspan="1" rowspan="2">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-name-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                             <td class="label-bg center" style="width: 8%;" colspan="1" rowspan="1">勤務先電話</td>
                             <td class="label-bg center" style="width: 40%;" colspan="3" rowspan="1">
                                 <div class="tel-wrapper">
-                                    <input type="text" class="input-tel3" placeholder="000">
+                                    <input type="text" class="input-tel3 sync-tel1-ko" placeholder="000">
                                     <span>ー</span>
-                                    <input type="text" class="input-tel3" placeholder="000">
+                                    <input type="text" class="input-tel3 sync-tel2-ko" placeholder="000">
                                     <span>ー</span> 
-                                    <input type="text" class="input-tel3" placeholder="000">
+                                    <input type="text" class="input-tel3 sync-tel3-ko" placeholder="000">
                                     <span class="naisen">内線（</span>
                                     <input type="text" class="input-tel3" placeholder="000">
                                     <span>）</span>
@@ -3426,21 +3459,21 @@
                             <td class="label-bg label-input" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
+                                        <input type="number" maxlength="1" class="input-char sync-post1-ko" placeholder="000"> ー
+                                        <input type="number" maxlength="1" class="input-char sync-post2-ko" placeholder="000">
+                                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
                                         <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
                                     </div>
                                     <div class="address-wrapper">
-                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                        <input type="text" class="sync-address-full-ko" placeholder="〇〇県〇〇市・・・">
                                     </div>
                                 </div>
                             </td>
@@ -3594,12 +3627,12 @@
                 </table>
             </div>
             <div class="zokusei-container">
-                <p>【属性情報】以下の項目は、必ずご本人さまご自身でご記入ください。</p>
+                <p>【属性情報】</p>
                 <table class="zokusei-table1 zokusei-table2">
                     <tbody>
                         <tr>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="11">連帯保証人予定者(乙)</td>
-                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前（自署）</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="11">連帯保証人予定者</td>
+                            <td class="label-bg vertical-text center" style="width: 4%;" colspan="1" rowspan="4">お名前</td>
                             <td class="label-bg label-input" style="width: 40%;" colspan="4" rowspan="4">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
@@ -3898,7 +3931,7 @@
                             <td>
                                 <div class="post-wrapper">
                                     <span>販売店名</span>
-                                    <input type="text" class="input-area" placeholder="〇〇〇〇">
+                                    <input type="text" class="input-area sync-name-otsu" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                         </tr>
@@ -3906,7 +3939,7 @@
                             <td>
                                 <div class="post-wrapper">
                                     <span>住所</span>
-                                    <input type="text" class="input-area" placeholder="〇〇県〇〇市・・・">
+                                    <input type="text" class="input-area sync-address-full-otsu" placeholder="〇〇県〇〇市・・・">
                                 </div>
                             </td>
                         </tr>
@@ -3915,11 +3948,11 @@
                                 <div class="post-wrapper left">
                                     <span>電話番号</span>
                                     <div class="tel-wrapper">
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel1-otsu" placeholder="000">
                                         <span>ー</span>
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel2-otsu" placeholder="000">
                                         <span>ー</span> 
-                                        <input type="text" class="input-tel2" placeholder="000">
+                                        <input type="text" class="input-tel2 sync-tel3-otsu" placeholder="000">
                                     </div>
                                 </div>
                             </td>
@@ -3976,7 +4009,7 @@
                             <p>上記に関する一切の権限</p>
                             <table class="info-table">
                                 <tr>
-                                    <td class="label">現在のHP販売会社（丙）</td>
+                                    <td class="label">現在のHP販売会社</td>
                                     <td class="label-input">
                                         <input type="text" class="input-area" placeholder="〇〇〇〇">
                                     </td>
@@ -4050,11 +4083,11 @@
                         </div>
                         <div class="input-wrapper2">
                             <span>会社名・屋号名</span>
-                            <input type="text" class="input-area" placeholder="〇〇〇〇">
+                            <input type="text" class="input-area sync-name-ko" placeholder="〇〇〇〇">
                         </div>
                         <div class="input-wrapper2">
                             <span>代表者名</span>
-                            <input type="text" class="input-area" placeholder="〇〇〇〇">
+                            <input type="text" class="input-area sync-repname-ko" placeholder="〇〇〇〇">
                         </div>                        
                     </div>
 
