@@ -30,7 +30,7 @@
             <h3>甲</h3>
             <div class="padding-b">
                 <label>会社名</label>
-                <input type="text" id="name_kana_ko" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_kana_ko" placeholder="フリガナ" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="name_ko" placeholder="株式会社〇〇" oninput="update()">
             </div>
             <div class="form_post padding-b">
@@ -41,7 +41,7 @@
             </div>
             <div class="padding-b">
                 <label>住所</label>
-                <input type="text" id="address_kana_ko" placeholder="フリガナ（住所）" oninput="update()">
+                <input type="text" id="address_kana_ko" placeholder="フリガナ（住所）" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="address1_ko" placeholder="〇〇県〇〇市〇〇" oninput="update()">
                 <input type="text" id="address2_ko" placeholder="番地・建物名" oninput="update()">
             </div>
@@ -63,12 +63,12 @@
             </div>
             <div class="padding-b">
                 <label>役職名</label>
-                <input type="text" id="position_kana_ko" placeholder="フリガナ（役職）" oninput="update()">
+                <input type="text" id="position_kana_ko" placeholder="フリガナ（役職）" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="position_ko" placeholder="（例）代表取締役" oninput="update()">
             </div>
             <div class="padding-b">
                 <label>代表者名</label>
-                <input type="text" id="repname_kana_ko" placeholder="フリガナ（代表者）" oninput="update()">
+                <input type="text" id="repname_kana_ko" placeholder="フリガナ（代表者）" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="repname_ko" placeholder="〇〇 〇〇" oninput="update()">
             </div>
         </div>
@@ -76,7 +76,7 @@
             <h3>乙</h3>
             <div class="padding-b">
                 <label>会社名</label>
-                <input type="text" id="name_kana_otsu" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_kana_otsu" placeholder="フリガナ" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="name_otsu" placeholder="株式会社〇〇" oninput="update()">
             </div>
             <div class="form_post padding-b">
@@ -103,7 +103,7 @@
             <h3>丙</h3>
             <div class="padding-b">
                 <label>会社名</label>
-                <input type="text" id="name_kana_hei" placeholder="フリガナ" oninput="update()">
+                <input type="text" id="name_kana_hei" placeholder="フリガナ" lang="ja" autocomplete="off" oninput="update()">
                 <input type="text" id="name_hei" placeholder="株式会社〇〇" oninput="update()">
             </div>
             <div class="form_post padding-b">
@@ -116,6 +116,29 @@
                 <label>住所</label>
                 <input type="text" id="address1_hei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
                 <input type="text" id="address2_hei" placeholder="番地・建物名" oninput="update()">
+            </div>
+        </div>
+        <div class="input-group">
+            <h3>保証人情報</h3>
+            <div class="form_post padding-b">
+                <label>〒</label>
+                <input type="number" id="post-code1_hoshonin" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="post-code2_hoshonin" class="post-code" placeholder="0000" oninput="update()">
+            </div>
+            <div class="padding-b">
+                <label>住所</label>
+                <input type="text" id="address_kana_hoshonin" placeholder="フリガナ（住所）" lang="ja" autocomplete="off" oninput="update()">
+                <input type="text" id="address1_hoshonin" placeholder="〇〇県〇〇市〇〇" oninput="update()">
+                <input type="text" id="address2_hoshonin" placeholder="番地・建物名" oninput="update()">
+            </div>
+            <div class="form_post padding-b">
+                <label>TEL</label>
+                <input type="number" id="tel-code1_hoshonin" class="post-code" placeholder="000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code2_hoshonin" class="post-code" placeholder="0000" oninput="update()">
+                <div>ー</div>
+                <input type="number" id="tel-code3_hoshonin" class="post-code" placeholder="0000" oninput="update()">
             </div>
         </div>
         
@@ -195,7 +218,7 @@
 
             <table class="client-info-table">
                 <tr>
-                    <td rowspan="6" class="vertical-label">買<br>主<br>（甲）</td>
+                    <td rowspan="5" class="vertical-label">買<br>主<br>（甲）</td>
                     <td class="label-bg col-kana">フリガナ</td>
                     <td colspan="3" class="row-kana">
                         <input type="text" class="sync-kana-ko" placeholder="フリガナ">
@@ -235,41 +258,56 @@
                 </tr>
                 
                 <tr>
-                    <td rowspan="3" class="label-bg syozaiti">会社<br>所在地</td>
-                    <td colspan="3" class="zip-code">
-                        〒
-                        <input type="text" class="sync-post1-ko input-char" placeholder="000">
-                        -
-                        <input type="text" class="sync-post2-ko input-char" placeholder="000"> 
+                    <td rowspan="2" class="label-bg syozaiti">会社<br>所在地</td>
+                    <td colspan="3">
+                        <div  class="zip-code">
+                            〒
+                            <input type="text" class="sync-post1-ko input-char" placeholder="000">
+                            -
+                            <input type="text" class="sync-post2-ko input-char" placeholder="000"> 
+                        </div>
+                        <div class="name-wrapper">
+                            <textarea type="text" class="sync-address1-ko texarea-large" placeholder="〇〇県〇〇市〇〇"></textarea>
+                        </div>
                     </td>
-                    <td class="label-bg">TEL</td>
-                    <td colspan="3" class="tel-row">
-                        <input type="text" class="input-tel sync-tel1-ko" placeholder="000"><span>ー</span>
-                        <input type="text" class="input-tel sync-tel2-ko" placeholder="000"><span>ー</span> 
-                        <input type="text" class="input-tel sync-tel3-ko" placeholder="000">
-                        <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
+                    <td class="label-bg tel-label">
+                        <div class="tel-fax-container">
+                            <div class="cell-child">TEL</div>
+                            <div class="cell-child">FAX</div>
+                        </div>
+                    </td>
+                    <td colspan="3" class="tel-row tel-label">
+                        <div  class="tel-fax-container">
+                            <div class="cell-child">
+                                <div class="tel-inline">
+                                    <input type="text" class="input-tel sync-tel1-ko" placeholder="000"><span>ー</span>
+                                    <input type="text" class="input-tel sync-tel2-ko" placeholder="000"><span>ー</span> 
+                                    <input type="text" class="input-tel sync-tel3-ko" placeholder="000">
+                                    <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
+                                </div>
+                            </div>
+                            <div class="cell-child">
+                                <div class="tel-inline">
+                                    <input type="number" class="input-tel sync-fax1-ko" placeholder="000"><span>ー</span>
+                                    <input type="number" class="input-tel sync-fax2-ko" placeholder="000"><span>ー</span> 
+                                    <input type="number" class="input-tel sync-fax3-ko" placeholder="000">
+                                    <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 
                 <tr>
-                    <td colspan="3" class="address-labels">
-                         <input type="text" class="sync-address1-ko" placeholder="〇〇県〇〇市〇〇">
-                    </td>
-                    <td class="label-bg">FAX</td>
-                    <td colspan="3" class="tel-row"> 
-                        <input type="number" class="input-tel sync-fax1-ko" placeholder="000"><span>ー</span>
-                        <input type="number" class="input-tel sync-fax2-ko" placeholder="000"><span>ー</span> 
-                        <input type="number" class="input-tel sync-fax3-ko" placeholder="000">
-                        <span>内線（</span><input type="text" class="input-naisen"><span>）</span>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td colspan="3" class="address">
-                        <input type="text" class="sync-address2-ko address-detail" placeholder="（番地・建物名）">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="touki"> <span>登記のみ</span>
-                        </label>
+                    <td colspan="3" class="address2">
+                        <div class="address-flex-container">
+                            <div class="address2-wrapper">
+                                <textarea type="text" class="sync-address2-ko texarea-large" placeholder="（番地・建物名）"></textarea>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="touki"> <span>登記のみ</span>
+                            </label>
+                        </div>
                     </td>
                     <td class="contract-notes" colspan="4">
                         <ul>
@@ -634,66 +672,51 @@
                     <thead>
                         <tr>
                             <th class="borderress" style="width: 3%"></th>
-                            <th class="borderress" style="width: 6%"></th>
-                            <th class="borderress" style="width: 6%"></th>
-                            <th class="borderress" style="width: 2%"></th>
-                            <th class="borderress" style="width: 6%"></th>
-                            <th class="borderress" style="width: 38%"></th>
                             <th class="borderress" style="width: 5%"></th>
-                            <th class="borderress" style="width: 32%"></th>
+                            <th class="borderress" style="width: 60%"></th>
+                            <th class="borderress" style="width: 5%"></th>
+                            <th class="borderress" style="width: 27%"></th>
                         </tr>
                         <tr class="rentaihosyo-title">
-                            <th colspan="8"> ●連帯保証　　　連帯保証人は、本契約に基づき、若しくは付随して、甲が乙又は丙に対して負担する一切の債務について保証し、甲と連帯して履行の責を負うものとする。</th>
+                            <th colspan="5"> ●連帯保証　　　連帯保証人は、本契約に基づき、若しくは付随して、甲が乙又は丙に対して負担する一切の債務について保証し、甲と連帯して履行の責を負うものとする。</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="4" style="width: 5%">連<br>帯<br>保<br>証<br>人</td>
-                            <td rowspan="2" style="width: 10%">自宅住所</td>
-                            <td colspan="3" style="width: 21%" class="zip-code">
-                                〒 
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                <input type="number" maxlength="1" class="input-char" placeholder="0">
-                            </td>
-                            <td style="width: 27%" class="address-labels">
-                                <div class="pref-city">
-                                    <input type="number" placeholder="大阪"> <span>都道<br>府県</span>
-                                    <input type="number" placeholder="大阪"> <span>区市<br>郡</span>
-                                    <input type="number" placeholder="〇〇">
+                            <td rowspan="4"  style="writing-mode: vertical-rl; text-align: center;">連帯保証人</td>
+                            <td rowspan="2" style="text-align: center;">自宅住所</td>
+                            <td rowspan="2">
+                                <div>
+                                    〒 
+                                    <input type="number" class="input-char sync-post1-hoshonin" placeholder="000"> ー
+                                    <input type="number" class="input-char sync-post2-hoshonin" placeholder="000">
+                                </div>
+                                <div class="address-wrapper">
+                                    <textarea type="text" class="sync-address-full-hoshonin texarea-small" placeholder="〇〇県〇〇市〇〇・・・番地・建物名  ※マンション・アパートの場合は建物の名称も記入してください。"></textarea>
                                 </div>
                             </td>
-                            <td style="width: 10%">フリガナ</td>
-                            <td style="width: 27%">
-                                <input type="text" placeholder="フリガナ">
+                            <td style="text-align: center;">フリガナ</td>
+                            <td>
+                                <input type="text" class="sync-repname-kana-ko" placeholder="フリガナ">
                             </td>
-
                         </tr>
                         <tr>
-                            <td colspan="3" class="address-cautionary">マンション・アパートの場合は建物の名称も記入してください。</td>
-                            <td colspan="1" class="address">
-                                <input type="text" class="address-detail" placeholder="（番地・建物名）">
-                            </td>
-                            <td rowspan="3">氏名</td>
+                            <td rowspan="3" style="text-align: center;">氏名</td>
                             <td rowspan="3">
-                                <input type="text" placeholder="〇〇〇〇">
+                                <input type="text" class="sync-repname-ko" placeholder="〇〇〇〇">
                             </td>
                         </tr>
                         <tr>
-                            <td>自宅TEL</td>
-                            <td colspan="4" class="tel-row">
-                                <input type="text" class="input-tel" placeholder="000"><span>ー</span>
-                                <input type="text" class="input-tel" placeholder="000"><span>ー</span> 
-                                <input type="text" class="input-tel" placeholder="000">
-                            </td>
+                            <td style="text-align: center;">自宅TEL</td>
+                            <td class="tel-row">
+                                <input type="text" class="input-tel sync-tel1-hoshonin" placeholder="000"><span>ー</span>
+                                <input type="text" class="input-tel sync-tel2-hoshonin" placeholder="000"><span>ー</span> 
+                                <input type="text" class="input-tel sync-tel3-hoshonin" placeholder="000">
+                            </td>   
                         </tr>
                         <tr>
-                            <td>甲との関係</td>
-                            <td colspan="4">
+                            <td style="text-align: center;">甲との関係</td>
+                            <td  class="tel-row">
                                 <input type="text" placeholder="〇〇〇〇">
                             </td>
                         </tr>
@@ -805,22 +828,22 @@
                                     <span class="text">コールセンターサポート</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -832,22 +855,22 @@
                                     <span class="text">システム保守</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -859,22 +882,22 @@
                                     <span class="text">管理支援パック</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -887,22 +910,22 @@
                                     <span class="text">CMSライセンス契約</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -914,22 +937,22 @@
                                     <span class="text">サイト運用強化パック</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -941,22 +964,22 @@
                                     <span class="text">SEO対策パック</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -968,22 +991,22 @@
                                     <span class="text">システム監視</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -995,22 +1018,22 @@
                                     <span class="text">セキュリティ対策</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1022,22 +1045,22 @@
                                     <span class="text">管理画面数値レポートパック</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1053,22 +1076,22 @@
                                     <div class="sankou">（参考月額）　　￥33,800　×（　　　）個</div>
                                 </div>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1083,22 +1106,22 @@
                                     <div class="sankou">（参考月額）　￥19,800　　×（　　　）個</div>
                                 </div>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1113,22 +1136,22 @@
                                     <div class="sankou">（参考月額）　　　　　　　　　　￥10,000</div>
                                 </div>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1140,22 +1163,22 @@
                                     <span class="text">15秒動画</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1167,22 +1190,22 @@
                                     <span class="text">長期契約割引【基本保守契約申込時適用】</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1194,22 +1217,22 @@
                                     <span class="text">得とく割引</span>
                                 </label>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
@@ -1225,32 +1248,38 @@
                                     <span>】</span>
                                 </div>
                             </td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input unit-price" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input quantity" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-cost" placeholder="0" readonly>
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input month-tax" placeholder="0" readonly>
                             </td>
                         </tr>
                         <tr class="discount-row">
                             <td colspan="1" rowspan="1" ></td>
-                            <td colspan="5" rowspan="1" class="text-center">各種割引合計</td>
-                            <td colspan="2" rowspan="1" class="row2" >
+                            <td colspan="5" rowspan="1" class="text-center">
+                                <div class="waribiki-container">
+                                    <div class="waribiki-spacer"></div>
+                                    <div class="waribiki-text">各種割引合計</div>
+                                    <div class="waribiki-icon">▲</div>
+                                </div>
+                            </td>
+                            <td colspan="2" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost2" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax2" placeholder="0">
                             </td>
                             <td colspan="1" rowspan="1" class="row2 gray" >
@@ -1259,10 +1288,10 @@
                             <td colspan="1" rowspan="1" class="row2 gray" >
                                 <!-- <input type="text" class="price-input" placeholder="0"> -->
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-cost3" placeholder="0">
                             </td>
-                            <td colspan="1" rowspan="1" class="row2" >
+                            <td colspan="1" rowspan="1" class="row2 value-input" >
                                 <input type="text" class="price-input init-tax3" placeholder="0">
                             </td>
                         </tr>
@@ -2367,7 +2396,11 @@
         </div>
 
         <div class="page page9">
-            <h2 class="text-right">保守オプショ</h2>
+            <h2>
+                <span class="spacer"></span>
+                保守オプション契約約款集
+                <span class="url">株式会社ジャストリンク規約掲載https://www.justlink.co.jp/images/business/pdf/jw_yakkan.pdf</span>
+            </h2>
             <div class="yakkan-wrapper padding-top">
                 <div class="yakkan-left2">
                     <h4>【WEB更新ツール利用規定】</h4>
@@ -2472,7 +2505,6 @@
         </div>
 
         <div class="page page10">
-            <h2 class="text-left">ン契約約款集</h2>
             <div class="yakkan-wrapper padding-top">
                 <div class="yakkan-left2">
                     <p>2.当社は、利用者による誤操作、使用方法の誤り、メール誤送信等の結果、情報等が破損または滅失したことによる損害、もしくは利用者が本サービスから得た情報等に起因して生じた損害等、利用者および第三者の損害については一切の責任を負わないものとします。また、本サービスの提供のために利用者に代わり当社が代行作業を行う場合でも、その代行作業の結果生じた利用者および第三者の損害について、当社の故意・重過失が認められる場合を除き、当社はその責任を負わないものとします。<br>
@@ -2618,18 +2650,6 @@
         <div class="page page11">
             <p class="right">【記載型（法人用）】</p>
 
-            <!-- <div class="dear-wrapper">
-                <p>販売店</p>
-                <div class="dearinput-wrapper">
-                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
-                    <span class="label">御中</span>
-                </div>
-                <div class="dearinput-wrapper">
-                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
-                    <span class="label">御中</span>
-                </div>
-            </div> -->
-
             <div class="right consent">
                 <span class="label">申込日</span>
                 <div class="input-wrapper date">
@@ -2691,18 +2711,13 @@
                             <td class="" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana sync-address-kana-ko" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
                                         <input type="number" maxlength="1" class="input-char sync-post1-ko" placeholder="000"> ー
                                         <input type="number" maxlength="1" class="input-char sync-post2-ko" placeholder="000">
-                                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
                                     </div>
                                     <div class="address-wrapper">
                                         <input type="text" class="sync-address-full-ko" placeholder="〇〇県〇〇市・・・">
@@ -2714,11 +2729,11 @@
                             <td class="label-bg" colspan="1" rowspan="1">電話番号</td>
                             <td class="" colspan="5" rowspan="1">
                                 <div class="tel-wrapper">
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel1-ko" placeholder="000">
                                     <span>ー</span>
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel2-ko" placeholder="000">
                                     <span>ー</span> 
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel3-ko" placeholder="000">
                                 </div>
                             </td>
                         </tr>
@@ -2866,11 +2881,11 @@
                             <td class="label-bg center" colspan="2" rowspan="1">自宅電話</td>
                             <td class="label-bg" colspan="3" rowspan="1">
                                 <div class="tel-wrapper">
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel1-hoshonin" placeholder="000">
                                     <span>ー</span>
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel2-hoshonin" placeholder="000">
                                     <span>ー</span> 
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel3-hoshonin" placeholder="000">
                                 </div>
                             </td>
                         </tr>
@@ -2910,21 +2925,16 @@
                             <td class="" colspan="10" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size sync-address-kana-hoshonin" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char sync-post1-hoshonin" placeholder="000"> ー
+                                        <input type="number" maxlength="1" class="input-char sync-post2-hoshonin" placeholder="000">
                                     </div>
                                     <div class="address-wrapper">
-                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                        <input type="text" class="sync-address-full-hoshonin" placeholder="〇〇県〇〇市・・・">
                                     </div>
                                 </div>
                             </td>
@@ -2980,7 +2990,7 @@
                                 </div>    
                             </td>
                             <td class="label-small" colspan="1" rowspan="1">居住年数</td>
-                            <td class="label-small" colspan="1" rowspan="1">居住年数</td>
+                            <td class="label-small" colspan="1" rowspan="1">世帯主との同居</td>
                         </tr>
                         <tr>
                             <td class="label-small" colspan="1" rowspan="1">
@@ -3034,7 +3044,9 @@
                                     <input type="text" class="input-kana fontsmall sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" class="sync-address-full-ko" placeholder="〇〇〇〇">
+                                    <div class="address-wrapper">
+                                        <textarea type="text" class="sync-address-full-ko texarea-small" placeholder="〇〇県〇〇市〇〇・・・番地・建物名"></textarea>
+                                    </div>
                                 </div>
                             </td>
                             <td class="label-small" colspan="4" rowspan="1">雇用形態</td>
@@ -3151,18 +3163,6 @@
         <div class="page page12">
             <p class="right">【記載型（個人用）】</p>
 
-            <!-- <div class="dear-wrapper">
-                <p>販売店</p>
-                <div class="dearinput-wrapper">
-                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
-                    <span class="label">御中</span>
-                </div>
-                <div class="dearinput-wrapper">
-                    <input type="text" class="input-large" placeholder="〇〇〇〇"> 
-                    <span class="label">御中</span>
-                </div>
-            </div> -->
-
             <div class="right consent">
                 <span class="label">申込日</span>
                 <div class="input-wrapper date">
@@ -3194,10 +3194,10 @@
                             <td class="label-bg label-input" style="width: 40%;" colspan="4" rowspan="4">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana sync-kana-ko" placeholder="フリガナ">
+                                    <input type="text" class="input-kana sync-repname-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
-                                    <input type="text" class="sync-name-ko" placeholder="〇〇〇〇">
+                                    <input type="text" class="sync-repname-ko" placeholder="〇〇〇〇">
                                 </div>
                             </td>
                             <td class="label-bg center" style="width: 8%;" colspan="1" rowspan="1">性別</td>
@@ -3241,11 +3241,11 @@
                             <td class="label-bg center" colspan="2" rowspan="1">自宅電話</td>
                             <td class="label-bg" colspan="3" rowspan="1">
                                 <div class="tel-wrapper">
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel1-hoshonin" placeholder="000">
                                     <span>ー</span>
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel2-hoshonin" placeholder="000">
                                     <span>ー</span> 
-                                    <input type="text" class="input-tel" placeholder="000">
+                                    <input type="text" class="input-tel sync-tel3-hoshonin" placeholder="000">
                                 </div>
                             </td>
                         </tr>
@@ -3285,21 +3285,16 @@
                             <td class="" colspan="10" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size sync-address-kana-hoshonin" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
+                                        <input type="number" maxlength="1" class="input-char sync-post1-hoshonin" placeholder="000"> ー
+                                        <input type="number" maxlength="1" class="input-char sync-post2-hoshonin" placeholder="000">
                                     </div>
                                     <div class="address-wrapper">
-                                        <input type="text" placeholder="〇〇県〇〇市・・・">
+                                        <input type="text" class="sync-address-full-hoshonin" placeholder="〇〇県〇〇市・・・">
                                     </div>
                                 </div>
                             </td>
@@ -3355,7 +3350,7 @@
                                 </div>    
                             </td>
                             <td class="label-small" colspan="1" rowspan="1">居住年数</td>
-                            <td class="label-small" colspan="1" rowspan="1">居住年数</td>
+                            <td class="label-small" colspan="1" rowspan="1">世帯主との同居</td>
                         </tr>
                         <tr>
                             <td class="label-small" colspan="1" rowspan="1">
@@ -3459,18 +3454,13 @@
                             <td class="label-bg label-input" colspan="5" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana sync-address-kana-ko" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size sync-address-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
                                         <span>〒</span> 
                                         <input type="number" maxlength="1" class="input-char sync-post1-ko" placeholder="000"> ー
                                         <input type="number" maxlength="1" class="input-char sync-post2-ko" placeholder="000">
-                                        <!-- <input type="number" maxlength="1" class="input-char" placeholder="0"> ー
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0">
-                                        <input type="number" maxlength="1" class="input-char" placeholder="0"> -->
                                     </div>
                                     <div class="address-wrapper">
                                         <input type="text" class="sync-address-full-ko" placeholder="〇〇県〇〇市・・・">
@@ -3574,7 +3564,7 @@
                     </tr>
                 </table>
             </div>
-            <div>
+            <!-- <div>
                 <table class="identity-table">
                     <tr>
                         <td style="width: 10%;">本人確認書類</td>
@@ -3625,7 +3615,7 @@
                         </td>
                     </tr>
                 </table>
-            </div>
+            </div> -->
             <div class="zokusei-container">
                 <p>【属性情報】</p>
                 <table class="zokusei-table1 zokusei-table2">
@@ -3727,7 +3717,7 @@
                             <td class="" colspan="10" rowspan="1">
                                 <div class="inputkana-wrapper">
                                     <span>フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size" placeholder="フリガナ">
                                 </div>
                                 <div class="address-row">
                                     <div class="post-wrapper">
@@ -3797,7 +3787,7 @@
                                 </div>    
                             </td>
                             <td class="label-small" colspan="1" rowspan="1">居住年数</td>
-                            <td class="label-small" colspan="1" rowspan="1">居住年数</td>
+                            <td class="label-small" colspan="1" rowspan="1">世帯主との同居</td>
                         </tr>
                         <tr>
                             <td class="label-small" colspan="1" rowspan="1">
@@ -3849,7 +3839,7 @@
                             <td class="label-bg label-input" colspan="5" rowspan="2">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana" placeholder="フリガナ">
+                                    <input type="text" class="input-kana kana-size" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input height25">
                                     <input type="text" placeholder="〇〇〇〇">

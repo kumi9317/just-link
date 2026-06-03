@@ -44,6 +44,15 @@ function update() {
     var post2hei = $('#post-code2_hei').val() || "";
     var addr1hei = $('#address1_hei').val() || "";
     var addr2hei = $('#address2_hei').val() || "";
+
+    var post1Hoshonin = $('#post-code1_hoshonin').val() || "";
+    var post2Hoshonin = $('#post-code2_hoshonin').val() || "";
+    var addrkanaHoshonin = $('#address_kana_hoshonin').val() || "";
+    var addr1Hoshonin = $('#address1_hoshonin').val() || "";
+    var addr2Hoshonin = $('#address2_hoshonin').val() || "";
+    var tel1Hoshonin = $('#tel-code1_hoshonin').val() || "";
+    var tel2Hoshonin = $('#tel-code2_hoshonin').val() || "";
+    var tel3Hoshonin = $('#tel-code3_hoshonin').val() || "";
     
     // 2. クラス指定された箇所すべてに反映
     // input要素（val）と、spanなどのテキスト要素（text）両方に送っておくと確実
@@ -86,18 +95,57 @@ function update() {
     $('.sync-address1-hei').val(addr1hei).text(addr1hei);
     $('.sync-address2-hei').val(addr2hei).text(addr2hei);
 
+    $('.sync-post1-hoshonin').val(post1Hoshonin).text(post1Hoshonin);
+    $('.sync-post2-hoshonin').val(post2Hoshonin).text(post2Hoshonin);
+    $('.sync-address-kana-hoshonin').val(addrkanaHoshonin).text(addrkanaHoshonin);
+    $('.sync-address1-hoshonin').val(addr1Hoshonin).text(addr1Hoshonin);
+    $('.sync-address2-hoshonin').val(addr2Hoshonin).text(addr2Hoshonin);
+    $('.sync-tel1-hoshonin').val(tel1Hoshonin).text(tel1Hoshonin);
+    $('.sync-tel2-hoshonin').val(tel2Hoshonin).text(tel2Hoshonin);
+    $('.sync-tel3-hoshonin').val(tel3Hoshonin).text(tel3Hoshonin);
+
     // 3. 1ページ目の「（ここに会社名が入ります）」などのテキスト部分用
     // spanやpタグは .val() ではなく .text() を使います
     $('#out_company').text(nameKo + " 御中");
 
-    // 住所1と住所2をスペースで繋いで反映
-    $('.sync-address-full-ko').val(addr1Ko + " " + addr2Ko);
-    $('.sync-address-full-otsu').val(addr1Otsu + " " + addr2Otsu);
+    // 住所1と住所2をスペースで繋いで反映（空のときはプレースホルダーが消えないよう空文字をセット）
+    var fullKo = (addr1Ko + " " + addr2Ko).trim();
+    $('.sync-address-full-ko').val(fullKo);
+
+    var fullOtsu = (addr1Otsu + " " + addr2Otsu).trim();
+    $('.sync-address-full-otsu').val(fullOtsu);
+
+    var fullHoshonin = (addr1Hoshonin + " " + addr2Hoshonin).trim();
+    $('.sync-address-full-hoshonin').val(fullHoshonin);
 }
 
 // ページ読み込み完了時に一度実行（初期値がある場合のため）
 $(document).ready(function() {
     update();
+
+    // ひらがな → カタカナ変換関数
+    function toKatakana(str) {
+        return str.replace(/[\u3041-\u3096]/g, function(match) {
+            return String.fromCharCode(match.charCodeAt(0) + 0x60);
+        });
+    }
+
+    // フリガナ入力欄を全部まとめて指定
+    const kanaFields = [
+        '#name_kana_ko',
+        '#address_kana_ko',
+        '#position_kana_ko',
+        '#repname_kana_ko',
+        '#name_kana_otsu',
+        '#name_kana_hei',
+        '#address_kana_hoshonin'
+    ];
+
+    $(kanaFields.join(',')).on('input', function() {
+        const val = $(this).val();
+        $(this).val(toKatakana(val)); // ひらがな → カタカナに変換
+        update(); // 既存のupdate()も呼ぶ
+    });
 });
 
 
@@ -142,8 +190,14 @@ $(function() {
 
         // 2. 数値として有効ならカンマ区切りにする
         if (val !== "" && !isNaN(val)) {
-            $(this).val(Number(val).toLocaleString());
-        }
+            // $(this).val(Number(val).toLocaleString());
+            var num = Number(val);
+            // init-cost2 / init-cost3 は必ずマイナス表示にする
+            if ($(this).hasClass('init-cost2') || $(this).hasClass('init-cost3')) {
+                num = -Math.abs(num);
+            }
+            $(this).val(num.toLocaleString());
+            }
     });
 
     $(document).on('focus', '.price-input', function() {
@@ -194,11 +248,11 @@ $('input[name="inin-type"]').on('change', updateIninVisibility);
 /*====================================================
   page12 本人確認　有無による詳細内容の表示・非表示
 ====================================================*/
-$('select[name="business_type"]').on('change', function() {
-    const val = $(this).val();
-    $('.yes-container').toggle(val === '1'); // 有
-    $('.no-container').toggle(val === '2');  // 無
-});
+// $('select[name="business_type"]').on('change', function() {
+//     const val = $(this).val();
+//     $('.yes-container').toggle(val === '1'); 
+//     $('.no-container').toggle(val === '2');  
+// });
 
 /*====================================================
   保守・サービステーブル　自動計算ロジック（10%税・掛け算）
@@ -226,7 +280,8 @@ $(function() {
 
         // 2. 初期費用 → 税額（10%）の計算
         var $initTaxInput = $row.find('.init-tax');
-        if (initCost > 0) {
+        // if (initCost > 0) {
+        if ($row.find('.init-cost').val() !== '') {
             var initTax = Math.floor(initCost * 0.1);
             // カンマ区切りの文字列にしてセットする
             $initTaxInput.val(initTax.toLocaleString());
@@ -235,19 +290,25 @@ $(function() {
         }
 
         // init-cost2 → init-tax2 ← 追加
-        var initCost2 = getNum($row.find('.init-cost2'));
+        // var initCost2 = getNum($row.find('.init-cost2'));
+        var initCost2 = Math.abs(getNum($row.find('.init-cost2')));  // ← Math.abs() 追加
         var $initTax2Input = $row.find('.init-tax2');
-        if (initCost2 > 0) {
-            $initTax2Input.val(Math.floor(initCost2 * 0.1).toLocaleString());
+        // if (initCost2 > 0) {
+        if ($row.find('.init-cost2').val() !== '') { 
+            // $initTax2Input.val(Math.floor(initCost2 * 0.1).toLocaleString());
+            $initTax2Input.val((-Math.floor(initCost2 * 0.1)).toLocaleString());
         } else {
             $initTax2Input.val('');
         }
 
         // init-cost3 → init-tax3 ← 追加
-        var initCost3 = getNum($row.find('.init-cost3'));
+        // var initCost3 = getNum($row.find('.init-cost3'));
+        var initCost3 = Math.abs(getNum($row.find('.init-cost3')));  // ← Math.abs() 追加
         var $initTax3Input = $row.find('.init-tax3');
-        if (initCost3 > 0) {
-            $initTax3Input.val(Math.floor(initCost3 * 0.1).toLocaleString());
+        // if (initCost3 > 0) {
+        if ($row.find('.init-cost3').val() !== '') {  
+            // $initTax3Input.val(Math.floor(initCost3 * 0.1).toLocaleString());
+            $initTax3Input.val((-Math.floor(initCost3 * 0.1)).toLocaleString());
         } else {
             $initTax3Input.val('');
         }
@@ -256,7 +317,11 @@ $(function() {
         var $monthCostInput = $row.find('.month-cost');
         var $monthTaxInput = $row.find('.month-tax');
 
-        if (unitPrice > 0 && quantity > 0) {
+        // if (unitPrice > 0 && quantity > 0) {
+        // 変更後（どちらかに値が入っていれば計算、両方空なら空欄）
+        // if ($row.find('.unit-price').val() !== '' || $row.find('.quantity').val() !== '') {
+        //「両方入力済みなら計算」という現行の挙動を保ちつつ 0 も表示
+        if ($row.find('.unit-price').val() !== '' && $row.find('.quantity').val() !== '') {
             var monthCost = unitPrice * quantity;
             var monthTax = Math.floor(monthCost * 0.1);
 
@@ -297,10 +362,16 @@ function calcTotal() {
     });
 
     // 青枠：各種割引合計行のinit-cost2
-    var discountCost = getNum($('.discount-row').find('.init-cost2'));
-    var discountTax = getNum($('.discount-row').find('.init-tax2'));
-    var discountMonthCost = getNum($('.discount-row').find('.init-cost3'));
-    var discountMonthTax = getNum($('.discount-row').find('.init-tax3'));
+    // var discountCost = getNum($('.discount-row').find('.init-cost2'));
+    // var discountTax = getNum($('.discount-row').find('.init-tax2'));
+    // var discountMonthCost = getNum($('.discount-row').find('.init-cost3'));
+    // var discountMonthTax = getNum($('.discount-row').find('.init-tax3'));
+
+    // 青枠：各種割引合計行（マイナス入力でもプラス入力でも絶対値で扱う）
+    var discountCost      = Math.abs(getNum($('.discount-row').find('.init-cost2')));
+    var discountTax       = Math.abs(getNum($('.discount-row').find('.init-tax2')));
+    var discountMonthCost = Math.abs(getNum($('.discount-row').find('.init-cost3')));
+    var discountMonthTax  = Math.abs(getNum($('.discount-row').find('.init-tax3')));    
 
     // 初期費用の計算
     var resultCost = totalInitCost - discountCost;

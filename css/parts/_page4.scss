@@ -156,6 +156,16 @@
             vertical-align: middle;
             word-break: break-all;
         }
+
+        .value-input {
+            padding-block: 0px !important;
+            height: 1px;
+        }
+
+        .price-input {
+            height: 100%;
+        }
+
         th {
             background-color: #f0f0f0;
         }
@@ -264,8 +274,20 @@
                 color: red;
             }
         }
+        .waribiki-container {
+            display: flex;
+            align-items: center;
 
-        
+            .waribiki-spacer,
+            .waribiki-icon {
+                width: 1em; /* 左右を同じ幅にすることでテキストが中央に */
+            }
+
+            .waribiki-text {
+                flex: 1;
+                text-align: center;
+            }
+        }        
     }
 
     .gray {

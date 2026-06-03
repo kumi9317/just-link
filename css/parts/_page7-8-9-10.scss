@@ -11,19 +11,25 @@
 
     h2 {
         width: 100%;
-        border-top: 1px solid #000;
-        border-bottom: 1px solid #000;
+        border: 1px solid #000;
         padding-block: 2px;
         font-size: 0.6rem;
+        display: flex;
+        align-items: center;
+
+        .spacer,
+        .url {
+            flex: 1;  /* 左右を同じ幅にすることでテキストが中央に */
+        }
+
+        .url {
+            font-size: 0.35rem;
+            font-weight: normal;
+            text-align: right;
+            padding-right: 5px;
+        }
     }
-    .text-right {
-        text-align: right;
-        border-left: 1px solid #000;
-    }
-    .text-left {
-        text-align: left;
-        border-right: 1px solid #000;
-    }
+    
     .padding-top {
         padding-top: 5px;
     }

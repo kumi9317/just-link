@@ -215,10 +215,72 @@
                     
                     &::placeholder {
                         color: #bbbbbb;
-                        font-size: 0.35rem;
+                        font-size: 0.7rem;
                     }
                     &:focus {
                         background-color: #fff9e6;
+                    }
+                }
+            }
+
+            .address-flex-container {
+                display: flex;
+                align-items: center;    /* 上下中央揃え */
+                width: 100%;
+                height: 100%;
+
+                .address2-wrapper {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;    /* ★これで中身（textarea）を絶対に上下中央にする */
+                    justify-content: center;
+                    height: 40px;           /* 親（セル）の高さは40pxに固定 */
+                    width: 100%;
+                    padding: 2px 0;         /* 上下の線に文字がギリギリ触れないように少しだけ余白を持たせる */
+                    box-sizing: border-box;
+                    
+                    .texarea-large {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        max-height: 36px;
+                        line-height: 1.2;
+                        resize: none;
+                        word-break: break-all;
+                        overflow: hidden;
+                        border: none;
+                        outline: none;
+                        background: transparent;
+                        font-size: 0.75rem;
+                        padding: 0 5px;
+                        margin: 0;
+                        box-sizing: border-box;
+                        
+                        &::placeholder {
+                            color: #bbbbbb;
+                            font-size: 0.7rem;
+                        }
+                        &:focus {
+                            background-color: #fff9e6;
+                        }
+                    }
+                }
+
+                .checkbox-label {
+                    display: inline-block; // 横に並ぶように指定
+                    width: 15%;            // チェックボックス側の幅を確保
+                    font-size: 0.35rem;
+                    text-align: right;     // 右側に寄せる
+                    vertical-align: middle;
+                    cursor: pointer;
+
+                    input[type="checkbox"] {
+                        vertical-align: middle; // チェックボックスと文字の高さを合わせる
+                        margin: 0;
+                    }
+                    
+                    span {
+                        vertical-align: middle;
                     }
                 }
             }
@@ -229,14 +291,18 @@
 
             // --- 郵便番号の1文字マス ---
             .input-char {
-                width: 25px !important;
+                width: 30px !important;
                 height: 25px !important;
                 min-height: auto !important;
                 // border: 1px solid #000 !important; // マス目として枠線を復活
                 padding: 0 !important;
                 text-align: center;
-                font-size: 0.35rem;
+                font-size: 0.6rem !important;
                 vertical-align: 0;
+
+                &::placeholder {
+                    font-size: 0.6rem;
+                }
             }
 
             // --- 電話番号の横並び調整 ---
@@ -254,6 +320,7 @@
                     height: 100% !important;
                     min-height: auto;
                     vertical-align: 0;
+                    text-align: center;
                 }
                 .input-naisen {
                     display: inline-block;
@@ -271,60 +338,17 @@
                 border-bottom: none !important;
             }
 
-            // --- 都道府県・市区町村 ---
-            .pref-city {
-                display: flex;
-                align-items: center;
-                height: 100%;
-                
-                input {
-                    width: 40% !important;
-                    min-height: 20px !important;
-                }
-                span {
-                    font-size: 0.25rem;
-                    margin-right: 10px;
-                    line-height: 1.1;
-                }
-            }
-
             &.address-labels {
                 border-top: none !important; // 上の線を消すことで、郵便番号欄と繋がって見えます
             }
             
-            &.address {
+            &.address2 {
                 white-space: nowrap;
                 align-items: center;
                 vertical-align: middle;
                 padding: 0 5px;
                 height: 100%; 
                 border-right: 2px solid #000 !important;
-                .address-detail {
-                    display: inline-block; // 横に並ぶように指定
-                    width: 70%;            // 建物名入力欄の幅を制限
-                    height: 100%;
-                    min-height: auto !important; // 共通設定を打ち消し
-                    border: none;
-                    vertical-align: middle;
-                }
-                
-                .checkbox-label {
-                    display: inline-block; // 横に並ぶように指定
-                    width: 25%;            // チェックボックス側の幅を確保
-                    font-size: 0.35rem;
-                    text-align: right;     // 右側に寄せる
-                    vertical-align: middle;
-                    cursor: pointer;
-
-                    input[type="checkbox"] {
-                        vertical-align: middle; // チェックボックスと文字の高さを合わせる
-                        margin: 0;
-                    }
-                    
-                    span {
-                        vertical-align: middle;
-                    }
-                }
             }
 
             &.syozaiti {
@@ -344,6 +368,43 @@
             background: #f0f0f0;
             font-weight: bold; 
             vertical-align: middle;  
+        }
+
+        td.tel-label {
+            padding: 0; // セル自体の余白をゼロにして、中の要素を100%広げられるようにします
+            height: 66px; // ※もし親セルの高さが決まっていれば（例: 40pxなど）
+            
+            // 縦に並べるためのFlexコンテナ
+            .tel-fax-container {
+                display: flex;
+                flex-direction: column; /* 縦並びにする */
+                width: 100%;
+                height: 100%; /* セルの高さいっぱいに広げる */
+                
+                // 中の「TEL」「FAX」それぞれの共通設定
+                .cell-child {
+                    flex: 1; /* 高さを均等に50%ずつ分ける */
+                    display: flex;
+                    align-items: center;     /* 上下中央寄せ */
+                    justify-content: center; /* 左右中央寄せ */
+                    width: 100%;
+                    box-sizing: border-box;
+                    
+                    // ※フォントサイズやテキストの見た目はお好みで調整してください
+                    // font-size: 0.35rem; 
+                    
+                    // 上側の要素（TEL）の「下側」だけに境界線を引く
+                    &:first-child {
+                        border-bottom: 1px solid #000;
+                    }
+
+                    .tel-inline {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                    }
+                }
+            }
         }
 
         .contract-notes {
@@ -895,29 +956,68 @@
             // --- 郵便番号の1文字マス ---
             .input-char {
                 width: 10px !important;
-                height: 18px !important;
+                height: 15px !important;
                 min-height: auto !important;
                 // border: 1px solid #000 !important; // マス目として枠線を復活
                 padding: 0 !important;
                 text-align: center;
                 font-size: 0.35rem;
                 vertical-align: 0;
+                // border: solid 1px red;
             }
 
             // --- 都道府県・市区町村 ---
-            .pref-city {
-                display: flex;
-                align-items: center;
-                height: 100%;
+            // .pref-city {
+            //     display: flex;
+            //     align-items: center;
+            //     height: 100%;
                 
-                input {
-                    width: 40% !important;
-                    min-height: 20px !important;
-                }
-                span {
-                    font-size: 0.25rem;
-                    margin-right: 10px;
-                    line-height: 1.1;
+            //     input {
+            //         width: 40% !important;
+            //         min-height: 20px !important;
+            //     }
+            //     span {
+            //         font-size: 0.25rem;
+            //         margin-right: 10px;
+            //         line-height: 1.1;
+            //     }
+            // }
+
+            .address-wrapper {                
+                display: flex;
+                align-items: center;    /* ★これで中身（textarea）を絶対に上下中央にする */
+                justify-content: center;
+                height: 30px;           /* 親（セル）の高さは40pxに固定 */
+                width: 100%;
+                padding: 0;         /* 上下の線に文字がギリギリ触れないように少しだけ余白を持たせる */
+                box-sizing: border-box;
+                // border: solid 1px red;
+
+                .texarea-small {
+                    display: block;
+                    width: 100%;
+                    height: auto;        /* ★高さを固定せず、文字数に合わせて自動で変わるようにする */
+                    max-height: 30px;    /* 40pxのセルからはみ出さないための限界の高さ */
+                    line-height: 1.2;    /* ★2行になったときに文字が重ならないよう、標準的な行高にする */
+                    resize: none;
+                    word-break: break-all;
+                    overflow: hidden;
+                    border: none;
+                    outline: none;
+                    background: transparent;
+                    font-size: 0.4rem; 
+                    padding: 0 5px;
+                    margin: 0;
+                    box-sizing: border-box;
+                    // border: solid 1px red;
+                    
+                    &::placeholder {
+                        color: #bbbbbb;
+                        font-size: 0.4rem;
+                    }
+                    &:focus {
+                        background-color: #fff9e6;
+                    }
                 }
             }
 

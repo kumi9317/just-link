@@ -6,7 +6,7 @@
     input[type="text"],
     input[type="number"],
     textarea {
-        font-size: 0.6rem; 
+        font-size: 0.5rem; 
 
         &::placeholder {
             font-size: 0.5rem !important;
@@ -491,6 +491,7 @@
     .nensyu-container {
         display: flex;
         justify-content: flex-end;
+        margin-top: 10px;
         .nensyu-table {
             font-size: 0.5rem;
             table-layout: fixed;
@@ -591,6 +592,48 @@
     .footer-table2 {
         td {
             padding: 0px 5px !important;
+        }
+    }
+
+    .kana-size {
+        font-size: 0.4rem !important;
+    }
+
+    .address-wrapper {                
+        display: flex;
+        align-items: center;    /* ★これで中身（textarea）を絶対に上下中央にする */
+        justify-content: center;
+        height: 30px;           /* 親（セル）の高さは40pxに固定 */
+        width: 100%;
+        padding: 0;         /* 上下の線に文字がギリギリ触れないように少しだけ余白を持たせる */
+        box-sizing: border-box;
+        // border: solid 1px red;
+
+        .texarea-small {
+            display: block;
+            width: 100%;
+            height: auto;        /* ★高さを固定せず、文字数に合わせて自動で変わるようにする */
+            max-height: 30px;    /* 40pxのセルからはみ出さないための限界の高さ */
+            line-height: 1.2;    /* ★2行になったときに文字が重ならないよう、標準的な行高にする */
+            resize: none;
+            word-break: break-all;
+            overflow: hidden;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 0.4rem; 
+            padding: 0 5px;
+            margin: 0;
+            box-sizing: border-box;
+            // border: solid 1px red;
+            
+            &::placeholder {
+                color: #bbbbbb;
+                font-size: 0.4rem;
+            }
+            &:focus {
+                background-color: #fff9e6;
+            }
         }
     }
 
