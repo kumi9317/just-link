@@ -42,8 +42,8 @@
             <div class="padding-b">
                 <label>住所</label>
                 <input type="text" id="address_kana_ko" placeholder="フリガナ（住所）" lang="ja" autocomplete="off" oninput="update()">
-                <input type="text" id="address1_ko" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-                <input type="text" id="address2_ko" placeholder="番地・建物名" oninput="update()">
+                <input type="text" id="address1_ko" placeholder="住所１" oninput="update()">
+                <input type="text" id="address2_ko" placeholder="住所２" oninput="update()">
             </div>
             <div class="form_post padding-b">
                 <label>TEL</label>
@@ -87,8 +87,8 @@
             </div>
             <div class="padding-b">
                 <label>住所</label>
-                <input type="text" id="address1_otsu" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-                <input type="text" id="address2_otsu" placeholder="番地・建物名" oninput="update()">
+                <input type="text" id="address1_otsu" placeholder="住所１" oninput="update()">
+                <input type="text" id="address2_otsu" placeholder="住所２" oninput="update()">
             </div>
             <div class="form_post padding-b">
                 <label>TEL</label>
@@ -114,8 +114,8 @@
             </div>
             <div class="padding-b">
                 <label>住所</label>
-                <input type="text" id="address1_hei" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-                <input type="text" id="address2_hei" placeholder="番地・建物名" oninput="update()">
+                <input type="text" id="address1_hei" placeholder="住所１" oninput="update()">
+                <input type="text" id="address2_hei" placeholder="住所２" oninput="update()">
             </div>
         </div>
         <div class="input-group">
@@ -129,8 +129,8 @@
             <div class="padding-b">
                 <label>住所</label>
                 <input type="text" id="address_kana_hoshonin" placeholder="フリガナ（住所）" lang="ja" autocomplete="off" oninput="update()">
-                <input type="text" id="address1_hoshonin" placeholder="〇〇県〇〇市〇〇" oninput="update()">
-                <input type="text" id="address2_hoshonin" placeholder="番地・建物名" oninput="update()">
+                <input type="text" id="address1_hoshonin" placeholder="住所１" oninput="update()">
+                <input type="text" id="address2_hoshonin" placeholder="住所２" oninput="update()">
             </div>
             <div class="form_post padding-b">
                 <label>TEL</label>
@@ -259,7 +259,7 @@
                 
                 <tr>
                     <td rowspan="2" class="label-bg syozaiti">会社<br>所在地</td>
-                    <td colspan="3">
+                    <td colspan="3" class="borderbottom-none">
                         <div  class="zip-code">
                             〒
                             <input type="text" class="sync-post1-ko input-char" placeholder="000">
@@ -3041,11 +3041,11 @@
                             <td class="label-bg label-input" colspan="4" rowspan="2">
                                 <div class="inputkana-wrapper">
                                     <span class="kana">フリガナ</span>
-                                    <input type="text" class="input-kana fontsmall sync-address-kana-ko" placeholder="フリガナ">
+                                    <input type="text" class="input-kana fontsmall sync-kana-ko" placeholder="フリガナ">
                                 </div>
                                 <div class="input-area main-input">
                                     <div class="address-wrapper">
-                                        <textarea type="text" class="sync-address-full-ko texarea-small" placeholder="〇〇県〇〇市〇〇・・・番地・建物名"></textarea>
+                                        <textarea type="text" class="sync-name-ko texarea-small" placeholder="株式会社〇〇"></textarea>
                                     </div>
                                 </div>
                             </td>

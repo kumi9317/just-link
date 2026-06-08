@@ -4,7 +4,14 @@
 // HTMLの oninput="update()" から直接呼び出せるように、
 // $(function() { ... }) の外に書く！
 
+// ★日本語の「変換中（未確定）」かどうかを管理するフラグを、一番上（外側）に引っ越します
+var isComposing = false;
+
 function update() {
+    // ★【重要】フリガナ欄などで日本語入力（未確定）のときは、
+    // HTMLのoninputからのすり抜け呼び出しをここで完全にシャットアウトします！
+    if (isComposing) return;
+
     // 1. 各入力欄の値を取得
     var dateYear  = $('#date_year').val()  || "";
     var dateMonth = $('#date_month').val() || "";
@@ -141,11 +148,32 @@ $(document).ready(function() {
         '#address_kana_hoshonin'
     ];
 
-    $(kanaFields.join(',')).on('input', function() {
-        const val = $(this).val();
-        $(this).val(toKatakana(val)); // ひらがな → カタカナに変換
-        update(); // 既存のupdate()も呼ぶ
-    });
+    // 日本語の「変換中（未確定）」かどうかを管理するフラグ
+    // let isComposing = false;
+    const kanaSelector = kanaFields.join(',');
+
+    $(kanaSelector)
+        .on('compositionstart', function() {
+            // 日本語の入力（ローマ字をひらがなに変えている最中など）が始まったらフラグをtrueに
+            isComposing = true;
+        })
+        .on('compositionend', function() {
+            // 日本語の変換が「確定（Enter）」された瞬間にフラグをfalseにして変換を実行
+            isComposing = false;
+
+            const val = $(this).val();
+            $(this).val(toKatakana(val)); // カタカナに変換
+            update(); // 画面全体に反映
+        })
+        .on('input', function() {
+            // ★WindowsのIMEで変換中（未確定）のときは、文字がダブるのを防ぐために処理を完全にスルー（無視）する！
+            if (isComposing) return;
+
+            // 英数入力モードの時や、コピペで値が入った時はここが通ります
+            const val = $(this).val();
+            $(this).val(toKatakana(val));
+            update();
+        });
 });
 
 
@@ -156,6 +184,7 @@ $(function() {
     // ページ内の全ての input (type="text" や type="number") を対象にする
     $('input').on('keydown', function(e) {
         if (e.keyCode === 13) { // エンターキー
+
             e.preventDefault();
 
             // ページ内の全ての input を取得

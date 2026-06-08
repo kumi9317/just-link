@@ -677,6 +677,9 @@ textarea:focus {
 .page3 .client-info-table td.syozaiti {
   border-right: 1px solid #000 !important;
 }
+.page3 .client-info-table .borderbottom-none {
+  border-bottom: solid 1px transparent !important;
+}
 .page3 .client-info-table .label-bg {
   background: #f0f0f0;
   text-align: center;
@@ -1981,6 +1984,7 @@ textarea:focus {
 .page12 .zokusei-table1 th .inputkana-wrapper,
 .page12 .zokusei-table1 td .inputkana-wrapper {
   width: 100%;
+  height: 18.32px;
   border-bottom: 0.5px solid #000;
   display: flex;
   align-items: center;

@@ -356,6 +356,10 @@
             }
         }
 
+        .borderbottom-none {
+            border-bottom: solid 1px transparent !important;
+        }
+
         .label-bg {
             background: #f0f0f0;
             text-align: center;
