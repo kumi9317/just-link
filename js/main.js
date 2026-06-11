@@ -130,6 +130,40 @@ function update() {
 $(document).ready(function() {
     update();
 
+    // フリガナ入力欄を全部まとめて指定
+    const kanaFields = [
+        '#name_kana_ko',
+        '#address_kana_ko',
+        '#position_kana_ko',
+        '#repname_kana_ko',
+        '#name_kana_otsu',
+        '#name_kana_hei',
+        '#address_kana_hoshonin'
+    ];
+    const kanaSelector = kanaFields.join(',');
+
+    /* ====================================================================
+       【修正コード】カタカナ自動変換は行わず、
+       Enterでの確定時（またはコピペ・英数入力時）にそのまま同期する処理
+       ==================================================================== */
+    $(kanaSelector)
+        .on('compositionstart', function() {
+            // 日本語の入力（変換中）が始まったらフラグをtrueに
+            isComposing = true;
+        })
+        .on('compositionend', function() {
+            // 日本語の変換が「確定（Enter）」された瞬間にフラグをfalseにして同期を実行
+            isComposing = false;
+            update(); // 画面全体（出力先）に反映
+        })
+        .on('input', function() {
+            // 変換中（未確定）のときは、文字がダブるのを防ぐために処理をスルー
+            if (isComposing) return;
+
+            // 英数入力モードの時や、コピペで値が入った時はここが通ります
+            update();
+        });
+    /*============================================================
     // ひらがな → カタカナ変換関数
     function toKatakana(str) {
         return str.replace(/[\u3041-\u3096]/g, function(match) {
@@ -151,6 +185,11 @@ $(document).ready(function() {
     // 日本語の「変換中（未確定）」かどうかを管理するフラグ
     // let isComposing = false;
     const kanaSelector = kanaFields.join(',');
+
+    ----------------------------------------------------------
+       【旧コード】2025-変更前のフリガナ処理（参照用に残しています）
+       ※予測変換で漢字に化けると、そのまま漢字で出力されてしまう問題があった
+     -------------------------------------------------------------
 
     $(kanaSelector)
         .on('compositionstart', function() {
@@ -174,6 +213,8 @@ $(document).ready(function() {
             $(this).val(toKatakana(val));
             update();
         });
+    ==========================================================================*/
+
 });
 
 
@@ -184,6 +225,10 @@ $(function() {
     // ページ内の全ての input (type="text" や type="number") を対象にする
     $('input').on('keydown', function(e) {
         if (e.keyCode === 13) { // エンターキー
+
+            // ★【超重要】日本語の「変換・確定」のためのEnterキーのときは、
+            // 次のフォームに勝手に移動しないようにここで処理を完全にストップ！
+            if (isComposing) return;
 
             e.preventDefault();
 
